@@ -47,7 +47,7 @@
 
   /* Typography */
   --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-display: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
 
   /* Scale */
   --step--1: clamp(0.83rem, 0.79rem + 0.2vw, 0.94rem);

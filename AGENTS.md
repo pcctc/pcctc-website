@@ -27,8 +27,9 @@ narrative pages (expertise, guiding principles) keep their prose inline in the `
   from the PCCTC logo. Change colors there, not in component styles.
 - **Data files are inlined at build time** via `import.meta.glob('../data/*.yaml', {query:'?raw'})`
   in `src/lib/data.ts` — no runtime filesystem access (required for static output).
-- **Fonts self-hosted** via `@fontsource-variable` (Fraunces display + Inter body). No Google
-  Fonts network requests.
+- **Fonts self-hosted** via `@fontsource-variable` (Source Serif 4 display + Inter body). No
+  Google Fonts network requests. Fraunces was swapped out in July 2026 — its calligraphic
+  "f" glyphs were hard to read at display sizes.
 - **SEO**: `src/components/Seo.astro` emits per-page title/description/canonical/OG + JSON-LD
   (MedicalOrganization sitewide, NewsArticle on posts, MedicalStudy on /studies). Sitemap via
   `@astrojs/sitemap`. Keep one `<h1>` per page.
