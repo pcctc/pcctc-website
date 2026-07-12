@@ -6,7 +6,12 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.pcctc.org',
   trailingSlash: 'ignore',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // /privacy is noindex; don't send crawlers contradictory signals
+      filter: (page) => !page.endsWith('/privacy/'),
+    }),
+  ],
   build: {
     format: 'directory',
   },

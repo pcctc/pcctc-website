@@ -22,7 +22,12 @@ const {
 
 const siteName = 'PCCTC';
 const fullTitle = title.includes('PCCTC') ? title : `${title} — PCCTC`;
-const canonical = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, '') || Astro.site!.href;
+// Trailing slash matches what static hosts serve for directory-format builds,
+// and keeps canonical consistent with the generated sitemap.
+const canonical = new URL(
+  Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`,
+  Astro.site
+).href;
 const ogImage = new URL(image, Astro.site).href;
 
 const orgLd = {
