@@ -12,6 +12,10 @@ const fmtDate = (d: Date) =>
   d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 
 const [lead, ...rest] = posts;
+
+// Migrated external posts often have description set to the title verbatim — don't repeat it.
+const cardDescription = (post: (typeof posts)[number]) =>
+  post.data.description?.trim() !== post.data.title.trim() ? post.data.description : undefined;
 ---
 
 <Base
@@ -30,7 +34,7 @@ const [lead, ...rest] = posts;
         <div class="lead-post__body">
           <time datetime={lead.data.date.toISOString()}>{fmtDate(lead.data.date)}</time>
           <h2>{lead.data.title}</h2>
-          <p>{lead.data.description}</p>
+          {cardDescription(lead) && <p>{cardDescription(lead)}</p>}
           <span class="link-arrow">
             {lead.data.external ? 'Read the announcement' : 'Read more'} <Icon name="arrow" size={16} />
           </span>
@@ -42,7 +46,7 @@ const [lead, ...rest] = posts;
           <a href={`/news/${post.id}`} class="card news-item">
             <time datetime={post.data.date.toISOString()}>{fmtDate(post.data.date)}</time>
             <h3>{post.data.title}</h3>
-            <p>{post.data.description}</p>
+            {cardDescription(post) && <p>{cardDescription(post)}</p>}
             {post.data.external && <span class="ext-badge"><Icon name="external" size={13} /> External</span>}
           </a>
         ))}
@@ -80,6 +84,7 @@ const [lead, ...rest] = posts;
   .news-item h3 { font-size: 1.05rem; line-height: 1.35; color: var(--ink-900); }
   .news-item p { font-size: 0.9rem; color: var(--text-soft); margin: 0; flex-grow: 1; }
   .ext-badge {
+    margin-top: auto;
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
