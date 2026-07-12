@@ -1,0 +1,126 @@
+---
+const year = new Date().getFullYear();
+const cols = [
+  {
+    heading: 'Organization',
+    links: [
+      { href: '/about', label: 'About' },
+      { href: '/expertise', label: 'Expertise' },
+      { href: '/guidingprinciples', label: 'Guiding Principles' },
+      { href: '/workinggroups', label: 'Working Groups' },
+    ],
+  },
+  {
+    heading: 'Research',
+    links: [
+      { href: '/services', label: 'Services' },
+      { href: '/studies', label: 'Studies' },
+      { href: '/news', label: 'News' },
+    ],
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="/images/pcctc-wordmark.png" alt="PCCTC" width="150" height="96" />
+      <p class="footer-tagline">
+        Designing, implementing, and completing innovative process-driven clinical studies.
+      </p>
+      <a href="mailto:pcctc@mskcc.org" class="footer-email">pcctc@mskcc.org</a>
+    </div>
+
+    {cols.map((col) => (
+      <nav class="footer-col" aria-label={col.heading}>
+        <h2>{col.heading}</h2>
+        <ul>
+          {col.links.map((l) => (
+            <li><a href={l.href}>{l.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    ))}
+
+    <div class="footer-col">
+      <h2>Connect</h2>
+      <ul class="footer-social">
+        <li><a href="https://www.linkedin.com/company/9322337/" rel="noopener" target="_blank">LinkedIn</a></li>
+        <li><a href="https://bsky.app/profile/thepcctc.bsky.social" rel="noopener" target="_blank">Bluesky</a></li>
+        <li><a href="mailto:pcctc@mskcc.org">Email</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; {year} The Prostate Cancer Clinical Trials Consortium, LLC. All rights reserved.</p>
+    <a href="/privacy">Privacy Statement</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink-900);
+    color: #b7c7d6;
+    padding-top: clamp(3rem, 2rem + 3vw, 4.5rem);
+    margin-top: auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr repeat(3, 1fr);
+    gap: 2.5rem 2rem;
+    padding-bottom: 2.5rem;
+  }
+  .footer-brand img {
+    height: 3.6rem; width: auto;
+    background: #fff;
+    padding: 0.5rem 0.7rem;
+    border-radius: 10px;
+  }
+  .footer-tagline {
+    max-width: 30ch;
+    margin: 1.1rem 0 1rem;
+    color: #94a9bd;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  .footer-email { color: var(--brand-300); font-weight: 550; text-decoration: none; }
+  .footer-email:hover { color: #fff; }
+
+  .footer-col h2 {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6f869c;
+    margin: 0 0 1rem;
+  }
+  .footer-col ul { list-style: none; margin: 0; padding: 0; }
+  .footer-col li { margin-bottom: 0.65rem; }
+  .footer-col a { color: #c3d2e0; text-decoration: none; font-size: 0.95rem; }
+  .footer-col a:hover { color: #fff; }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: #7c92a6;
+  }
+  .footer-bottom p { margin: 0; }
+  .footer-bottom a { color: #9fb2c4; text-decoration: none; }
+  .footer-bottom a:hover { color: #fff; }
+
+  @media (max-width: 52rem) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 32rem) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>

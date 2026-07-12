@@ -1,0 +1,138 @@
+---
+const nav = [
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/expertise', label: 'Expertise' },
+  { href: '/studies', label: 'Studies' },
+  { href: '/workinggroups', label: 'Working Groups' },
+  { href: '/guidingprinciples', label: 'Guiding Principles' },
+  { href: '/news', label: 'News' },
+];
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href));
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand" aria-label="PCCTC home">
+      <img src="/images/pcctc-wordmark.png" alt="PCCTC — The Prostate Cancer Clinical Trials Consortium" width="94" height="60" />
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-burger" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        {nav.map((item) => (
+          <li>
+            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+        <li class="nav-cta">
+          <a href="mailto:pcctc@mskcc.org" class="btn btn--primary">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 4.5rem;
+  }
+  .brand { display: inline-flex; align-items: center; }
+  .brand img { height: 3rem; width: auto; }
+
+  .site-nav ul {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 0.2rem + 1vw, 1.4rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .site-nav a {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 550;
+    color: var(--ink-700);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    position: relative;
+  }
+  .site-nav a:hover { color: var(--brand-700); }
+  .site-nav a[aria-current='page'] { color: var(--brand-700); }
+  .site-nav a[aria-current='page']::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -0.35rem;
+    height: 2px;
+    background: var(--brand-500);
+    border-radius: 2px;
+  }
+  .nav-cta a { color: #fff; }
+  .nav-cta a:hover { color: #fff; }
+
+  .nav-toggle, .nav-burger { display: none; }
+  .nav-burger {
+    width: 2.6rem; height: 2.6rem;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 8px;
+  }
+  .nav-burger span {
+    display: block;
+    width: 22px; height: 2px;
+    background: var(--ink-800);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  @media (max-width: 60rem) {
+    .nav-burger { display: inline-flex; }
+    .site-nav {
+      position: fixed;
+      inset: 4.5rem 0 auto 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow-md);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.28s ease;
+    }
+    .site-nav ul {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 0.5rem var(--gutter) 1.25rem;
+    }
+    .site-nav li { border-bottom: 1px solid var(--line); }
+    .site-nav a { display: block; padding: 0.9rem 0; font-size: 1.05rem; }
+    .site-nav a[aria-current='page']::after { display: none; }
+    .nav-cta { border-bottom: none !important; padding-top: 0.9rem; }
+    .nav-cta a { display: inline-flex; }
+    .nav-toggle:checked ~ .site-nav { max-height: 32rem; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+</style>
