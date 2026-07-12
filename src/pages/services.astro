@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { services } from '../lib/data';
+
+const svc = services();
+---
+
+<Base
+  title="Services"
+  description="The PCCTC is the trusted integrated research organization for full-service study management and functional service provider support — spanning project management, regulatory, data management, biostatistics, correlative science, and more."
+>
+  <PageHero
+    eyebrow="Services"
+    title="The trusted IRO for prostate cancer research"
+    lede="The PCCTC supports both full-service study management and functional service provider (FSP) project support. Our comprehensive suite of industry-grade services, global consortium engagement, and world-class scientific expertise streamline and accelerate the activation, accrual, and completion of multicenter clinical studies."
+  />
+
+  <section class="section">
+    <div class="container services-layout">
+      <aside class="services-nav" aria-label="Services">
+        <ul>
+          {svc.map((s) => (
+            <li><a href={`#${s.slug}`}>{s.title}</a></li>
+          ))}
+        </ul>
+      </aside>
+
+      <div class="services-list">
+        {svc.map((s, i) => (
+          <article class="service" id={s.slug}>
+            <div class="service__num">{String(i + 1).padStart(2, '0')}</div>
+            <div class="service__body">
+              <h2>{s.title}</h2>
+              <p class="service__summary">{s.summary}</p>
+              <ul class="service__points">
+                {s.points.map((p) => (
+                  <li><Icon name="check" size={19} /> <span>{p}</span></li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container cta-row">
+      <div>
+        <h2>Let's advance your program</h2>
+        <p class="lede">Talk with our team about study management, FSP support, or scientific collaboration.</p>
+      </div>
+      <a href="mailto:pcctc@mskcc.org" class="btn btn--primary">Contact us <Icon name="mail" size={17} /></a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .services-layout {
+    display: grid;
+    gap: clamp(2rem, 1rem + 4vw, 4rem);
+    align-items: start;
+  }
+  @media (min-width: 60rem) {
+    .services-layout { grid-template-columns: 16rem 1fr; }
+    .services-nav { position: sticky; top: 6rem; }
+  }
+  .services-nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.15rem; }
+  .services-nav a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-left: 2px solid var(--line);
+    color: var(--text-soft);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .services-nav a:hover { border-color: var(--brand-500); color: var(--brand-700); }
+  @media (max-width: 60rem) { .services-nav { display: none; } }
+
+  .services-list { display: grid; gap: clamp(2.5rem, 2rem + 2vw, 4rem); }
+  .service {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    scroll-margin-top: 6rem;
+    padding-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+    border-bottom: 1px solid var(--line);
+  }
+  .service:last-child { border-bottom: none; padding-bottom: 0; }
+  .service__num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--brand-300);
+    line-height: 1.4;
+  }
+  .service__body h2 { font-size: var(--step-2); margin-bottom: 0.5rem; }
+  .service__summary { color: var(--text-soft); max-width: 60ch; }
+  .service__points { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: 0.75rem; }
+  .service__points li { display: flex; gap: 0.7rem; align-items: flex-start; }
+  .service__points svg { color: var(--brand-500); flex-shrink: 0; margin-top: 3px; }
+  .service__points span { color: var(--text); font-size: 0.97rem; }
+
+  @media (max-width: 34rem) {
+    .service { grid-template-columns: 1fr; gap: 0.5rem; }
+    .service__num { font-size: 1.2rem; }
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cta-row .lede { color: var(--text-soft); margin: 0.5rem 0 0; }
+</style>

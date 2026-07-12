@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+
+const sections = [
+  {
+    id: 'investigators',
+    title: 'Our Investigators',
+    body: `Internationally recognized leaders in the field, PCCTC investigators come from the nation's top academic medical centers where they are actively engaged in innovative, multidisciplinary prostate cancer research. Leveraging their unique insights into the underlying biology of the disease, our investigators developed the universally adopted clinical states model of prostate cancer and initiated one of the first efforts in oncology to prospectively validate endpoints proposed in definitive phase 3 studies — PCWG2, followed by PCWG3 — to more closely align study development to the current understanding of disease biology. The individual research objectives of our investigators are well represented in our clinical study portfolio and unified by our translational, team-based approach to therapy and biomarker development.`,
+  },
+  {
+    id: 'ourconsortium',
+    title: 'Our Consortium',
+    body: `Since its inception in 2005, the PCCTC has grown from a network of eight preeminent academic institutions to a multinational consortium of over 200 participating academic and community-based clinical research sites. PCCTC consortium members have long worked together to address unmet needs in prostate cancer, leveraging the PCCTC's multicenter research services to carry out their pathway-based scientific agenda. The PCCTC provides infrastructure for consortium-led initiatives in areas including imaging, blood-based biomarkers, clinical study design, germline genetics, and programmatic development of targeted therapies, which have led to significant advances in prostate cancer research and clinical care. The collaborative nature and intellectual synergy of its consortium members enables the PCCTC to make a significant impact on the lives of patients.`,
+  },
+  {
+    id: 'drugdevelopment',
+    title: 'Therapy Development',
+    body: `The PCCTC selects and prioritizes clinical development opportunities based on our investigators' unparalleled understanding of the global clinical study landscape, the strength of the underlying science, and the potential to address critical unmet needs across prostate cancer's clinical spectrum. Our studies are characterized by close interaction between basic scientists and clinical investigators to optimize the flow of promising therapies into early-phase studies, and the complementary development of novel study designs, endpoints, and predictive biomarkers, which ensure the decision to advance or discontinue a program is made objectively and rapidly. The PCCTC's Management Team and Scientific Oversight Committee work together to address the scientific, legal, regulatory, database, budgetary, and management concerns of every study to further accelerate the development of successful therapeutic candidates.`,
+  },
+  {
+    id: 'biomarkerdevelopment',
+    title: 'Biomarker Development',
+    body: `A cornerstone of the PCCTC's research strategy is the co-development of therapies and biomarkers. To transform the clinical management of prostate cancer in the near term, it is essential to develop drugs in more precisely defined and biologically relevant patient groups. The ability to screen for patients most likely to respond to a novel therapy is essential for both shortening development timelines and reducing exposure to unnecessary toxicity from ineffective treatment. Following the FDA's Critical Path Initiative, we initiated one of the first endeavors in oncology to define blood- and imaging-based biomarkers, develop analytically valid assays for them, and subsequently design and conduct the dedicated clinical studies necessary to establish their clinical validity. Our long-term objective is to establish intermediate or surrogate endpoints that can predict clinical benefit and form the basis for accelerated approvals.`,
+  },
+];
+---
+
+<Base
+  title="Expertise"
+  description="PCCTC investigators are internationally recognized leaders who developed the clinical states model of prostate cancer and led the endpoint-validation work behind PCWG2, PCWG3, and PCWG4."
+>
+  <PageHero
+    eyebrow="Expertise"
+    title="Deep scientific leadership in prostate cancer"
+    lede="Our translational, team-based approach unites investigators from the world's leading academic medical centers around the co-development of therapies and biomarkers."
+  />
+
+  <section class="section">
+    <div class="container expertise-page">
+      <nav class="expertise-toc" aria-label="On this page">
+        <ul>
+          {sections.map((s) => <li><a href={`#${s.id}`}>{s.title}</a></li>)}
+        </ul>
+      </nav>
+      <div class="expertise-content prose">
+        {sections.map((s) => (
+          <article class="exp-section" id={s.id}>
+            <h2>{s.title}</h2>
+            <p>{s.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .expertise-page {
+    display: grid;
+    gap: clamp(2rem, 1rem + 4vw, 4rem);
+    align-items: start;
+  }
+  @media (min-width: 60rem) {
+    .expertise-page { grid-template-columns: 15rem 1fr; }
+    .expertise-toc { position: sticky; top: 6rem; }
+  }
+  .expertise-toc ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.15rem; }
+  .expertise-toc a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-left: 2px solid var(--line);
+    color: var(--text-soft);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+  .expertise-toc a:hover { border-color: var(--brand-500); color: var(--brand-700); }
+  @media (max-width: 60rem) { .expertise-toc { display: none; } }
+
+  .exp-section { scroll-margin-top: 6rem; max-width: 68ch; }
+  .exp-section + .exp-section { margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--line); }
+  .exp-section h2 { font-size: var(--step-2); }
+  .exp-section p { color: var(--text-soft); }
+</style>

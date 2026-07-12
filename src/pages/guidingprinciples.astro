@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+
+const principles = [
+  {
+    title: 'Ethical research and diversity',
+    body: `Recognizing the pivotal role of ethical research — particularly with respect to considering all forms of diversity, equity, and inclusion — including but not limited to people of different socioeconomic status, racial and ethnic background, religious or spiritual affiliation, age, gender and sexual identity, career experience, people with disabilities, and other underserved groups.`,
+  },
+  {
+    title: 'Championing DEI in practice',
+    body: `Championing diversity, equity, and inclusivity in participant recruitment and clinical research practices, including promoting a diverse and inclusive environment in clinics as well as on committees and working groups.`,
+  },
+  {
+    title: 'Respecting patient autonomy',
+    body: `Respecting the validity of patients' narratives, background, and experiences while protecting privacy and autonomy.`,
+  },
+  {
+    title: 'Professional development',
+    body: `Mentoring and fostering the growth of the next generation of diverse medical and research professionals.`,
+  },
+];
+---
+
+<Base
+  title="Guiding Principles"
+  description="Toward improving outcomes for patients, families, and caregivers, the PCCTC commits to ethical research, diversity and inclusion, respect for patient autonomy, and mentoring the next generation of researchers."
+>
+  <PageHero
+    eyebrow="Guiding Principles"
+    title="The commitments that guide our work"
+    lede="Toward the ultimate goal of improving outcomes for patients, families, and caregivers by translating scientific discoveries into improved standards of care, the PCCTC commits to the following."
+  />
+
+  <section class="section">
+    <div class="container">
+      <ol class="principles">
+        {principles.map((p, i) => (
+          <li class="principle">
+            <span class="principle__num">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h2>{p.title}</h2>
+              <p>{p.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .principles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: clamp(1rem, 0.7rem + 1.5vw, 1.75rem);
+    max-width: 60rem;
+  }
+  .principle {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    padding: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+  .principle__num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--brand-300);
+    line-height: 1.2;
+  }
+  .principle h2 { font-size: var(--step-1); margin-bottom: 0.4rem; }
+  .principle p { margin: 0; color: var(--text-soft); }
+  @media (max-width: 34rem) {
+    .principle { grid-template-columns: 1fr; gap: 0.5rem; }
+  }
+</style>

@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { workingGroups } from '../lib/data';
+
+const groups = workingGroups();
+---
+
+<Base
+  title="Working Groups"
+  description="The PCCTC's Prostate Cancer Working Group (PCWG) and Germline Genetics Working Group (GGWG) develop rigorous, evidence-based standards for clinical trial design and personalized genetics care in prostate cancer."
+>
+  <PageHero
+    eyebrow="Working Groups"
+    title="Setting the standards for prostate cancer research"
+    lede="PCCTC working groups bring together international leaders across disciplines to develop rigorous, evidence-based standards that align clinical research with the evolving understanding of prostate cancer."
+  />
+
+  <section class="section">
+    <div class="container wg-list">
+      {groups.map((g) => (
+        <article class="wg" id={g.id}>
+          <header class="wg__head">
+            <span class="wg__abbr">{g.abbr}</span>
+            <h2>{g.name}</h2>
+          </header>
+          <p class="wg__body">{g.body}</p>
+          <h3 class="wg__pubs-title">Publications</h3>
+          <ul class="wg__pubs">
+            {g.publications.map((p) => (
+              <li>
+                <a href={p.url} rel="noopener" target="_blank">
+                  <span class="pub-title">{p.title} <Icon name="external" size={14} /></span>
+                  <span class="pub-meta">{p.authors} · <em>{p.journal}</em>, {p.year}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .wg-list { display: grid; gap: clamp(3rem, 2rem + 3vw, 5rem); }
+  .wg { scroll-margin-top: 6rem; }
+  .wg + .wg { padding-top: clamp(3rem, 2rem + 3vw, 5rem); border-top: 1px solid var(--line); }
+  .wg__head { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .wg__abbr {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #fff;
+    background: var(--brand-600);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+  }
+  .wg__head h2 { margin: 0; font-size: var(--step-2); }
+  .wg__body { color: var(--text-soft); max-width: 72ch; }
+
+  .wg__pubs-title {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 2rem 0 1rem;
+  }
+  .wg__pubs { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; max-width: 62rem; }
+  .wg__pubs a {
+    display: block;
+    padding: 1rem 1.25rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .wg__pubs a:hover { border-color: var(--brand-300); transform: translateX(2px); }
+  .pub-title {
+    display: block;
+    font-weight: 600;
+    color: var(--ink-900);
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+  }
+  .pub-title svg { color: var(--brand-500); vertical-align: baseline; }
+  .pub-meta { display: block; font-size: 0.88rem; color: var(--text-soft); }
+</style>

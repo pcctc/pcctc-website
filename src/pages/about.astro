@@ -1,0 +1,228 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { leadership, committee, stats, sites } from '../lib/data';
+
+const team = leadership();
+const soc = committee();
+const st = stats();
+const siteList = sites();
+---
+
+<Base
+  title="About the PCCTC"
+  description="Founded in 2005 by the Prostate Cancer Foundation and the U.S. Department of Defense, the PCCTC is the nation's premier multicenter CRO and academic clinical consortium specializing in prostate cancer research."
+>
+  <PageHero
+    eyebrow="About"
+    title="A single mission, pursued together"
+    lede="The PCCTC's distinguished investigators work together to design, implement, and complete hypothesis-driven prostate cancer studies — translating scientific discoveries into improved standards of care."
+  />
+
+  <section class="section" id="mission">
+    <div class="container about-cols">
+      <div>
+        <h2>Our mission</h2>
+        <p>
+          We offer contract research organization (CRO) services and leverage academic consortium
+          engagement to carry out our mission, ensuring efficient study selection, reporting, site
+          management, clinical operations, and data analyses.
+        </p>
+      </div>
+      <div>
+        <h2>Our history</h2>
+        <p>
+          The PCCTC was initiated in 2005 by the Prostate Cancer Foundation (PCF) and the U.S.
+          Department of Defense (DOD) Prostate Cancer Research Program (PCRP) in response to
+          critically unmet needs identified by physician investigators and patient advocates. To
+          fulfill our mission, we developed a unique infrastructure that has fostered a culture of
+          transparent project co-development between investigators, research sites, and industry
+          partners.
+        </p>
+        <p>
+          Established as an independent entity in 2014, the PCCTC, LLC is now the nation's premier
+          multicenter contract research organization and academic clinical consortium specializing
+          in cutting-edge prostate cancer research.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight stats-band">
+    <div class="container">
+      <p class="stats-intro">By the numbers</p>
+      <div class="stats-grid">
+        {st.map((s) => (
+          <div class="stat">
+            <span class="stat__value">{s.value}</span>
+            <span class="stat__label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="leadership">
+    <div class="container">
+      <p class="eyebrow">Our leadership</p>
+      <h2 class="block-title">Management team</h2>
+      <div class="grid grid--3 team-grid">
+        {team.map((m) => (
+          <div class="team-card">
+            <span class="team-card__name">
+              {m.name}{m.credentials && <span class="cred">, {m.credentials}</span>}
+            </span>
+            <span class="team-card__role">{m.role}</span>
+          </div>
+        ))}
+      </div>
+
+      <h2 class="block-title soc-title">Scientific Oversight Committee</h2>
+      <ul class="soc-list">
+        {soc.map((m) => (
+          <li class={m.chair ? 'soc-chair' : ''}>
+            <span class="soc-name">{m.name}{m.chair && <span class="soc-badge">Chair</span>}</span>
+            <span class="soc-inst">{m.institution}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--surface" id="sites">
+    <div class="container">
+      <p class="eyebrow">Participating clinical research sites</p>
+      <h2 class="block-title">A network spanning six continents</h2>
+      <p class="measure sites-lede">
+        Over 200 clinical research sites — academic medical centers, community hospitals, and
+        research institutions — collaborate on PCCTC studies. A current list is available upon
+        request.
+      </p>
+
+      <details class="sites-details">
+        <summary>United States <span>({siteList.domestic.length})</span></summary>
+        <ul class="sites-grid">
+          {siteList.domestic.map((s) => <li>{s}</li>)}
+        </ul>
+      </details>
+      <details class="sites-details">
+        <summary>International <span>({siteList.international.length})</span></summary>
+        <ul class="sites-grid">
+          {siteList.international.map((s) => <li>{s}</li>)}
+        </ul>
+      </details>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about-cols {
+    display: grid;
+    gap: clamp(2rem, 1rem + 4vw, 4rem);
+  }
+  @media (min-width: 52rem) { .about-cols { grid-template-columns: 1fr 1.3fr; } }
+  .about-cols p { color: var(--text-soft); }
+
+  .stats-band { background: var(--ink-900); }
+  .stats-intro {
+    color: var(--brand-300);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 1.5rem;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+  .stat__value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 1.7rem + 2.4vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .stat__label { font-size: 0.95rem; line-height: 1.45; color: #9fb6cb; }
+
+  .block-title { font-size: var(--step-2); margin-bottom: 1.5rem; }
+  .soc-title { margin-top: 3.5rem; }
+
+  .team-grid { margin-bottom: 0; }
+  .team-card {
+    padding: 1.25rem 1.4rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--brand-400);
+  }
+  .team-card__name { display: block; font-weight: 650; color: var(--ink-900); }
+  .team-card__name .cred { font-weight: 500; color: var(--text-soft); }
+  .team-card__role { display: block; font-size: 0.9rem; color: var(--text-soft); margin-top: 0.2rem; }
+
+  .soc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: 0.25rem 2rem;
+  }
+  .soc-list li {
+    display: flex;
+    flex-direction: column;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .soc-name { font-weight: 600; color: var(--ink-900); display: flex; align-items: center; gap: 0.6rem; }
+  .soc-inst { font-size: 0.9rem; color: var(--text-soft); }
+  .soc-badge {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brand-700);
+    background: var(--brand-050);
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+  }
+
+  .sites-lede { color: var(--text-soft); margin-bottom: 2rem; }
+  .sites-details {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .sites-details summary {
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--ink-900);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sites-details summary::after { content: '+'; font-size: 1.4rem; color: var(--brand-500); }
+  .sites-details[open] summary::after { content: '–'; }
+  .sites-details summary span { color: var(--text-muted); font-family: var(--font-sans); font-size: 0.9rem; }
+  .sites-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0 1.25rem 1.25rem;
+    columns: 3 16rem;
+    column-gap: 2rem;
+  }
+  .sites-grid li {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    padding: 0.3rem 0;
+    break-inside: avoid;
+  }
+</style>

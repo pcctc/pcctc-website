@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+const updated = 'July 2026';
+---
+
+<Base
+  title="Privacy Statement"
+  description="How the Prostate Cancer Clinical Trials Consortium handles information collected through pcctc.org."
+  noindex={true}
+>
+  <PageHero eyebrow="Legal" title="Privacy Statement" />
+
+  <section class="section">
+    <div class="container">
+      <div class="prose legal">
+        <p class="legal__updated">Last updated: {updated}</p>
+
+        <p>
+          The Prostate Cancer Clinical Trials Consortium (PCCTC) respects your privacy. This
+          statement explains what information this website collects and how it is used. It applies
+          to <strong>www.pcctc.org</strong> and does not cover third-party websites we link to,
+          including ClinicalTrials.gov and individual study registries.
+        </p>
+
+        <h2>Information we collect</h2>
+        <p>
+          This is a static informational website. We do not require you to create an account or
+          submit personal information to browse it. If you contact us by email, we receive the
+          information you choose to share so that we can respond.
+        </p>
+
+        <h2>How we use information</h2>
+        <p>
+          Information you send us by email is used solely to respond to your inquiry and is not sold
+          or shared for marketing purposes.
+        </p>
+
+        <h2>Analytics and cookies</h2>
+        <p>
+          If aggregate analytics are used to understand site traffic, they are configured to avoid
+          collecting personally identifiable information wherever possible. This site does not use
+          advertising cookies.
+        </p>
+
+        <h2>Health information</h2>
+        <p>
+          This website does not collect protected health information (PHI). If you are a patient
+          seeking information about a clinical trial, please speak with your physician or contact the
+          study team listed on the relevant ClinicalTrials.gov record.
+        </p>
+
+        <h2>External links</h2>
+        <p>
+          Our site links to external resources, including study registries and partner
+          organizations. We are not responsible for the privacy practices of those sites; please
+          review their policies directly.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about this statement can be directed to
+          <a href="mailto:pcctc@mskcc.org">pcctc@mskcc.org</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .legal { max-width: 46rem; }
+  .legal__updated { color: var(--text-muted); font-size: 0.9rem; }
+  .legal h2 { font-size: var(--step-1); margin: 2em 0 0.5em; }
+  .legal p { color: var(--text-soft); }
+</style>

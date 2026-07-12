@@ -1,0 +1,154 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { featuredStudies, activeStudies } from '../lib/data';
+
+const featured = featuredStudies();
+const active = activeStudies();
+
+const jsonLd = active
+  .filter((s) => s.nct)
+  .map((s) => ({
+    '@context': 'https://schema.org',
+    '@type': 'MedicalStudy',
+    name: s.title,
+    studySubject: { '@type': 'MedicalCondition', name: 'Prostate Cancer' },
+    ...(s.phase ? { phase: s.phase } : {}),
+    ...(s.url ? { url: s.url } : {}),
+    identifier: {
+      '@type': 'PropertyValue',
+      propertyID: 'ClinicalTrials.gov',
+      value: s.nct,
+    },
+  }));
+---
+
+<Base
+  title="Studies"
+  description="The PCCTC's trial portfolio spans the entire prostate cancer disease continuum, including the IRONMAN and PROMISE registries and the PCCTC-sponsored TALENT study, aligned with the consortium's pathway-based scientific programs."
+  jsonLd={jsonLd}
+>
+  <PageHero
+    eyebrow="Studies"
+    title="A portfolio spanning the disease continuum"
+  >
+    <span slot="lede">
+      The PCCTC's trial portfolio represents a substantial proportion of industry- and NIH-sponsored
+      prostate cancer trials open in the US. Our studies are strategically aligned with the
+      consortium's pathway-based scientific programs and a parallel commitment to the co-development
+      of trial endpoints and biomarkers. Patient advocacy efforts are supported by
+      <a href="https://yourprostatecancer.help/" rel="noopener" target="_blank">Your Prostate Cancer. Help.</a>
+    </span>
+  </PageHero>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Featured studies</p>
+      <h2 class="block-title">Registries and sponsored trials</h2>
+      <div class="grid grid--3">
+        {featured.map((s) => (
+          <a href={s.url} rel="noopener" target="_blank" class="card feat">
+            {s.note && <span class="feat__tag">{s.note}</span>}
+            <h3>{s.title}</h3>
+            <div class="feat__foot">
+              {s.nct && <span class="nct">{s.nct}</span>}
+              <span class="link-arrow">Visit <Icon name="external" size={14} /></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <p class="eyebrow">Active study portfolio</p>
+      <h2 class="block-title">Currently open studies</h2>
+      <ul class="portfolio">
+        {active.map((s) => (
+          <li class="study-row">
+            <div class="study-row__main">
+              <p class="study-row__title">{s.title}</p>
+              <div class="study-row__tags">
+                {s.phase && <span class="chip chip--phase">{s.phase}</span>}
+                {s.note && <span class="chip">{s.note}</span>}
+              </div>
+            </div>
+            {s.nct && s.url ? (
+              <a href={s.url} rel="noopener" target="_blank" class="study-row__nct">
+                {s.nct} <Icon name="external" size={14} />
+              </a>
+            ) : (
+              s.note && !s.nct && <span class="study-row__nct study-row__nct--muted">Substudy</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .block-title { font-size: var(--step-2); margin-bottom: 1.5rem; }
+
+  .feat { display: flex; flex-direction: column; gap: 0.8rem; text-decoration: none; color: inherit; }
+  .feat:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--brand-200); }
+  .feat__tag {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--brand-700);
+    background: var(--brand-050);
+    padding: 0.28rem 0.6rem;
+    border-radius: 999px;
+  }
+  .feat h3 { font-size: 1.1rem; color: var(--ink-900); line-height: 1.32; flex-grow: 1; }
+  .feat__foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .feat .nct { font-size: 0.85rem; color: var(--text-muted); }
+  .feat .link-arrow { color: var(--brand-600); font-size: 0.88rem; }
+
+  .portfolio { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+  .study-row {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.25rem 1.4rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.15s ease;
+  }
+  .study-row:hover { border-color: var(--brand-200); }
+  .study-row__title { margin: 0 0 0.6rem; color: var(--ink-900); font-weight: 550; line-height: 1.45; }
+  .study-row__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .chip {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-soft);
+    background: var(--surface-2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+  }
+  .chip--phase { color: var(--brand-700); background: var(--brand-050); }
+  .study-row__nct {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--brand-600);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.15rem;
+  }
+  .study-row__nct--muted { color: var(--text-muted); font-weight: 500; }
+
+  @media (max-width: 40rem) {
+    .study-row { flex-direction: column; gap: 0.75rem; }
+  }
+</style>

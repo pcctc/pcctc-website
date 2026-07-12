@@ -1,0 +1,93 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('news')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+const [lead, ...rest] = posts;
+---
+
+<Base
+  title="News"
+  description="Clinical trial milestones, research publications, conference presentations, and investigator achievements from the Prostate Cancer Clinical Trials Consortium."
+>
+  <PageHero
+    eyebrow="News"
+    title="News from the consortium"
+    lede="Clinical trial milestones, publications, conference highlights, and investigator achievements from across the PCCTC."
+  />
+
+  <section class="section">
+    <div class="container">
+      <a href={`/news/${lead.id}`} class="lead-post">
+        <div class="lead-post__body">
+          <time datetime={lead.data.date.toISOString()}>{fmtDate(lead.data.date)}</time>
+          <h2>{lead.data.title}</h2>
+          <p>{lead.data.description}</p>
+          <span class="link-arrow">
+            {lead.data.external ? 'Read the announcement' : 'Read more'} <Icon name="arrow" size={16} />
+          </span>
+        </div>
+      </a>
+
+      <div class="news-grid">
+        {rest.map((post) => (
+          <a href={`/news/${post.id}`} class="card news-item">
+            <time datetime={post.data.date.toISOString()}>{fmtDate(post.data.date)}</time>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            {post.data.external && <span class="ext-badge"><Icon name="external" size={13} /> External</span>}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .lead-post {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: linear-gradient(150deg, var(--brand-050), var(--surface-2));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: clamp(1.75rem, 1.4rem + 2vw, 3rem);
+    margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    transition: border-color 0.15s ease, box-shadow 0.2s ease;
+  }
+  .lead-post:hover { border-color: var(--brand-300); box-shadow: var(--shadow-md); }
+  .lead-post time { font-size: 0.85rem; font-weight: 600; color: var(--brand-600); }
+  .lead-post h2 { font-size: var(--step-2); margin: 0.6rem 0; max-width: 30ch; }
+  .lead-post p { color: var(--text-soft); max-width: 62ch; }
+  .lead-post .link-arrow { color: var(--brand-700); }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    gap: clamp(1rem, 0.7rem + 1.3vw, 1.5rem);
+  }
+  .news-item { display: flex; flex-direction: column; gap: 0.55rem; text-decoration: none; color: inherit; position: relative; }
+  .news-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--brand-200); }
+  .news-item time { font-size: 0.82rem; font-weight: 600; color: var(--brand-600); }
+  .news-item h3 { font-size: 1.05rem; line-height: 1.35; color: var(--ink-900); }
+  .news-item p { font-size: 0.9rem; color: var(--text-soft); margin: 0; flex-grow: 1; }
+  .ext-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .ext-badge svg { color: var(--brand-400); }
+</style>

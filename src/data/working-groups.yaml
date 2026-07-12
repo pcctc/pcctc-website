@@ -1,0 +1,82 @@
+- id: pcwg
+  name: Prostate Cancer Working Group
+  abbr: PCWG
+  body: >-
+    Advances in imaging, molecular phenotyping, precision biomarkers, and expanding
+    therapeutics present new opportunities and challenges in the treatment of advanced
+    prostate cancer. Composed of international leaders across clinical oncology,
+    translational science, nuclear medicine, radiology, and biostatistics, the Prostate
+    Cancer Working Group (PCWG) was formed to create a collaborative clinical and research
+    culture aligned around optimizing trial design and therapeutic development for patients
+    with prostate cancer. In its most recent iteration, PCWG4 updated recommendations on
+    patient and tumor characterization, disease state terminology, imaging criteria
+    including PSMA-PET, biomarker-based eligibility, and patient-reported outcomes,
+    extending guidance into earlier androgen pathway modulator–naïve and –sensitive disease
+    states. PCWG members work to develop rigorous, evidence-based standards for clinical
+    trial conduct that reflect the evolving, heterogeneous, and diverse prostate cancer
+    patient population, with the ultimate goal of maximizing survival and quality-of-life
+    benefits for all patients most likely to benefit from emerging therapies.
+  publications:
+    - authors: Armstrong AJ, Morris MJ, Abida W, et al.
+      title: "Trial Design and Objectives for Patients With Prostate Cancer: Recommendations From the Prostate Cancer Working Group 4"
+      journal: Journal of Clinical Oncology
+      year: 2026
+      url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13132095/
+    - authors: Scher HI, Morris MJ, Stadler WM, et al.
+      title: "Trial Design and Objectives for Castration-Resistant Prostate Cancer: Updated Recommendations From the Prostate Cancer Clinical Trials Working Group 3"
+      journal: Journal of Clinical Oncology
+      year: 2016
+      url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4872347/
+    - authors: Scher HI, Halabi S, Tannock I, et al.
+      title: "Design and end points of clinical trials for patients with progressive prostate cancer and castrate levels of testosterone: recommendations of the Prostate Cancer Clinical Trials Working Group"
+      journal: Journal of Clinical Oncology
+      year: 2008
+      url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4010133/
+    - authors: Scher HI, Eisenberger M, D'Amico AV, et al.
+      title: "Eligibility and Outcomes Reporting Guidelines for Clinical Trials for Patients in the State of a Rising Prostate-Specific Antigen: Recommendations From the Prostate-Specific Antigen Working Group"
+      journal: Journal of Clinical Oncology
+      year: 2004
+      url: https://ascopubs.org/doi/10.1200/JCO.2004.07.099
+    - authors: Bubley GJ, Carducci M, Dahut W, et al.
+      title: "Eligibility and Response Guidelines for Phase II Clinical Trials in Androgen-Independent Prostate Cancer: Recommendations From the Prostate-Specific Antigen Working Group"
+      journal: Journal of Clinical Oncology
+      year: 1999
+      url: https://ascopubs.org/doi/10.1200/JCO.1999.17.11.3461
+
+- id: ggwg
+  name: Germline Genetics Working Group
+  abbr: GGWG
+  body: >-
+    Advances in germline genetics, and related therapeutic opportunities, present new
+    opportunities and challenges in prostate cancer. Composed of leaders across multiple
+    disciplines, the PCCTC Germline Genetics Working Group (GGWG) was formed in 2017 to
+    create a collaborative clinical and research culture aligned around germline genetics
+    and targeted therapeutics for patients with prostate cancer. GGWG members work to
+    develop creative, scalable strategies to deliver high-quality personalized genetics
+    care for patients with prostate cancer.
+  publications:
+    - authors: Weise N, Shaya J, Javier-Desloges J, et al.
+      title: Disparities in germline testing among racial minorities with prostate cancer
+      journal: Prostate Cancer and Prostatic Diseases
+      year: 2022
+      url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8590439/
+    - authors: Szymaniak BM, Facchini LA, Giri VN, et al.
+      title: "Practical Considerations and Challenges for Germline Genetic Testing in Patients With Prostate Cancer: Recommendations From the Germline Genetics Working Group of the PCCTC"
+      journal: JCO Oncology Practice
+      year: 2020
+      url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7735040/
+    - authors: Kwon DH, Borno HT, Cheng HH, et al.
+      title: Ethnic disparities among men with prostate cancer undergoing germline testing
+      journal: Urologic Oncology
+      year: 2020
+      url: https://www.sciencedirect.com/science/article/pii/S1078143919303618
+    - authors: Paller CJ, Antonarakis ES, Beer TM, et al.
+      title: "Germline Genetic Testing in Advanced Prostate Cancer; Practices and Barriers: Survey Results from the Germline Genetics Working Group of the PCCTC"
+      journal: Clinical Genitourinary Cancer
+      year: 2019
+      url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6662206/
+    - authors: Carlo MI, Giri VN, Paller CJ, et al.
+      title: "Evolving Intersection Between Inherited Cancer Genetics and Therapeutic Clinical Trials in Prostate Cancer: A White Paper From the Germline Genetics Working Group of the PCCTC"
+      journal: JCO Precision Oncology
+      year: 2018
+      url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6370313/
