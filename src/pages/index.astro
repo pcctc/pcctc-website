@@ -178,8 +178,10 @@ const fmtDate = (d: Date) =>
   .hero__bg {
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpath d='M30 2 58 18v34L30 68 2 52V18z M90 2l28 16v34l-28 16-28-16V18z M60 54l28 16v34l-28 16-28-16V70z' fill='none' stroke='%230093d0' stroke-opacity='0.09' stroke-width='2'/%3E%3C/svg%3E");
-    background-size: 240px;
+    /* Seamless honeycomb: regular hexagons inset for uniform gaps, with offset-row
+       hexes duplicated across the tile edges so the repeat has no holes. */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='103.92' viewBox='0 0 120 103.92'%3E%3Cpath d='M30 2.02L58.25 18.33L58.25 50.95L30 67.26L1.75 50.95L1.75 18.33Z M90 2.02L118.25 18.33L118.25 50.95L90 67.26L61.75 50.95L61.75 18.33Z M60 53.98L88.25 70.29L88.25 102.91L60 119.22L31.75 102.91L31.75 70.29Z M0 53.98L28.25 70.29L28.25 102.91L0 119.22L-28.25 102.91L-28.25 70.29Z M120 53.98L148.25 70.29L148.25 102.91L120 119.22L91.75 102.91L91.75 70.29Z M60 -49.94L88.25 -33.63L88.25 -1.01L60 15.3L31.75 -1.01L31.75 -33.63Z M0 -49.94L28.25 -33.63L28.25 -1.01L0 15.3L-28.25 -1.01L-28.25 -33.63Z M120 -49.94L148.25 -33.63L148.25 -1.01L120 15.3L91.75 -1.01L91.75 -33.63Z' fill='none' stroke='%230093d0' stroke-opacity='0.09' stroke-width='2'/%3E%3C/svg%3E");
+    background-size: 240px auto;
     mask-image: linear-gradient(120deg, transparent 40%, #000 100%);
     -webkit-mask-image: linear-gradient(120deg, transparent 40%, #000 100%);
   }
