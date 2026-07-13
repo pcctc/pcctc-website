@@ -86,7 +86,9 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
     background: var(--brand-500);
     border-radius: 2px;
   }
-  .nav-cta a { color: #fff; }
+  /* Restore the pill's padding — .site-nav a (padding: 0.4rem 0) otherwise
+     wins on specificity and collapses the button's horizontal padding to 0. */
+  .nav-cta a { color: #fff; padding: 0.55rem 1.2rem; }
   .nav-cta a:hover { color: #fff; }
 
   .nav-toggle, .nav-burger { display: none; }
