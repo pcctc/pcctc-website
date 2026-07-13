@@ -33,8 +33,11 @@ narrative pages (expertise, guiding principles) keep their prose inline in the `
 - **SEO**: `src/components/Seo.astro` emits per-page title/description/canonical/OG + JSON-LD
   (MedicalOrganization sitewide, NewsArticle on posts, MedicalStudy on /studies). Sitemap via
   `@astrojs/sitemap`. Keep one `<h1>` per page.
-- **Only the logo carries over from the old site.** No photography was copied (stock licenses
-  likely belonged to the consultant). Org-owned images can be added under `public/images/`.
+- **Only the logo carries over from the old site's decorative/stock photography.** Those licenses
+  likely belonged to the consultant. Staff headshots are an exception — they're org-owned photos
+  of PCCTC people, not stock imagery — and were carried over for the About page management team
+  section (`public/images/team/`, referenced via `photo` in `leadership.yaml`). New org-owned
+  images can be added under `public/images/`.
 - **Deploy**: pushing to `main` triggers `.github/workflows/deploy.yml` (build + GitHub Pages).
   `public/CNAME` pins the `www.pcctc.org` custom domain. DNS cutover is a separate manual step.
 
