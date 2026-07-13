@@ -69,6 +69,7 @@ const siteList = sites();
       <div class="grid grid--3 team-grid">
         {team.map((m) => (
           <div class="team-card">
+            {m.photo && <img class="team-card__photo" src={m.photo} alt={m.name} width="96" height="96" loading="lazy" />}
             <span class="team-card__name">
               {m.name}{m.credentials && <span class="cred">, {m.credentials}</span>}
             </span>
@@ -158,6 +159,14 @@ const siteList = sites();
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
     border-left: 3px solid var(--brand-400);
+  }
+  .team-card__photo {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.75rem;
   }
   .team-card__name { display: block; font-weight: 650; color: var(--ink-900); }
   .team-card__name .cred { font-weight: 500; color: var(--text-soft); }

@@ -32,6 +32,7 @@ export interface Leader {
   name: string;
   credentials?: string;
   role: string;
+  photo?: string;
 }
 
 export interface CommitteeMember {
