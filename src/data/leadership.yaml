@@ -35,7 +35,7 @@
   photo: "/images/team/allen.jpg"
 - name: "Shannon Pileggi"
   credentials: "PhD"
-  role: "Director of Clinical Data Science"
+  role: "Director of Data Science"
   photo: "/images/team/pileggi.jpg"
 - name: "Travis Gerke"
   credentials: "ScD"
