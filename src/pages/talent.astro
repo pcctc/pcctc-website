@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalStudy',
+  name: 'TALENT: A Study of Talazoparib with or Without Enzalutamide in People with Prostate Cancer Who Have Previously Received Abiraterone Acetate',
+  studySubject: { '@type': 'MedicalCondition', name: 'Prostate Cancer' },
+  url: 'https://www.pcctc.org/talent',
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'ClinicalTrials.gov',
+    value: 'NCT06844383',
+  },
+};
+---
+
+<Base
+  title="TALENT"
+  description="TALENT (NCT06844383) is a PCCTC-sponsored randomized study of talazoparib with or without enzalutamide in people with metastatic castration-resistant prostate cancer and HRR mutations after progression on abiraterone acetate."
+  jsonLd={jsonLd}
+>
+  <PageHero
+    eyebrow="PCCTC-sponsored study"
+    title="TALENT"
+    lede="A Study of Talazoparib with or Without Enzalutamide in People with Prostate Cancer Who Have Previously Received Abiraterone Acetate (NCT06844383)"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="prose study-body">
+        <p>
+          Currently, the use of a combination of talazoparib and enzalutamide in patients with
+          first-line metastatic castration-resistant prostate cancer (mCRPC) with homologous
+          recombination repair (HRR) mutations who have had progression of disease during treatment
+          with androgen-deprivation therapy (ADT) and abiraterone combination therapy has not yet
+          been specifically studied. Very few patients in the TALAPRO-2 study had received prior
+          abiraterone acetate with prednisone. However, the standards of care for mHSPC have changed
+          since the study was conducted, such that currently many patients with metastatic
+          hormone-sensitive prostate cancer (mHSPC) now receive abiraterone with prednisone with
+          ADT. Given this, we seek to investigate two primary questions that are highly relevant to
+          clinical practice for patients with HRR mutations: 1) Does talazoparib, as monotherapy or
+          in combination with enzalutamide, benefit patients with mCRPC and HRR mutations after
+          progression on abiraterone in terms of disease control outcomes? and 2) Does the
+          combination of talazoparib and enzalutamide prolong radiographic progression-free survival
+          (rPFS) for patients with mCRPC and HRR mutations after disease progression on abiraterone
+          versus talazoparib alone? We hypothesize that the combination of talazoparib with
+          enzalutamide is associated with prolonged rPFS versus talazoparib alone in participants
+          with mCRPC with HRR mutations. Secondary endpoints include prostate-specific antigen (PSA)
+          response rates after 9 months (Cycle 10 Day 1), time to PSA progression, quality of life,
+          and exploratory endpoints of rPFS by gene (BRCA versus non-BRCA, gene by gene and gene
+          clusters).
+        </p>
+        <p>
+          TALENT will enroll patients presenting with mCRPC with prior disease progression while
+          receiving abiraterone acetate. Talazoparib and enzalutamide (Arm A) or talazoparib alone
+          (Arm B) will be administered along with ADT until disease progression, unacceptable
+          toxicity, treatment delay &gt; 60 days of talazoparib, protocol violation, withdrawal of
+          consent, physician decision, study termination by PCCTC, lost to follow-up, or death.
+          Talazoparib will be administered in a flat dose of 0.5 mg by mouth (PO) once daily in
+          combination with enzalutamide at a dose of 160 mg once daily, or a flat dose of 1 mg PO
+          once daily if administered alone.
+        </p>
+        <p>
+          For additional information visit
+          <a href="https://clinicaltrials.gov/study/NCT06844383" rel="noopener" target="_blank">ClinicalTrials.gov</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .study-body { max-width: 68ch; }
+  .study-body p { color: var(--text-soft); }
+</style>

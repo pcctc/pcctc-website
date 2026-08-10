@@ -47,16 +47,21 @@ const jsonLd = active
       <p class="eyebrow">Featured studies</p>
       <h2 class="block-title">Registries and sponsored trials</h2>
       <div class="grid grid--3">
-        {featured.map((s) => (
-          <a href={s.url} rel="noopener" target="_blank" class="card feat">
-            {s.note && <span class="feat__tag">{s.note}</span>}
-            <h3>{s.title}</h3>
-            <div class="feat__foot">
-              {s.nct && <span class="nct">{s.nct}</span>}
-              <span class="link-arrow">Visit <Icon name="external" size={14} /></span>
-            </div>
-          </a>
-        ))}
+        {featured.map((s) => {
+          const external = s.url.startsWith('http');
+          return (
+            <a href={s.url} rel={external ? 'noopener' : undefined} target={external ? '_blank' : undefined} class="card feat">
+              {s.note && <span class="feat__tag">{s.note}</span>}
+              <h3>{s.title}</h3>
+              <div class="feat__foot">
+                {s.nct && <span class="nct">{s.nct}</span>}
+                <span class="link-arrow">
+                  {external ? <>Visit <Icon name="external" size={14} /></> : <>View study <Icon name="arrow" size={14} /></>}
+                </span>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </div>
   </section>

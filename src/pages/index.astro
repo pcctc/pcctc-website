@@ -119,14 +119,19 @@ const fmtDate = (d: Date) =>
         </p>
       </div>
       <div class="grid grid--3">
-        {featured.map((s) => (
-          <a href={s.url} rel="noopener" target="_blank" class="card study-feature">
-            {s.note && <span class="study-tag">{s.note}</span>}
-            <h3>{s.title}</h3>
-            {s.nct && <span class="study-nct">{s.nct}</span>}
-            <span class="link-arrow">Visit study <Icon name="external" size={15} /></span>
-          </a>
-        ))}
+        {featured.map((s) => {
+          const external = s.url.startsWith('http');
+          return (
+            <a href={s.url} rel={external ? 'noopener' : undefined} target={external ? '_blank' : undefined} class="card study-feature">
+              {s.note && <span class="study-tag">{s.note}</span>}
+              <h3>{s.title}</h3>
+              {s.nct && <span class="study-nct">{s.nct}</span>}
+              <span class="link-arrow">
+                {external ? <>Visit study <Icon name="external" size={15} /></> : <>View study <Icon name="arrow" size={15} /></>}
+              </span>
+            </a>
+          );
+        })}
       </div>
       <p class="section-foot">
         <a href="/studies" class="link-arrow">See the full active portfolio <Icon name="arrow" size={16} /></a>
