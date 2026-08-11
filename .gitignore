@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # Claude Code local files
 .claude/
+
+# local decks / internal documents, not site content
+*.pptx
