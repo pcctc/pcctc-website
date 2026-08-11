@@ -60,16 +60,18 @@ src/
   data/           YAML content files
   lib/data.ts     loads and types the YAML
   styles/         global.css design tokens + base styles
-public/           static assets (logo, favicon, robots.txt, CNAME)
+public/           static assets (logo, favicon, robots.txt)
 ```
 
 ## Deployment
 
 Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it
-to GitHub Pages. The custom domain is pinned by `public/CNAME` (`www.pcctc.org`).
+to GitHub Pages.
 
-**One-time setup on GitHub:** in the repo's *Settings → Pages*, set the source to **GitHub Actions**.
-Then point the `www.pcctc.org` DNS record at GitHub Pages to complete the cutover.
+**One-time setup on GitHub:** in the repo's *Settings → Pages*, set the source to **GitHub Actions**
+and enter `www.pcctc.org` as the custom domain. Actions-based deploys ignore CNAME files in the
+build output, so the domain lives in the Pages settings, not in a repo file. Then point the
+`www.pcctc.org` DNS record at GitHub Pages to complete the cutover.
 
 ## SEO
 

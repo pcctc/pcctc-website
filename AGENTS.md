@@ -39,7 +39,8 @@ narrative pages (expertise, guiding principles) keep their prose inline in the `
   section (`public/images/team/`, referenced via `photo` in `leadership.yaml`). New org-owned
   images can be added under `public/images/`.
 - **Deploy**: pushing to `main` triggers `.github/workflows/deploy.yml` (build + GitHub Pages).
-  `public/CNAME` pins the `www.pcctc.org` custom domain. DNS cutover is a separate manual step.
+  The `www.pcctc.org` custom domain is set in the repo's Settings → Pages; Actions-based deploys
+  ignore CNAME files. DNS cutover is a separate manual step.
 
 ## Development
 
