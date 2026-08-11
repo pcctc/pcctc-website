@@ -66,12 +66,13 @@ public/           static assets (logo, favicon, robots.txt)
 ## Deployment
 
 Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it
-to GitHub Pages.
+to GitHub Pages at https://www.pcctc.org (live since August 2026).
 
-**One-time setup on GitHub:** in the repo's *Settings → Pages*, set the source to **GitHub Actions**
-and enter `www.pcctc.org` as the custom domain. Actions-based deploys ignore CNAME files in the
-build output, so the domain lives in the Pages settings, not in a repo file. Then point the
-`www.pcctc.org` DNS record at GitHub Pages to complete the cutover.
+**How the domain is wired:** the Pages source is **GitHub Actions**, with `www.pcctc.org` entered
+as the custom domain in the repo's *Settings → Pages* (Actions-based deploys ignore CNAME files
+in the build output). DNS is hosted at GoDaddy: `www` is a CNAME to `pcctc.github.io`, and the
+bare domain has A records pointing at GitHub Pages, which redirects it to `www`. HTTPS is
+enforced in the Pages settings.
 
 ## SEO
 

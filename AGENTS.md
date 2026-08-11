@@ -40,7 +40,8 @@ narrative pages (expertise, guiding principles) keep their prose inline in the `
   images can be added under `public/images/`.
 - **Deploy**: pushing to `main` triggers `.github/workflows/deploy.yml` (build + GitHub Pages).
   The `www.pcctc.org` custom domain is set in the repo's Settings → Pages; Actions-based deploys
-  ignore CNAME files. DNS cutover is a separate manual step.
+  ignore CNAME files. DNS lives at GoDaddy (www CNAME to pcctc.github.io, apex A records to the
+  GitHub Pages IPs). Live on the custom domain since 2026-08-11.
 
 ## Development
 
