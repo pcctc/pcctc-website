@@ -1,0 +1,133 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { registries } from '../lib/data';
+
+const regs = registries();
+
+const jsonLd = regs
+  .filter((r) => r.nct)
+  .map((r) => ({
+    '@context': 'https://schema.org',
+    '@type': 'MedicalStudy',
+    name: r.name,
+    studySubject: { '@type': 'MedicalCondition', name: r.condition },
+    ...(r.url ? { url: r.url } : {}),
+    identifier: {
+      '@type': 'PropertyValue',
+      propertyID: 'ClinicalTrials.gov',
+      value: r.nct,
+    },
+  }));
+---
+
+<Base
+  title="Registries"
+  description="The PCCTC designs and operates multicenter patient registries, including IRONMAN and the PCCTC-managed PROMISE germline registry, with new registry programs in development in breast and colorectal cancer."
+  jsonLd={jsonLd}
+>
+  <PageHero
+    eyebrow="Registries"
+    title="Registries and real-world evidence"
+    lede="Registries follow patients through years of real-world care and anchor the consortium's research beyond interventional trials. The PCCTC operates the IRONMAN and PROMISE registries and is extending the model to new disease areas."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid reg-grid">
+        {regs.map((r) => (
+          <article class="card reg">
+            <div class="reg__tags">
+              <span class={`reg__status ${r.status === 'Active' ? 'reg__status--active' : 'reg__status--dev'}`}>
+                {r.status}
+              </span>
+              <span class="reg__condition">{r.condition}</span>
+            </div>
+            <h3>{r.name}</h3>
+            <p class="reg__desc">{r.description}</p>
+            <div class="reg__foot">
+              {r.nct && <span class="reg__nct">{r.nct}</span>}
+              {r.url && (
+                <a href={r.url} rel="noopener" target="_blank" class="link-arrow">
+                  Visit registry <Icon name="external" size={14} />
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <p class="eyebrow">The model</p>
+      <h2 class="block-title">From registry to research platform</h2>
+      <div class="platform-prose">
+        <p>
+          A PCCTC registry doubles as a research platform. IRONMAN carries five open substudies
+          (PRODIGY, EMPRO, CUETIP, BIOGUARD, and IRONSeq) that reuse its sites, contracts, and
+          data pipelines to answer new questions without standing up new infrastructure.
+        </p>
+        <p>
+          The same teams that run the consortium's interventional trials, from site contracting
+          through data management and biostatistics, operate every registry program. Registry
+          cohorts in breast and colorectal cancer are in development, the consortium's first
+          programs beyond prostate cancer.
+        </p>
+      </div>
+
+      <div class="cta-row">
+        <div>
+          <h2>Planning a registry program?</h2>
+          <p class="lede">Talk with our team about registry design, operations, and nested substudies.</p>
+        </div>
+        <a href="/partner" class="btn btn--primary">Partner with us <Icon name="arrow" size={17} /></a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .block-title { font-size: var(--step-2); margin-bottom: 1.5rem; }
+
+  /* Cap at two columns so four registries sit 2x2 rather than 3+1. */
+  .reg-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); }
+  .reg { display: flex; flex-direction: column; gap: 0.8rem; }
+  .reg__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .reg__status,
+  .reg__condition {
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.28rem 0.6rem;
+    border-radius: 999px;
+  }
+  .reg__status--active { color: var(--brand-700); background: var(--brand-050); }
+  .reg__status--dev {
+    color: var(--accent-600);
+    background: color-mix(in srgb, var(--accent-500) 10%, #fff);
+  }
+  .reg__condition { color: var(--text-soft); background: var(--surface-2); }
+  .reg h3 { font-size: 1.15rem; color: var(--ink-900); line-height: 1.32; }
+  .reg__desc { color: var(--text-soft); font-size: 0.97rem; flex-grow: 1; }
+  .reg__foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .reg__nct { font-size: 0.85rem; color: var(--text-muted); }
+  .reg .link-arrow { color: var(--brand-600); font-size: 0.9rem; }
+
+  .platform-prose { max-width: 68ch; margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem); }
+  .platform-prose p { color: var(--text-soft); }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: clamp(2rem, 1.5rem + 2vw, 3rem);
+    border-top: 1px solid var(--line);
+  }
+  .cta-row .lede { color: var(--text-soft); margin: 0.5rem 0 0; }
+</style>

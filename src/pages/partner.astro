@@ -1,0 +1,165 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { stats, leadership } from '../lib/data';
+
+const st = stats();
+const bd = leadership().find((l) => l.role.includes('Business Development'));
+const inquiry = 'mailto:pcctc@mskcc.org?subject=Partnership%20inquiry%20(pcctc.org)';
+---
+
+<Base
+  title="Partner with the PCCTC"
+  description="Engage the PCCTC for full-service study management, functional service provider support, or registry programs. Email the team to start a conversation about your oncology program."
+>
+  <PageHero
+    eyebrow="Partner with us"
+    title="Put the consortium behind your program"
+    lede="The PCCTC pairs a global network of more than 200 clinical research sites with the scientific depth of an academic consortium. There are three ways to engage."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--3">
+        <article class="card model">
+          <h3>Full-service study management</h3>
+          <p>
+            A single point of contact from protocol development through close-out: project
+            management, regulatory, contracts and budgets, data management, biostatistics,
+            correlative science, and medical communications.
+          </p>
+          <a href="/services" class="link-arrow">Explore services <Icon name="arrow" size={16} /></a>
+        </article>
+        <article class="card model">
+          <h3>Functional service provider</h3>
+          <p>
+            Bring in the functions you need. PCCTC teams support your program in data
+            management, biostatistics and statistical programming, regulatory, medical
+            communications, or site management.
+          </p>
+          <a href="/services" class="link-arrow">Explore services <Icon name="arrow" size={16} /></a>
+        </article>
+        <article class="card model">
+          <h3>Registries and real-world evidence</h3>
+          <p>
+            Multicenter registry design and operations with nested substudy capability, on the
+            infrastructure behind the IRONMAN and PROMISE registries.
+          </p>
+          <a href="/registries" class="link-arrow">Explore registries <Icon name="arrow" size={16} /></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight stats-band">
+    <div class="container">
+      <p class="stats-intro">Why sponsors work with the PCCTC</p>
+      <div class="stats-grid">
+        {st.map((s) => (
+          <div class="stat">
+            <span class="stat__value">{s.value}</span>
+            <span class="stat__label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container start-grid">
+      <div>
+        <p class="eyebrow">How to start</p>
+        <h2>Tell us about your program</h2>
+        <p class="measure start-copy">
+          Email a short note about your program: indication, development phase, and where you
+          need support. Your message goes straight to the consortium's team at
+          pcctc@mskcc.org.
+        </p>
+        <div class="start-actions">
+          <a href={inquiry} class="btn btn--primary">Email the team <Icon name="mail" size={17} /></a>
+          <a href="/studies" class="btn btn--ghost">See the study portfolio</a>
+        </div>
+      </div>
+      {bd && (
+        <aside class="bd-card" aria-label="Business development contact">
+          {bd.photo && <img src={bd.photo} alt={bd.name} width="96" height="96" loading="lazy" />}
+          <span class="bd-card__name">{bd.name}</span>
+          <span class="bd-card__role">{bd.role}</span>
+          <a href={inquiry} class="bd-card__email">pcctc@mskcc.org</a>
+        </aside>
+      )}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .model { display: flex; flex-direction: column; gap: 0.6rem; }
+  .model h3 { color: var(--ink-900); }
+  .model p { color: var(--text-soft); font-size: 0.97rem; flex-grow: 1; }
+  .model .link-arrow { color: var(--brand-600); margin-top: 0.5rem; }
+
+  .stats-band { background: var(--ink-900); }
+  .stats-intro {
+    color: var(--brand-300);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 1.5rem;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+  .stat__value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 1.7rem + 2.4vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .stat__label { font-size: 0.95rem; line-height: 1.45; color: #9fb6cb; }
+
+  .start-grid {
+    display: grid;
+    gap: clamp(2rem, 1rem + 4vw, 4rem);
+    align-items: center;
+  }
+  @media (min-width: 52rem) { .start-grid { grid-template-columns: 1.4fr 0.6fr; } }
+  .start-copy { color: var(--text-soft); }
+  .start-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1.6rem; }
+
+  .bd-card {
+    padding: 1.75rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    border-top: 3px solid var(--brand-400);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+  .bd-card img {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.9rem;
+  }
+  .bd-card__name { font-weight: 650; color: var(--ink-900); }
+  .bd-card__role { font-size: 0.9rem; color: var(--text-soft); }
+  .bd-card__email {
+    margin-top: 0.7rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--brand-600);
+    text-decoration: none;
+  }
+  .bd-card__email:hover { color: var(--brand-700); }
+</style>
