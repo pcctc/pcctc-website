@@ -26,6 +26,18 @@ export interface Study {
   url?: string;
   phase?: string;
   note?: string;
+  /** Disease area; renderers default to "Prostate cancer" when absent. */
+  condition?: string;
+}
+
+export interface Registry {
+  name: string;
+  condition: string;
+  /** e.g. "Active" | "In development" — kept as string for YAML friendliness. */
+  status: string;
+  description: string;
+  nct?: string;
+  url?: string;
 }
 
 export interface Leader {
@@ -69,6 +81,7 @@ export interface Principle {
 }
 
 export const services = () => load<Service[]>('services.yaml');
+export const registries = () => load<Registry[]>('registries.yaml');
 export const featuredStudies = () => load<Study[]>('studies-featured.yaml');
 export const activeStudies = () => load<Study[]>('studies-active.yaml');
 export const leadership = () => load<Leader[]>('leadership.yaml');

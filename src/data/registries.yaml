@@ -1,0 +1,36 @@
+# Registry portfolio, rendered on /registries.
+# Entries with status "In development" may carry [STAFF CONFIRM: ...] markers for
+# details that still need confirmation — grep for "STAFF CONFIRM" before publishing.
+- name: "IRONMAN: International Registry for Men With Advanced Prostate Cancer"
+  condition: "Prostate cancer"
+  status: "Active"
+  nct: "NCT03151629"
+  url: "https://ironmanregistry.org/"
+  description: >-
+    An international registry for men with advanced prostate cancer. Five PCCTC-run
+    substudies (PRODIGY, EMPRO, CUETIP, BIOGUARD, and IRONSeq) are built on its
+    platform, reusing its sites, contracts, and data pipelines.
+
+- name: "PROMISE Registry: A Prostate Cancer Registry of Outcomes and Germline Mutations for Improved Survival and Treatment Effectiveness"
+  condition: "Prostate cancer"
+  status: "Active"
+  nct: "NCT04995198"
+  url: "https://www.prostatecancerpromise.org/"
+  description: >-
+    A PCCTC-managed registry linking germline genetics to outcomes and treatment
+    effectiveness for patients with prostate cancer.
+
+- name: "Breast cancer registry [STAFF CONFIRM: program name]"
+  condition: "Breast cancer"
+  status: "In development"
+  description: >-
+    The PCCTC's registry model is extending to breast cancer. [STAFF CONFIRM:
+    population, scope, partner institutions, and expected timeline.]
+
+- name: "Colorectal cancer registry [STAFF CONFIRM: program name]"
+  condition: "Colorectal cancer"
+  status: "In development"
+  description: >-
+    A colorectal cancer registry is in development on the same coordinated
+    infrastructure. [STAFF CONFIRM: population, scope, partner institutions, and
+    expected timeline.]

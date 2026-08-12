@@ -13,10 +13,10 @@
 - slug: advisory-board
   title: Advisory Board
   summary: >-
-    PCCTC Advisory Boards are composed of the nation's leading prostate cancer
-    investigators. Effective development of new therapies draws on their expertise in
-    drug development and their unique insights into the prostate cancer scientific
-    landscape.
+    PCCTC Advisory Boards convene leading academic investigators in the diseases we
+    study, anchored by two decades of prostate cancer leadership. Effective development
+    of new therapies draws on their expertise in drug development and their insight
+    into the current science.
   points:
     - Investigators from PCCTC clinical research sites serve as advisory board members and are committed to the success of new programs.
     - Advisory boards enhance significant aspects of drug development including protocol design, endpoint selection, and patient population.
@@ -55,14 +55,14 @@
     content production.
   points:
     - Comprehensive editorial services span protocols, informed consent forms, and study start-up presentations through to abstracts, peer-reviewed manuscripts, and regulatory documentation.
-    - PCCTC editors with prostate cancer expertise work closely with project management teams on each assignment.
+    - PCCTC editors with oncology subject-matter expertise work closely with project management teams on each assignment.
     - In its commitment to ethical publication and appropriate authorship, the PCCTC strictly adheres to ICH, ICMJE, and project-specific guidelines.
 
 - slug: clinical-data-management
   title: Clinical Data Management
   summary: >-
     A modern, standards-driven approach to data management delivers the secure,
-    high-quality, rapid results today's prostate cancer trials require. Our workflows
+    high-quality, rapid results today's oncology trials require. Our workflows
     follow Good Clinical Data Management Practices and the latest FDA, ICH GCP, and GDPR
     requirements, leveraging Medidata Rave (EDC) and reusable CDISC-conformant libraries.
   points:
@@ -80,7 +80,7 @@
     combining modern computing practices with strict GxP compliance.
   points:
     - Statisticians work directly with Clinical Data Management to optimize study-specific statistical analysis plans that generate quality, informative data and meet critical milestones.
-    - PCCTC investigators are at the forefront of novel study design and national efforts around prostate cancer endpoints.
+    - PCCTC investigators are at the forefront of novel study design and national endpoint standards, including the Prostate Cancer Working Group criteria.
     - Disease-specific expertise in multicenter, hypothesis-driven trials and biomarker validation ensures studies efficiently measure meaningful endpoints.
 
 - slug: correlative-science-and-laboratory-services
@@ -106,3 +106,16 @@
     - Development and design of statistical models and analysis plans.
     - Custom data delivery and reporting pipelines built for reproducibility.
     - Rigorous analysis and validation of datasets, with scalable solutions to fit the needs of all stakeholders.
+
+- slug: registries-and-real-world-evidence
+  title: Registries and Real-World Evidence
+  summary: >-
+    The PCCTC designs and operates large multicenter patient registries on the same
+    coordinated infrastructure behind the international IRONMAN registry and the
+    PCCTC-managed PROMISE germline registry. Registry programs in breast and
+    colorectal cancer are now in development, extending the model beyond prostate
+    cancer.
+  points:
+    - Registry design and operations across a network of more than 200 clinical research sites.
+    - Nested substudies extend a registry into a research platform; five IRONMAN substudies are open today.
+    - Contracting, data management, and biostatistics services carry a registry from protocol to publication.
