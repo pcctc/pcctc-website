@@ -16,7 +16,7 @@ const inquiry = 'mailto:pcctc@mskcc.org?subject=Partnership%20inquiry%20(pcctc.o
   <PageHero
     eyebrow="Partner with us"
     title="Put the consortium behind your program"
-    lede="The PCCTC pairs a global network of more than 200 clinical research sites with the scientific depth of an academic consortium. There are three ways to engage."
+    lede="The PCCTC pairs industry-grade operations with the scientific depth of a global academic consortium and a network of more than 200 clinical research sites. There are three ways to engage."
   />
 
   <section class="section">
@@ -49,6 +49,19 @@ const inquiry = 'mailto:pcctc@mskcc.org?subject=Partnership%20inquiry%20(pcctc.o
           <a href="/registries" class="link-arrow">Explore registries <Icon name="arrow" size={16} /></a>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <p class="eyebrow">The specialty case</p>
+      <h2 class="block-title">Global-CRO standards, specialty depth</h2>
+      <ul class="why">
+        <li><Icon name="check" size={20} /> <span>The operating standards industry expects: Medidata Rave EDC, CDISC-conformant data pipelines, 21 CFR Part 11 and ICH GCP compliance, and GxP statistical programming.</span></li>
+        <li><Icon name="check" size={20} /> <span>Scientific depth a generalist can't staff: advisory boards drawn from the investigators who set the field's trial-design and endpoint standards.</span></li>
+        <li><Icon name="check" size={20} /> <span>Site relationships rather than site lists: more than 200 academic and community sites, with a master agreement template for industry-sponsored research.</span></li>
+        <li><Icon name="check" size={20} /> <span>Senior attention: your program is a flagship in our portfolio, not a line item in a global one.</span></li>
+      </ul>
     </div>
   </section>
 
@@ -94,6 +107,11 @@ const inquiry = 'mailto:pcctc@mskcc.org?subject=Partnership%20inquiry%20(pcctc.o
 </Base>
 
 <style>
+  .block-title { font-size: var(--step-2); margin-bottom: 1.5rem; }
+  .why { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; max-width: 62rem; }
+  .why li { display: flex; gap: 0.85rem; align-items: flex-start; color: var(--text); }
+  .why svg { color: var(--brand-500); flex-shrink: 0; margin-top: 4px; }
+
   .model { display: flex; flex-direction: column; gap: 0.6rem; }
   .model h3 { color: var(--ink-900); }
   .model p { color: var(--text-soft); font-size: 0.97rem; flex-grow: 1; }
