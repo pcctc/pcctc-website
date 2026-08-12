@@ -11,13 +11,17 @@ const active = activeStudies().map((s) => ({
   url: s.url || (s.nct ? `https://clinicaltrials.gov/study/${s.nct}` : undefined),
 }));
 
+// Condition chips only appear once the portfolio spans more than one disease.
+const conditions = new Set(active.map((s) => s.condition ?? 'Prostate cancer'));
+const multiCondition = conditions.size > 1;
+
 const jsonLd = active
   .filter((s) => s.nct)
   .map((s) => ({
     '@context': 'https://schema.org',
     '@type': 'MedicalStudy',
     name: s.title,
-    studySubject: { '@type': 'MedicalCondition', name: 'Prostate Cancer' },
+    studySubject: { '@type': 'MedicalCondition', name: s.condition ?? 'Prostate Cancer' },
     ...(s.phase ? { phase: s.phase } : {}),
     ...(s.url ? { url: s.url } : {}),
     identifier: {
@@ -30,7 +34,7 @@ const jsonLd = active
 
 <Base
   title="Studies"
-  description="The PCCTC's trial portfolio spans the entire prostate cancer disease continuum, including the IRONMAN and PROMISE registries and the PCCTC-sponsored TALENT study, aligned with the consortium's pathway-based scientific programs."
+  description="The PCCTC's portfolio pairs prostate cancer trials spanning the disease continuum with large-scale registries, including IRONMAN and PROMISE, and the PCCTC-sponsored TALENT study, aligned with the consortium's pathway-based scientific programs."
   jsonLd={jsonLd}
 >
   <PageHero
@@ -67,6 +71,9 @@ const jsonLd = active
           );
         })}
       </div>
+      <p class="section-foot">
+        <a href="/registries" class="link-arrow">Explore the registry portfolio <Icon name="arrow" size={16} /></a>
+      </p>
     </div>
   </section>
 
@@ -81,6 +88,7 @@ const jsonLd = active
               <p class="study-row__title">{s.title}</p>
               <div class="study-row__tags">
                 {s.phase && <span class="chip chip--phase">{s.phase}</span>}
+                {multiCondition && <span class="chip">{s.condition ?? 'Prostate cancer'}</span>}
                 {s.note && <span class="chip">{s.note}</span>}
               </div>
             </div>
@@ -100,6 +108,9 @@ const jsonLd = active
 
 <style>
   .block-title { font-size: var(--step-2); margin-bottom: 1.5rem; }
+
+  .section-foot { margin: 2rem 0 0; }
+  .section-foot .link-arrow { color: var(--brand-600); }
 
   .feat { display: flex; flex-direction: column; gap: 0.8rem; text-decoration: none; color: inherit; }
   .feat:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--brand-200); }

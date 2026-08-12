@@ -18,21 +18,22 @@ const fmtDate = (d: Date) =>
 
 <Base
   title="PCCTC — The Prostate Cancer Clinical Trials Consortium"
-  description="The PCCTC is an integrated research organization and global clinical consortium designing, implementing, and completing innovative clinical studies that translate scientific discoveries into improved standards of care for prostate cancer."
+  description="The PCCTC is an academic CRO and global clinical research consortium built in prostate cancer and expanding across oncology, designing and completing clinical studies that translate scientific discoveries into improved standards of care."
 >
   <!-- Hero -->
   <section class="hero">
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="container hero__inner">
-      <p class="eyebrow">Integrated Research Organization &amp; Global Consortium</p>
+      <p class="eyebrow">Academic CRO &amp; Global Research Consortium</p>
       <h1 class="hero__title">
-        Advancing the science of prostate cancer clinical trials
+        Advancing the science of cancer clinical trials
       </h1>
       <p class="lede hero__lede">
-        The PCCTC is an integrated research organization (IRO) and global clinical consortium
-        formed to address critically unmet needs in prostate cancer. We design, implement, and
-        complete innovative, process-driven clinical studies that translate scientific discoveries
-        into improved standards of care.
+        The PCCTC is an academic contract research organization (CRO) and global consortium
+        built on two decades of leadership in prostate cancer. Our investigators, our network
+        of 200+ research sites, and our registry programs now carry that model across oncology
+        with process-driven clinical studies that translate scientific discoveries into improved
+        standards of care.
       </p>
       <div class="hero__actions">
         <a href="/services" class="btn btn--primary">Explore our services <Icon name="arrow" /></a>
@@ -64,8 +65,8 @@ const fmtDate = (d: Date) =>
           <h2>A full-service partner, from concept to close-out</h2>
         </div>
         <p class="measure section-head__lede">
-          The PCCTC is changing how prostate cancer therapies and biomarkers are developed. Our
-          unique infrastructure enables transparent project co-development between investigators,
+          The PCCTC is changing how cancer therapies and biomarkers are developed. Our
+          infrastructure enables transparent project co-development between investigators,
           clinical research sites, and industry partners.
         </p>
       </div>
@@ -92,7 +93,8 @@ const fmtDate = (d: Date) =>
           PCCTC investigators come from the nation's top academic medical centers, where they are
           actively engaged in world-class translational research. They developed the universally
           adopted clinical states model of prostate cancer and led the endpoint-validation efforts
-          behind PCWG2, PCWG3, and PCWG4.
+          behind PCWG2, PCWG3, and PCWG4. That trial-design depth now anchors the consortium's
+          growth into new disease areas.
         </p>
         <a href="/expertise" class="btn btn--on-ink">Meet the consortium <Icon name="arrow" /></a>
       </div>
@@ -101,6 +103,7 @@ const fmtDate = (d: Date) =>
         <li><Icon name="check" size={20} /> Co-development of novel therapies and predictive biomarkers</li>
         <li><Icon name="check" size={20} /> Leadership in trial design, endpoints, and imaging standards</li>
         <li><Icon name="check" size={20} /> A collaborative culture spanning academia and industry</li>
+        <li><Icon name="check" size={20} /> Registry programs extending into breast and colorectal cancer</li>
       </ul>
     </div>
   </section>
@@ -114,8 +117,8 @@ const fmtDate = (d: Date) =>
           <h2>Featured studies</h2>
         </div>
         <p class="measure section-head__lede">
-          Our trials span the entire prostate cancer disease continuum, strategically aligned with
-          the consortium's pathway-based scientific programs.
+          The portfolio pairs trials spanning the prostate cancer disease continuum with
+          large-scale registries, aligned with the consortium's pathway-based scientific programs.
         </p>
       </div>
       <div class="grid grid--3">
@@ -168,7 +171,10 @@ const fmtDate = (d: Date) =>
         Our team provides full-service study management and functional service provider support,
         accelerating the activation, accrual, and completion of multicenter clinical studies.
       </p>
-      <a href="mailto:pcctc@mskcc.org" class="btn btn--primary">Contact us <Icon name="mail" size={17} /></a>
+      <div class="cta__actions">
+        <a href="/partner" class="btn btn--primary">Partner with us <Icon name="arrow" /></a>
+        <a href="mailto:pcctc@mskcc.org" class="btn btn--ghost">Email the team <Icon name="mail" size={17} /></a>
+      </div>
     </div>
   </section>
 </Base>
@@ -293,4 +299,5 @@ const fmtDate = (d: Date) =>
     border-radius: var(--radius);
   }
   .cta__inner .lede { color: var(--text-soft); margin-bottom: 1.8rem; }
+  .cta__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
 </style>
