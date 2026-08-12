@@ -4,6 +4,7 @@ const nav = [
   { href: '/services', label: 'Services' },
   { href: '/expertise', label: 'Expertise' },
   { href: '/studies', label: 'Studies' },
+  { href: '/registries', label: 'Registries' },
   { href: '/workinggroups', label: 'Working Groups' },
   { href: '/guidingprinciples', label: 'Guiding Principles' },
   { href: '/news', label: 'News' },
@@ -33,7 +34,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
           </li>
         ))}
         <li class="nav-cta">
-          <a href="mailto:pcctc@mskcc.org" class="btn btn--primary">Contact</a>
+          <a href="/partner" class="btn btn--primary">Partner with us</a>
         </li>
       </ul>
     </nav>
@@ -150,7 +151,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
     .site-nav a[aria-current='page']::after { display: none; }
     .nav-cta { border-bottom: none !important; padding-top: 0.9rem; }
     .nav-cta a { display: inline-flex; }
-    .nav-toggle:checked ~ .site-nav { max-height: 32rem; }
+    .nav-toggle:checked ~ .site-nav { max-height: calc(100vh - 4.5rem); overflow-y: auto; }
     .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
     .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
