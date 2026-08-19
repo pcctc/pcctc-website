@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import PortfolioTabs from '../components/PortfolioTabs.astro';
 import Icon from '../components/Icon.astro';
 import { featuredStudies, activeStudies } from '../lib/data';
 
@@ -34,27 +35,26 @@ const jsonLd = active
 
 <Base
   title="Studies"
-  description="The PCCTC's portfolio pairs prostate cancer trials spanning the disease continuum with large-scale registries, including IRONMAN and PROMISE, and the PCCTC-sponsored TALENT study, aligned with the consortium's pathway-based scientific programs."
+  description="PCCTC trials span the disease continuum, from first-in-human phase 1 through international phase 3, alongside large-scale registries such as IRONMAN, strategically aligned with the most promising targets and biomarkers in development today."
   jsonLd={jsonLd}
 >
   <PageHero
     eyebrow="Studies"
-    title="A portfolio spanning the disease continuum"
+    title="Our study portfolio"
   >
     <span slot="lede">
-      The PCCTC's trial portfolio represents a substantial proportion of industry- and NIH-sponsored
-      prostate cancer trials open in the US. Our studies are strategically aligned with the
-      consortium's pathway-based scientific programs and a parallel commitment to the co-development
-      of trial endpoints and biomarkers. Patient advocacy efforts are supported by
+      Our trials span the entire disease continuum, strategically aligned with the most promising
+      targets and biomarkers in development today. Patient advocacy efforts are supported by
       <a href="https://yourprostatecancer.help/" rel="noopener" target="_blank">Your Prostate Cancer. Help.</a>
     </span>
   </PageHero>
+  <PortfolioTabs />
 
   <section class="section">
     <div class="container">
       <p class="eyebrow">Featured studies</p>
-      <h2 class="block-title">Registries and sponsored trials</h2>
-      <div class="grid grid--3">
+      <h2 class="block-title">From first-in-human to real-world registry</h2>
+      <div class="grid grid--3 feat-grid">
         {featured.map((s) => {
           const external = s.url.startsWith('http');
           return (
@@ -81,6 +81,7 @@ const jsonLd = active
     <div class="container">
       <p class="eyebrow">Active study portfolio</p>
       <h2 class="block-title">Currently open studies</h2>
+      <p class="portfolio-note">Most recently opened studies first.</p>
       <ul class="portfolio">
         {active.map((s) => (
           <li class="study-row">
@@ -112,6 +113,9 @@ const jsonLd = active
   .section-foot { margin: 2rem 0 0; }
   .section-foot .link-arrow { color: var(--brand-600); }
 
+  /* Four featured cards: 4-up on wide screens, 2x2 on tablets. */
+  .feat-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+  .portfolio-note { color: var(--text-muted); font-size: 0.9rem; margin: -0.75rem 0 1.25rem; }
   .feat { display: flex; flex-direction: column; gap: 0.8rem; text-decoration: none; color: inherit; }
   .feat:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--brand-200); }
   .feat__tag {

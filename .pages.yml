@@ -125,7 +125,9 @@ content:
             description: Short tag on the card, e.g. "International registry" or "PCCTC-sponsored".
       - name: studies-active
         label: Active studies
-        description: The full list on /studies. Order here is display order.
+        description: >-
+          The full list on /studies, most recently opened first. Order here is display
+          order; add new studies at the top.
         type: file
         path: src/data/studies-active.yaml
         format: yaml
@@ -161,6 +163,47 @@ content:
             label: Badge
             type: string
             description: e.g. "IRONMAN Registry Substudy".
+      - name: registries
+        label: Registries
+        description: >-
+          The registry cards on /registries. Order here is display order. Anything still
+          marked "STAFF CONFIRM" needs a real value before it goes live.
+        type: file
+        path: src/data/registries.yaml
+        format: yaml
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: condition
+            label: Disease area
+            type: string
+            required: true
+            description: e.g. "Prostate cancer" or "Colorectal, breast, and lung cancer".
+          - name: status
+            label: Status
+            type: select
+            required: true
+            options:
+              values: [Active, In development]
+          - name: nct
+            label: NCT number
+            type: string
+            pattern:
+              regex: "^(NCT\\d{8})?$"
+              message: "NCT followed by 8 digits, e.g. NCT03151629"
+          - name: url
+            label: Registry website
+            type: string
+            pattern:
+              regex: "^(https?://\\S+)?$"
+              message: "Use a full web address starting with http:// or https://"
+          - name: description
+            label: Description
+            type: text
+            required: true
 
   - name: services
     label: Services

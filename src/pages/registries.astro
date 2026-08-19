@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import PortfolioTabs from '../components/PortfolioTabs.astro';
 import Icon from '../components/Icon.astro';
 import { registries } from '../lib/data';
 
@@ -24,14 +25,15 @@ const jsonLd = regs
 
 <Base
   title="Registries"
-  description="The PCCTC designs and operates multicenter patient registries, including IRONMAN and the PCCTC-managed PROMISE germline registry, with new registry programs in development in breast and colorectal cancer."
+  description="The PCCTC designs and operates multicenter patient registries, including IRONMAN and the PCCTC-managed PROMISE germline registry, and is extending the model to colorectal, breast, and lung cancer."
   jsonLd={jsonLd}
 >
   <PageHero
-    eyebrow="Registries"
+    eyebrow="Studies"
     title="Registries and real-world evidence"
-    lede="Registries follow patients through years of real-world care and anchor the consortium's research beyond interventional trials. The PCCTC operates the IRONMAN and PROMISE registries and is extending the model to new disease areas."
+    lede="Registries follow patients through years of real-world care and anchor the consortium's research beyond interventional trials. The PCCTC operates the IRONMAN and PROMISE registries and is extending the model to colorectal, breast, and lung cancer."
   />
+  <PortfolioTabs />
 
   <section class="section">
     <div class="container">
@@ -66,15 +68,15 @@ const jsonLd = regs
       <h2 class="block-title">From registry to research platform</h2>
       <div class="platform-prose">
         <p>
-          A PCCTC registry doubles as a research platform. IRONMAN carries five open substudies
-          (PRODIGY, EMPRO, CUETIP, BIOGUARD, and IRONSeq) that reuse its sites, contracts, and
-          data pipelines to answer new questions without standing up new infrastructure.
+          A PCCTC registry doubles as a real-world evidence research platform. These platforms
+          enable both prospective sub-studies and retrospective data analyses, leveraging existing
+          sites, contracts and data pipelines to answer new questions without standing up new study
+          infrastructure.
         </p>
         <p>
-          The same teams that run the consortium's interventional trials, from site contracting
-          through data management and biostatistics, operate every registry program. Registry
-          cohorts in breast and colorectal cancer are in development, the consortium's first
-          programs beyond prostate cancer.
+          The same teams that run the PCCTC's interventional trials operate every registry
+          program, ensuring our real-world datasets are as robust as those collected for
+          prospective clinical trials.
         </p>
       </div>
 
@@ -92,8 +94,7 @@ const jsonLd = regs
 <style>
   .block-title { font-size: var(--step-2); margin-bottom: 1.5rem; }
 
-  /* Cap at two columns so four registries sit 2x2 rather than 3+1. */
-  .reg-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); }
+  .reg-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
   .reg { display: flex; flex-direction: column; gap: 0.8rem; }
   .reg__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .reg__status,
