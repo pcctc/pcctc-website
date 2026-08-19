@@ -11,7 +11,14 @@ const posts = (await getCollection('news')).sort(
 const fmtDate = (d: Date) =>
   d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 
-const [lead, ...rest] = posts;
+// Rolling window: posts older than three years at build time move to a collapsed
+// archive. Their pages stay published, so inbound links keep working.
+const cutoff = new Date();
+cutoff.setUTCFullYear(cutoff.getUTCFullYear() - 3);
+const recent = posts.filter((p) => p.data.date >= cutoff);
+const earlier = posts.filter((p) => p.data.date < cutoff);
+
+const [lead, ...rest] = recent;
 
 // Migrated external posts often have description set to the title verbatim — don't repeat it.
 const cardDescription = (post: (typeof posts)[number]) =>
@@ -51,6 +58,22 @@ const cardDescription = (post: (typeof posts)[number]) =>
           </a>
         ))}
       </div>
+
+      {earlier.length > 0 && (
+        <details class="archive">
+          <summary>Earlier news <span>({earlier.length})</span></summary>
+          <ul class="archive__list">
+            {earlier.map((post) => (
+              <li>
+                <a href={`/news/${post.id}`}>
+                  <time datetime={post.data.date.toISOString()}>{fmtDate(post.data.date)}</time>
+                  <span>{post.data.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
     </div>
   </section>
 </Base>
@@ -95,4 +118,43 @@ const cardDescription = (post: (typeof posts)[number]) =>
     letter-spacing: 0.04em;
   }
   .ext-badge svg { color: var(--brand-400); }
+
+  .archive {
+    margin-top: clamp(2rem, 1.5rem + 2vw, 3rem);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .archive summary {
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--ink-900);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .archive summary::-webkit-details-marker { display: none; }
+  .archive summary::after { content: '+'; font-size: 1.4rem; color: var(--brand-500); }
+  .archive[open] summary::after { content: '–'; }
+  .archive summary span { color: var(--text-muted); font-family: var(--font-sans); font-size: 0.9rem; }
+  .archive__list { list-style: none; margin: 0; padding: 0 1.25rem 0.75rem; }
+  .archive__list li { border-top: 1px solid var(--line); }
+  .archive__list a {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    text-decoration: none;
+    color: var(--ink-900);
+    font-size: 0.95rem;
+  }
+  .archive__list a:hover span { color: var(--brand-700); }
+  .archive__list time { color: var(--text-muted); font-size: 0.85rem; }
+  @media (max-width: 34rem) {
+    .archive__list a { grid-template-columns: 1fr; gap: 0.2rem; }
+  }
 </style>
