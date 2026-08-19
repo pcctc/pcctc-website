@@ -23,6 +23,9 @@ ways to change it.
 
 ### In the browser, with Pages CMS
 
+New to this? Start with the step-by-step [editing guide](docs/editing-guide.md), which has
+screenshots and a troubleshooting table. The short version:
+
 Go to **https://app.pagescms.org** and sign in with the email address you were invited with.
 You'll get a one-time code by email; there is no password and no GitHub account to manage.
 Open **pcctc-website** and pick a section in the left sidebar:
