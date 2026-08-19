@@ -12,7 +12,7 @@ const inquiry = 'mailto:pcctc@mskcc.org?subject=Partnership%20inquiry%20(pcctc.o
 // Web3Forms (free tier): the access key is public by design and maps to the inbox the
 // form delivers to. Replace the placeholder with the key from app.web3forms.com; until
 // then the page shows a "not connected" note and submissions fail.
-const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY';
+const WEB3FORMS_ACCESS_KEY = '63736e08-0ef4-4e8e-b88d-cfc7e6f04ddc';
 const formConnected = !WEB3FORMS_ACCESS_KEY.startsWith('REPLACE_');
 const thanksUrl = new URL('/partner/thanks/', Astro.site).href;
 ---
@@ -99,8 +99,8 @@ const thanksUrl = new URL('/partner/thanks/', Astro.site).href;
 
         {!formConnected && (
           <p class="form-notice">
-            This form is not connected yet. [STAFF CONFIRM: Web3Forms access key] Until it is,
-            please <a href={inquiry}>email the team</a>.
+            This form is not connected yet (no Web3Forms access key set). Until it is, please
+            <a href={inquiry}>email the team</a>.
           </p>
         )}
 
