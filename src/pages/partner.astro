@@ -2,16 +2,24 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
-import { stats, leadership } from '../lib/data';
+import { stats, leadership, services } from '../lib/data';
 
 const st = stats();
 const bd = leadership().find((l) => l.role.includes('Business Development'));
+const serviceLines = services().map((s) => s.title);
 const inquiry = 'mailto:pcctc@mskcc.org?subject=Partnership%20inquiry%20(pcctc.org)';
+
+// Web3Forms (free tier): the access key is public by design and maps to the inbox the
+// form delivers to. Replace the placeholder with the key from app.web3forms.com; until
+// then the page shows a "not connected" note and submissions fail.
+const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY';
+const formConnected = !WEB3FORMS_ACCESS_KEY.startsWith('REPLACE_');
+const thanksUrl = new URL('/partner/thanks/', Astro.site).href;
 ---
 
 <Base
   title="Partner with the PCCTC"
-  description="Engage the PCCTC for full-service study management, functional service provider support, or registry programs. Email the team to start a conversation about your oncology program."
+  description="Engage the PCCTC for full-service study management, functional service provider support, registry programs, or consortium participation. Tell us about your oncology program and our team will follow up."
 >
   <PageHero
     eyebrow="Partner with us"
@@ -79,31 +87,151 @@ const inquiry = 'mailto:pcctc@mskcc.org?subject=Partnership%20inquiry%20(pcctc.o
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="contact">
     <div class="container start-grid">
       <div>
         <p class="eyebrow">How to start</p>
         <h2>Tell us about your program</h2>
         <p class="measure start-copy">
-          Email a short note about your program: indication, development phase, and where you
-          need support. Your message goes straight to the consortium's team at
-          pcctc@mskcc.org.
+          A short note is enough: indication, development phase, and where you need support.
+          Your message goes to the PCCTC business development team, who will follow up directly.
         </p>
-        <div class="start-actions">
-          <a href={inquiry} class="btn btn--primary">Email the team <Icon name="mail" size={17} /></a>
-          <a href="/studies" class="btn btn--ghost">See the study portfolio</a>
-        </div>
+
+        {!formConnected && (
+          <p class="form-notice">
+            This form is not connected yet. [STAFF CONFIRM: Web3Forms access key] Until it is,
+            please <a href={inquiry}>email the team</a>.
+          </p>
+        )}
+
+        <form
+          class="inquiry"
+          id="inquiry-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          novalidate
+        >
+          <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+          <input type="hidden" name="subject" value="Partnership inquiry (pcctc.org)" />
+          <input type="hidden" name="from_name" value="pcctc.org" />
+          <input type="hidden" name="redirect" value={thanksUrl} />
+          <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="field-row">
+            <div class="field">
+              <label for="first_name">First name <span aria-hidden="true">*</span></label>
+              <input id="first_name" name="first_name" type="text" autocomplete="given-name" required />
+            </div>
+            <div class="field">
+              <label for="last_name">Last name <span aria-hidden="true">*</span></label>
+              <input id="last_name" name="last_name" type="text" autocomplete="family-name" required />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="organization">Organization <span aria-hidden="true">*</span></label>
+              <input id="organization" name="organization" type="text" autocomplete="organization" required />
+            </div>
+            <div class="field">
+              <label for="email">Work email <span aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+          </div>
+
+          <fieldset class="field">
+            <legend>What are you interested in? <span aria-hidden="true">*</span></legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="interest" value="CRO services" id="interest-cro" required /> <span>CRO services</span></label>
+              <label class="choice"><input type="radio" name="interest" value="Participation in the consortium" /> <span>Participation in the consortium</span></label>
+              <label class="choice"><input type="radio" name="interest" value="Other general inquiry" /> <span>Other general inquiry</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field service-lines">
+            <legend>Which service lines? <span class="hint">Select any that apply</span></legend>
+            <div class="choices choices--grid">
+              {serviceLines.map((t) => (
+                <label class="choice"><input type="checkbox" name="service_lines" value={t} /> <span>{t}</span></label>
+              ))}
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+            <p class="hint">Please do not include patient information.</p>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn--primary">Send inquiry <Icon name="arrow" size={17} /></button>
+            <p class="privacy-note">
+              We use what you share here only to respond to your inquiry. See our
+              <a href="/privacy">privacy policy</a>.
+            </p>
+          </div>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
-      {bd && (
-        <aside class="bd-card" aria-label="Business development contact">
-          {bd.photo && <img src={bd.photo} alt={bd.name} width="96" height="96" loading="lazy" />}
-          <span class="bd-card__name">{bd.name}</span>
-          <span class="bd-card__role">{bd.role}</span>
-          <a href={inquiry} class="bd-card__email">pcctc@mskcc.org</a>
-        </aside>
-      )}
+
+      <aside class="start-aside">
+        {bd && (
+          <div class="bd-card" aria-label="Business development contact">
+            {bd.photo && <img src={bd.photo} alt={bd.name} width="96" height="96" loading="lazy" />}
+            <span class="bd-card__name">{bd.name}</span>
+            <span class="bd-card__role">{bd.role}</span>
+          </div>
+        )}
+        <div class="aside-note">
+          <h3>Prefer email?</h3>
+          <p>Write to the consortium's shared inbox and your note will reach the same team.</p>
+          <a href={inquiry} class="link-arrow">pcctc@mskcc.org <Icon name="mail" size={15} /></a>
+        </div>
+        <div class="aside-note">
+          <h3>Already have a program in mind?</h3>
+          <p>Our <a href="/services#engagement">engagement models</a> outline full, partial, and consulting arrangements.</p>
+        </div>
+      </aside>
     </div>
   </section>
+
+  <script>
+    // Progressive enhancement: submit with fetch and show the result inline. Without JS
+    // the form posts normally and Web3Forms redirects to /partner/thanks/.
+    const form = document.getElementById('inquiry-form') as HTMLFormElement | null;
+    if (form) {
+      const status = form.querySelector('.form-status') as HTMLElement;
+      const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        const data = new FormData(form);
+        const lines = data.getAll('service_lines');
+        data.delete('service_lines');
+        if (lines.length) data.set('service_lines', lines.join(', '));
+        data.delete('redirect');
+        button.disabled = true;
+        status.textContent = 'Sending…';
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { Accept: 'application/json' },
+          });
+          const json = await res.json();
+          if (res.ok && json.success) {
+            form.reset();
+            status.textContent = 'Thank you. Your inquiry has been sent and our team will follow up.';
+          } else {
+            status.textContent = json.message || 'Something went wrong. Please email pcctc@mskcc.org instead.';
+          }
+        } catch {
+          status.textContent = 'Could not send the form. Please email pcctc@mskcc.org instead.';
+        } finally {
+          button.disabled = false;
+        }
+      });
+    }
+  </script>
 </Base>
 
 <style>
@@ -145,12 +273,72 @@ const inquiry = 'mailto:pcctc@mskcc.org?subject=Partnership%20inquiry%20(pcctc.o
   .start-grid {
     display: grid;
     gap: clamp(2rem, 1rem + 4vw, 4rem);
-    align-items: center;
+    align-items: start;
   }
-  @media (min-width: 52rem) { .start-grid { grid-template-columns: 1.4fr 0.6fr; } }
+  @media (min-width: 60rem) { .start-grid { grid-template-columns: 1.5fr 0.7fr; } }
   .start-copy { color: var(--text-soft); }
-  .start-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1.6rem; }
 
+  .form-notice {
+    margin: 1.25rem 0 0;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--accent-500) 10%, #fff);
+    color: var(--accent-600);
+    font-size: 0.92rem;
+  }
+
+  .inquiry { margin-top: 1.75rem; display: grid; gap: 1.25rem; }
+  .botcheck { display: none; }
+  .field-row { display: grid; gap: 1.25rem; }
+  @media (min-width: 40rem) { .field-row { grid-template-columns: 1fr 1fr; } }
+  .field { display: grid; gap: 0.4rem; min-width: 0; }
+  fieldset.field { border: 0; padding: 0; margin: 0; }
+  .field label,
+  .field legend { font-weight: 600; font-size: 0.95rem; color: var(--ink-900); padding: 0; }
+  .field label span[aria-hidden],
+  .field legend span[aria-hidden] { color: var(--accent-600); }
+  .field input[type='text'],
+  .field input[type='email'],
+  .field textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--text);
+    background: var(--paper);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 0.85rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--brand-500);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-500) 20%, transparent);
+  }
+  .field textarea { resize: vertical; min-height: 8rem; }
+  .hint { font-size: 0.85rem; color: var(--text-muted); margin: 0; font-weight: 500; }
+  legend .hint { margin-left: 0.4rem; }
+
+  .choices { display: grid; gap: 0.5rem; margin-top: 0.35rem; }
+  .choices--grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: 0.45rem 1.25rem; }
+  .choice { display: flex; align-items: flex-start; gap: 0.6rem; font-weight: 500; font-size: 0.95rem; color: var(--text); cursor: pointer; }
+  .choice input { margin-top: 0.2rem; accent-color: var(--brand-600); flex-shrink: 0; }
+
+  /* Service lines only matter for CRO inquiries; hide them once another option is picked. */
+  .service-lines {
+    padding: 1rem 1.1rem !important;
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+  }
+  .inquiry:has(input[name='interest']:checked:not(#interest-cro)) .service-lines { display: none; }
+
+  .form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 0.25rem; }
+  .privacy-note { margin: 0; font-size: 0.85rem; color: var(--text-muted); max-width: 30rem; }
+  .form-status { margin: 0; font-weight: 600; color: var(--brand-700); min-height: 1.2em; }
+  .form-status:empty { display: none; }
+
+  .start-aside { display: grid; gap: 1.25rem; }
   .bd-card {
     padding: 1.75rem;
     background: var(--paper);
@@ -164,20 +352,20 @@ const inquiry = 'mailto:pcctc@mskcc.org?subject=Partnership%20inquiry%20(pcctc.o
     gap: 0.2rem;
   }
   .bd-card img {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 5.5rem;
+    height: 5.5rem;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 0.9rem;
   }
   .bd-card__name { font-weight: 650; color: var(--ink-900); }
   .bd-card__role { font-size: 0.9rem; color: var(--text-soft); }
-  .bd-card__email {
-    margin-top: 0.7rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--brand-600);
-    text-decoration: none;
+  .aside-note {
+    padding: 1.25rem 1.5rem;
+    background: var(--surface-2);
+    border-radius: var(--radius);
   }
-  .bd-card__email:hover { color: var(--brand-700); }
+  .aside-note h3 { font-size: 1.05rem; margin-bottom: 0.35rem; color: var(--ink-900); }
+  .aside-note p { margin: 0 0 0.5rem; font-size: 0.92rem; color: var(--text-soft); }
+  .aside-note .link-arrow { color: var(--brand-600); font-size: 0.92rem; }
 </style>

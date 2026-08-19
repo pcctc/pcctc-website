@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+---
+
+<Base
+  title="Thank you"
+  description="Your inquiry has been sent to the PCCTC business development team."
+  noindex={true}
+>
+  <PageHero
+    eyebrow="Partner with us"
+    title="Thank you"
+    lede="Your inquiry has been sent. The PCCTC business development team will follow up with you directly."
+  />
+  <section class="section">
+    <div class="container">
+      <div class="thanks-actions">
+        <a href="/services" class="btn btn--primary">Explore our services <Icon name="arrow" /></a>
+        <a href="/" class="btn btn--ghost">Back to the homepage</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .thanks-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+</style>
