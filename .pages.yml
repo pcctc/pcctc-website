@@ -229,6 +229,12 @@ content:
               path: public/images/team
               extensions: [jpg, jpeg, png, webp]
               rename: safe
+          - name: bio
+            label: Short bio
+            type: text
+            description: >-
+              Optional, two to four sentences. When filled in, the card on /about becomes
+              expandable and shows this text. A blank line starts a new paragraph.
       - name: committee
         label: Scientific Oversight Committee
         description: Shown on /about. Order here is display order.

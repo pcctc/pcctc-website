@@ -45,6 +45,8 @@ export interface Leader {
   credentials?: string;
   role: string;
   photo?: string;
+  /** Optional short bio; line breaks become paragraphs. Cards without one aren't expandable. */
+  bio?: string;
 }
 
 export interface CommitteeMember {

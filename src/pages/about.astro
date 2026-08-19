@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
-import { leadership, committee, stats, sites } from '../lib/data';
+import { leadership, committee, stats, sites, paragraphs } from '../lib/data';
 
 const team = leadership();
 const soc = committee();
@@ -11,12 +11,12 @@ const siteList = sites();
 
 <Base
   title="About the PCCTC"
-  description="Founded in 2005 by the Prostate Cancer Foundation and the U.S. Department of Defense, the PCCTC is a full-service oncology CRO and academic clinical consortium built in prostate cancer, now extending its trial and registry infrastructure across oncology."
+  description="Founded in 2005 by the Prostate Cancer Foundation and the U.S. Department of Defense, the PCCTC is a full-service integrated CRO and clinical consortium built in prostate cancer, now extending its trial and registry infrastructure across oncology."
 >
   <PageHero
     eyebrow="About"
     title="A single mission, pursued together"
-    lede="The PCCTC's distinguished investigators work together to design, implement, and complete hypothesis-driven clinical studies that translate scientific discoveries into improved standards of care."
+    lede="The PCCTC's distinguished investigators work together with industry sponsors to design, implement, and complete hypothesis-driven clinical studies that translate scientific discoveries into improved standards of care."
   />
 
   <section class="section" id="mission">
@@ -24,9 +24,12 @@ const siteList = sites();
       <div>
         <h2>Our mission</h2>
         <p>
-          We deliver full-service contract research organization (CRO) capabilities and draw on
-          academic consortium engagement to carry out our mission, ensuring efficient study
-          selection, reporting, site management, clinical operations, and data analyses.
+          To accelerate the development of cancer therapies and biomarkers through multicenter
+          collaboration. The PCCTC brings investigators, research sites, and industry partners
+          together in a culture of transparent project co-development, and pairs that
+          scientific community with industry-grade CRO services so that well-designed studies
+          are completed efficiently and their results reach patients.
+          [STAFF CONFIRM: draft mission statement for review]
         </p>
       </div>
       <div>
@@ -43,7 +46,7 @@ const siteList = sites();
           Established as an independent entity in 2014, the PCCTC, LLC is the nation's premier
           multicenter contract research organization and academic clinical consortium for
           prostate cancer research. That foundation now supports a portfolio reaching beyond
-          prostate cancer, beginning with registry programs in breast and colorectal cancer.
+          prostate cancer into a diverse array of oncology indications.
         </p>
       </div>
     </div>
@@ -68,15 +71,31 @@ const siteList = sites();
       <p class="eyebrow">Our leadership</p>
       <h2 class="block-title">Management team</h2>
       <div class="grid grid--3 team-grid">
-        {team.map((m) => (
-          <div class="team-card">
-            {m.photo && <img class="team-card__photo" src={m.photo} alt={m.name} width="96" height="96" loading="lazy" />}
-            <span class="team-card__name">
-              {m.name}{m.credentials && <span class="cred">, {m.credentials}</span>}
-            </span>
-            <span class="team-card__role">{m.role}</span>
-          </div>
-        ))}
+        {team.map((m) =>
+          m.bio ? (
+            <details class="team-card team-card--bio">
+              <summary>
+                {m.photo && <img class="team-card__photo" src={m.photo} alt={m.name} width="128" height="128" loading="lazy" />}
+                <span class="team-card__name">
+                  {m.name}{m.credentials && <span class="cred">, {m.credentials}</span>}
+                </span>
+                <span class="team-card__role">{m.role}</span>
+                <span class="team-card__toggle" aria-hidden="true">Bio</span>
+              </summary>
+              <div class="team-card__bio">
+                {paragraphs(m.bio).map((para) => <p>{para}</p>)}
+              </div>
+            </details>
+          ) : (
+            <div class="team-card">
+              {m.photo && <img class="team-card__photo" src={m.photo} alt={m.name} width="128" height="128" loading="lazy" />}
+              <span class="team-card__name">
+                {m.name}{m.credentials && <span class="cred">, {m.credentials}</span>}
+              </span>
+              <span class="team-card__role">{m.role}</span>
+            </div>
+          )
+        )}
       </div>
 
       <h2 class="block-title soc-title">Scientific Oversight Committee</h2>
@@ -163,15 +182,44 @@ const siteList = sites();
   }
   .team-card__photo {
     display: block;
-    width: 4rem;
-    height: 4rem;
+    width: 6.5rem;
+    height: 6.5rem;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
   .team-card__name { display: block; font-weight: 650; color: var(--ink-900); }
   .team-card__name .cred { font-weight: 500; color: var(--text-soft); }
   .team-card__role { display: block; font-size: 0.9rem; color: var(--text-soft); margin-top: 0.2rem; }
+
+  /* Cards with a bio are <details>; the whole summary is the click target. */
+  .team-card--bio { padding: 0; }
+  .team-card--bio summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 1.25rem 1.4rem;
+    position: relative;
+  }
+  .team-card--bio summary::-webkit-details-marker { display: none; }
+  .team-card--bio summary:hover .team-card__toggle,
+  .team-card--bio[open] .team-card__toggle { color: var(--brand-700); border-color: var(--brand-300); }
+  .team-card__toggle {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brand-600);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.22rem 0.6rem 0.22rem 0.55rem;
+  }
+  .team-card__toggle::before { content: '+ '; }
+  .team-card--bio[open] .team-card__toggle::before { content: '\2013  '; }
+  .team-card__bio { padding: 0 1.4rem 1.25rem; border-top: 1px solid var(--line); }
+  .team-card__bio p { font-size: 0.92rem; color: var(--text-soft); margin: 0.9rem 0 0; }
 
   .soc-list {
     list-style: none;
