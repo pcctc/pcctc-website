@@ -37,3 +37,31 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Content edits arrive as commits from the Pages CMS app, so GitHub emails nobody when a
+  # deploy fails. Open an issue instead; the @mention notifies the site maintainer.
+  notify:
+    needs: [build, deploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Open an issue about the failed deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          COMMIT_URL: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+        run: |
+          title="Site deploy failed"
+          [ -n "$COMMIT_MSG" ] && title="$title: ${COMMIT_MSG%%$'\n'*}"
+          gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$(cat <<MSG
+          The site did not update after the latest change; the live site still shows the previous version.
+
+          - Build log: $RUN_URL
+          - Change: $COMMIT_URL
+
+          @tgerke
+          MSG
+          )"
