@@ -74,7 +74,8 @@ export interface WorkingGroup {
   name: string;
   abbr: string;
   body: string;
-  publications: Publication[];
+  /** Optional; new groups may not have publications yet. */
+  publications?: Publication[];
 }
 
 export interface ExpertiseSection {

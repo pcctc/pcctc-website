@@ -1,21 +1,12 @@
 - id: pcwg
   name: Prostate Cancer Working Group
   abbr: PCWG
-  body: >-
-    Advances in imaging, molecular phenotyping, precision biomarkers, and expanding
-    therapeutics present new opportunities and challenges in the treatment of advanced
-    prostate cancer. Composed of international leaders across clinical oncology,
-    translational science, nuclear medicine, radiology, and biostatistics, the Prostate
-    Cancer Working Group (PCWG) was formed to create a collaborative clinical and research
-    culture aligned around optimizing trial design and therapeutic development for patients
-    with prostate cancer. In its most recent iteration, PCWG4 updated recommendations on
-    patient and tumor characterization, disease state terminology, imaging criteria
-    including PSMA-PET, biomarker-based eligibility, and patient-reported outcomes,
-    extending guidance into earlier androgen pathway modulator–naïve and –sensitive disease
-    states. PCWG members work to develop rigorous, evidence-based standards for clinical
-    trial conduct that reflect the evolving, heterogeneous, and diverse prostate cancer
-    patient population, with the ultimate goal of maximizing survival and quality-of-life
-    benefits for all patients most likely to benefit from emerging therapies.
+  body: |-
+    Advances in imaging, molecular phenotyping, precision biomarkers, and expanding therapeutics present new opportunities and challenges in the treatment of advanced prostate cancer. The Prostate Cancer Working Group (PCWG) brings together international leaders across clinical oncology, translational science, nuclear medicine, radiology, and biostatistics to align trial design and therapeutic development around the evolving understanding of the disease.
+
+    In its most recent iteration, PCWG4 updated recommendations on patient and tumor characterization, disease state terminology, imaging criteria including PSMA-PET, biomarker-based eligibility, and patient-reported outcomes, extending guidance into earlier androgen pathway modulator–naïve and –sensitive disease states.
+
+    PCWG members develop rigorous, evidence-based standards for clinical trial conduct that reflect a heterogeneous and diverse patient population, with the goal of maximizing survival and quality-of-life benefits for the patients most likely to benefit from emerging therapies.
   publications:
     - authors: Armstrong AJ, Morris MJ, Abida W, et al.
       title: "Trial Design and Objectives for Patients With Prostate Cancer: Recommendations From the Prostate Cancer Working Group 4"
@@ -48,12 +39,12 @@
   abbr: GGWG
   body: >-
     Advances in germline genetics, and related therapeutic opportunities, present new
-    opportunities and challenges in prostate cancer. Composed of leaders across multiple
-    disciplines, the PCCTC Germline Genetics Working Group (GGWG) was formed in 2017 to
-    create a collaborative clinical and research culture aligned around germline genetics
-    and targeted therapeutics for patients with prostate cancer. GGWG members work to
-    develop creative, scalable strategies to deliver high-quality personalized genetics
-    care for patients with prostate cancer.
+    opportunities and challenges in prostate cancer and other hereditary cancers. Composed
+    of leaders across multiple disciplines, the PCCTC Germline Genetics Working Group
+    (GGWG) was formed in 2017 to create a collaborative clinical and research culture
+    aligned around germline genetics and targeted therapeutics. GGWG members develop
+    creative, scalable strategies to deliver high-quality personalized genetics care to
+    patients.
   publications:
     - authors: Weise N, Shaya J, Javier-Desloges J, et al.
       title: Disparities in germline testing among racial minorities with prostate cancer
@@ -80,3 +71,20 @@
       journal: JCO Precision Oncology
       year: 2018
       url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6370313/
+
+- id: eopc
+  name: Early-Onset Prostate Cancer Working Group
+  abbr: EOPC
+  body: >-
+    [STAFF CONFIRM: description to come from business development.] A PCCTC working group
+    focused on prostate cancer diagnosed at a young age.
+  publications: []
+
+- id: adt-sparing
+  name: ADT Sparing Working Group
+  abbr: ADT
+  body: >-
+    [STAFF CONFIRM: exact name and description to come from business development.] A PCCTC
+    working group focused on treatment strategies that spare or limit androgen deprivation
+    therapy.
+  publications: []
