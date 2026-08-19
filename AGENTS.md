@@ -15,9 +15,15 @@ Pages CMS (see Key decisions); everything it edits is a plain text file in this 
   `title`, `phase`, `nct`, `url`, optional `note`. For active studies `url` is optional and
   defaults to the ClinicalTrials.gov page for `nct`; for featured studies it's required (it's
   the card link, and may be a site path such as `/talent`).
-- **Services** — `src/data/services.yaml` (title, summary, bullet `points`).
+- **Services** — `src/data/services.yaml` (title, summary, bullet `points`). Order is display
+  order on /services and the homepage cards. `src/data/engagement-models.yaml` holds the
+  "How we engage" cards at the top of /services.
+- **Registries** — `src/data/registries.yaml` (`name`, `condition`, `status` Active/In
+  development, optional `nct`/`url`, `description`), rendered on /registries.
 - **Leadership / committee / sites / stats / working-group publications** — the other
-  `src/data/*.yaml` files. `working-groups.yaml` holds the publication lists.
+  `src/data/*.yaml` files. `working-groups.yaml` holds the publication lists (a group with no
+  `publications` renders without that block). Leadership entries take an optional `bio`; when
+  present the /about card becomes click-to-expand.
 - **Expertise and guiding-principles text** — `src/data/expertise.yaml` (`id`, `title`, `body`;
   `id` is the in-page anchor) and `src/data/guiding-principles.yaml` (`title`, `body`). Long
   `body` fields render one paragraph per line break (`paragraphs()` in `src/lib/data.ts`).
@@ -50,6 +56,26 @@ said "Head of Applied Science", which was wrong; don't copy it back.
   of PCCTC people, not stock imagery — and were carried over for the About page management team
   section (`public/images/team/`, referenced via `photo` in `leadership.yaml`). New org-owned
   images can be added under `public/images/`.
+- **Positioning language (2026-08-19, from business development)**: "full-service integrated
+  CRO and clinical consortium built on two decades of leadership in genitourinary oncology",
+  extending across oncology. Replaced the earlier "integrated research organization (IRO)"
+  wording and the interim "oncology CRO backed by a global academic consortium". Keep the
+  homepage hero, `Seo.astro` org description, and About/Services descriptions in step.
+- **Studies and registries are sibling tabs.** `PortfolioTabs.astro` sits under the hero on
+  /studies (interventional) and /registries; Registries is a footer link only, not primary nav.
+  The featured-study set is chosen to show range (phase 1 industry, PCCTC-sponsored randomized,
+  international phase 3, registry); the active list is newest-first.
+- **News index shows a rolling three-year window** (computed at build time). Older posts stay
+  published at their URLs and are listed under a collapsed "Earlier news" block.
+- **Partner inquiry form uses Web3Forms (free tier)**. The access key lives in
+  `src/pages/partner.astro` (`WEB3FORMS_ACCESS_KEY`); it is public by design and maps to the
+  inbox the key was created under. Until it is set the page shows a "not connected" notice and
+  a mailto fallback. CC is a paid Web3Forms feature, so a second inbox is reached with an
+  Outlook forwarding rule, not a form setting. The form asks people not to include patient
+  information; nothing on this site should collect PHI.
+- **`[STAFF CONFIRM: ...]` markers** mark text that still needs a real value (names, registry
+  details, drafted copy awaiting review). They render visibly on purpose; `grep -rn "STAFF
+  CONFIRM" src/` must return nothing before the preview branch merges to `main`.
 - **Deploy**: pushing to `main` triggers `.github/workflows/deploy.yml` (build + GitHub Pages).
   The `www.pcctc.org` custom domain is set in the repo's Settings → Pages; Actions-based deploys
   ignore CNAME files. DNS lives at GoDaddy (www CNAME to pcctc.github.io, apex A records to the
