@@ -30,6 +30,12 @@ export interface Study {
   condition?: string;
 }
 
+export interface EngagementModel {
+  title: string;
+  summary: string;
+  points: string[];
+}
+
 export interface Registry {
   name: string;
   condition: string;
@@ -83,6 +89,7 @@ export interface Principle {
 }
 
 export const services = () => load<Service[]>('services.yaml');
+export const engagementModels = () => load<EngagementModel[]>('engagement-models.yaml');
 export const registries = () => load<Registry[]>('registries.yaml');
 export const featuredStudies = () => load<Study[]>('studies-featured.yaml');
 export const activeStudies = () => load<Study[]>('studies-active.yaml');

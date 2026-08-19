@@ -1,121 +1,134 @@
+- slug: trial-design-and-development
+  title: Trial Design and Development
+  summary: >-
+    PCCTC investigators and operations staff work with sponsors from first concept to
+    finished protocol, so the design answers the scientific question and can be run
+    efficiently at the sites that will enroll it. [STAFF CONFIRM: new entry, director
+    review]
+  points:
+    - Concept development and protocol writing with investigators who set the field's trial-design and endpoint standards, including PCWG4.
+    - Designs from first-in-human dose escalation to randomized phase 2 and registrational phase 3, including adaptive, multi-arm platforms.
+    - Operational and site feasibility assessed during design, so timelines and accrual projections are realistic before activation.
+
 - slug: project-management
   title: Project Management
   summary: >-
-    From concept to close-out, the PCCTC's Clinical Operations team ensures studies
-    are completed on time and on budget, facilitating efficient, transparent study
-    management between industry partners, investigators and participating sites, and
-    external vendors.
+    From concept to close-out, the PCCTC's Clinical Operations team keeps studies on time
+    and on budget, coordinating sponsors, investigators, sites, and vendors through a
+    single accountable point of contact.
   points:
-    - Strategic selection of regional and international partners and participating sites, tailored to your unique study population.
-    - Personalized sponsor- and study-specific management plans keep sponsors, sites, and vendors aligned.
-    - Clear, technically feasible timelines ensure critical milestones are met.
-
-- slug: advisory-board
-  title: Advisory Board
-  summary: >-
-    PCCTC Advisory Boards convene leading academic investigators in the diseases we
-    study, anchored by two decades of prostate cancer leadership. Effective development
-    of new therapies draws on their expertise in drug development and their insight
-    into the current science.
-  points:
-    - Investigators from PCCTC clinical research sites serve as advisory board members and are committed to the success of new programs.
-    - Advisory boards enhance significant aspects of drug development including protocol design, endpoint selection, and patient population.
-    - As members of the Prostate Cancer Working Group (PCWG2, PCWG3, PCWG4), board members outlined principles for trial conduct in progressive disease to bring clinical research more in line with clinical practice.
-
-- slug: contracts-and-budgets
-  title: Contracts and Budgets
-  summary: >-
-    The PCCTC offers a suite of budgeting and contracting tools to expedite study
-    activation. Our contract templates let us negotiate consistent terms of
-    confidentiality, data ownership, publication, and intellectual property across
-    institutions and industry.
-  points:
-    - Contract and budgeting tools include unilateral and bilateral Confidentiality Disclosure Agreements and a Master Clinical Trial Agreement for Industry Sponsored Clinical Research.
-    - The PCCTC negotiates rapidly to contract with industry partners for clinical research activities to be carried out by the PCCTC.
-    - A coordinated budgeting strategy improves procedures for project management, protocol development, and contracting.
-
-- slug: regulatory
-  title: Regulatory
-  summary: >-
-    Proper management of regulatory affairs can dramatically shorten the time it takes
-    to bring safe and effective products to market. The PCCTC coordinates the intricate
-    details of regulatory document management throughout a project's lifecycle, serving
-    as a single point of contact for industry partners and investigators.
-  points:
-    - The PCCTC specializes in multi-site start-up, coordinating the requirements for sites to open studies and receive investigational products.
-    - Rapid regulatory expertise, guidance, and executable action plans ensure submissions meet evolving regulatory requirements throughout a study's lifecycle.
-    - Efficient, customized packages of regulatory documents facilitate site start-up activities.
-
-- slug: medical-communications
-  title: Medical Communications
-  summary: >-
-    The PCCTC offers numerous value-added medical communications services throughout a
-    project's lifecycle. Dedicated staff collaborate directly with investigators,
-    industry partners, regulatory agencies, and publishers to ensure rapid and reliable
-    content production.
-  points:
-    - Editorial services span protocols, informed consent forms, and study start-up presentations through to abstracts, peer-reviewed manuscripts, and regulatory documentation.
-    - PCCTC editors with oncology subject-matter expertise work closely with project management teams on each assignment.
-    - In its commitment to ethical publication and appropriate authorship, the PCCTC strictly adheres to ICH, ICMJE, and project-specific guidelines.
+    - Strategic selection of regional and international partners and participating sites, tailored to the study population.
+    - Sponsor- and study-specific management plans keep sponsors, sites, and vendors aligned.
+    - Clear, technically feasible timelines with milestone tracking, enrollment dashboards, and regular site engagement.
 
 - slug: clinical-data-management
   title: Clinical Data Management
   summary: >-
-    A modern, standards-driven approach to data management delivers the secure,
-    high-quality, rapid results today's oncology trials require. Our workflows
-    follow Good Clinical Data Management Practices and the latest FDA, ICH GCP, and GDPR
-    requirements, leveraging Medidata Rave (EDC) and reusable CDISC-conformant libraries.
+    Standards-driven data management built on Medidata Rave EDC and reusable
+    CDISC-conformant libraries, following Good Clinical Data Management Practices and
+    current FDA, ICH GCP, and GDPR requirements.
   points:
     - Standards-based CRF libraries aligned to CDISC CDASH and prospectively mapped to SDTM/ADaM.
     - End-to-end compliance with 21 CFR Part 11, the FDA Data Standards Catalog, and EU/UK GDPR.
-    - An Integrated Data Review Process (IDRP) embeds cross-functional review — biostatistics, data science, clinical operations — at every milestone.
-    - Encrypted portals and APIs give investigators real-time access and partner sharing while safeguarding institutional and sponsor IP.
+    - An Integrated Data Review Process embeds biostatistics, data science, and clinical operations review at every milestone, with real-time investigator access through encrypted portals and APIs.
 
-- slug: statistical-programming-and-analysis
-  title: Statistical Programming and Analysis
+- slug: data-science
+  title: Data Science and Statistical Analysis
   summary: >-
-    PCCTC biostatisticians and statistical programmers are involved at every stage of
-    study planning and execution — from protocol and statistical analysis plans and data
-    collection design through ongoing data-quality monitoring and reporting checkpoints —
-    combining modern computing practices with strict GxP compliance.
+    PCCTC biostatisticians, statistical programmers, and data scientists are involved
+    from protocol and statistical analysis plan through final reporting, combining
+    modern, reproducible computing practice with strict GxP compliance. [STAFF CONFIRM:
+    merged entry, director review]
   points:
-    - Statisticians work directly with Clinical Data Management to optimize study-specific statistical analysis plans that generate quality, informative data and meet critical milestones.
-    - PCCTC investigators are at the forefront of novel study design and national endpoint standards, including the Prostate Cancer Working Group criteria.
-    - Disease-specific expertise in multicenter, hypothesis-driven trials and biomarker validation ensures studies efficiently measure meaningful endpoints.
+    - Statistical analysis plans and study-specific analyses developed with Clinical Data Management, including designs built on the Prostate Cancer Working Group endpoint criteria.
+    - Reproducible data delivery and reporting pipelines, with rigorous dataset validation that scales across the portfolio.
+    - Collaboration with the Biostatistics Service at Memorial Sloan Kettering Cancer Center on statistical modeling and analysis design.
+
+- slug: regulatory
+  title: Regulatory Services
+  summary: >-
+    The PCCTC coordinates regulatory document management across a project's lifecycle
+    and serves as the single regulatory point of contact for sponsors and investigators,
+    shortening the path from protocol to activated sites.
+  points:
+    - Multi-site start-up, coordinating what each site needs to open a study and receive investigational product.
+    - Guidance and executable action plans that keep submissions aligned with evolving regulatory requirements.
+    - Customized regulatory document packages that speed site start-up.
+
+- slug: monitoring
+  title: Medical, Site, and Centralized Monitoring
+  summary: >-
+    Medical monitoring, on-site and remote site monitoring, and centralized data
+    surveillance run together under PCCTC SOPs, so safety signals and data-quality issues
+    are caught early in every region of a study. [STAFF CONFIRM: new entry, director
+    review]
+  points:
+    - Physician medical monitors review eligibility, safety, and dose decisions, with defined escalation pathways to sponsors and investigators.
+    - Risk-based site monitoring plans tailored to each study, with regional monitoring partners outside the US working under PCCTC SOPs.
+    - Centralized monitoring tracks accrual, data entry, and query resolution against projections, with data sweeps timed to interim analyses and data monitoring committee meetings.
 
 - slug: correlative-science-and-laboratory-services
   title: Correlative Science and Laboratory Services
   summary: >-
-    Accurate, reliable, reproducible lab results are essential for patient monitoring,
-    regulatory approvals, reimbursement, and drug discovery. Grounded in active research
-    at our contracted academic medical centers and biopharmaceutical partners, our
-    capabilities meet the rigorous demands of today's drug development.
+    Correlative science is integrated into the studies we manage, from assay validation
+    to specimen logistics, grounded in active research at our academic medical centers
+    and biopharmaceutical partners.
   points:
-    - Established methodologies systematically address pre-analytical, analytical, and post-analytical variables to validate assays for a CLIA environment per ICH and GLP guidelines.
-    - We work with CLIA-certified and CAP-accredited laboratories offering the full range of consulting and analytical services, from SOP development to specimen processing, storage, and tracking.
-    - We specialize in integrating dynamic laboratory studies, including computational biology and molecular pathology, into the clinical studies we manage.
+    - Established methods address pre-analytical, analytical, and post-analytical variables to validate assays for a CLIA environment per ICH and GLP guidelines.
+    - CLIA-certified and CAP-accredited laboratory partners, from SOP development to specimen processing, storage, and tracking.
+    - Computational biology and molecular pathology studies integrated into the clinical trials we manage.
 
-- slug: data-science
-  title: Data Science
+- slug: medical-communications
+  title: Medical Communications and Writing
   summary: >-
-    In close collaboration with PCCTC Data Management and the Biostatistics Service at
-    Memorial Sloan Kettering Cancer Center, our Data Science team applies programming
-    best practices within a modern technology stack to streamline, scale, and enhance
-    the reproducibility of the consortium's analytics and reporting pipelines.
+    Dedicated medical writers and editors with oncology expertise work with
+    investigators, sponsors, regulators, and publishers across a project's lifecycle,
+    from protocol to peer-reviewed manuscript.
   points:
-    - Development and design of statistical models and analysis plans.
-    - Custom data delivery and reporting pipelines built for reproducibility.
-    - Rigorous analysis and validation of datasets, with scalable solutions to fit the needs of all stakeholders.
+    - Protocols, informed consent forms, and study start-up presentations through abstracts, peer-reviewed manuscripts, and regulatory documentation.
+    - Editors embedded with project management teams on each assignment.
+    - Strict adherence to ICH, ICMJE, and project-specific guidelines for ethical publication and authorship.
 
 - slug: registries-and-real-world-evidence
   title: Registries and Real-World Evidence
   summary: >-
-    The PCCTC designs and operates large multicenter patient registries on the same
-    coordinated infrastructure behind the international IRONMAN registry and the
-    PCCTC-managed PROMISE germline registry. Registry programs in breast and
-    colorectal cancer are now in development, extending the model beyond prostate
-    cancer.
+    The PCCTC designs and operates large multicenter registries on the infrastructure
+    behind the international IRONMAN registry and the PCCTC-managed PROMISE germline
+    registry, and is extending the model to colorectal, breast, and lung cancer.
   points:
     - Registry design and operations across a network of more than 200 clinical research sites.
-    - Nested substudies extend a registry into a research platform; five IRONMAN substudies are open today.
-    - Contracting, data management, and biostatistics services carry a registry from protocol to publication.
+    - Nested substudies and retrospective data requests turn a registry into a research platform; five IRONMAN substudies are open today.
+    - Contracting, data management, and biostatistics carry a registry from protocol to publication.
+
+- slug: quality-management
+  title: Quality Management
+  summary: >-
+    A dedicated quality function maintains the SOPs, study-specific plans, and oversight
+    that keep every PCCTC-managed study inspection-ready. [STAFF CONFIRM: new entry,
+    director review]
+  points:
+    - Standard Operating Procedures covering budgeting and contracting, protocol development, quality management, correlative management, study and site management, safety monitoring, data management, and statistics and programming.
+    - Study-specific operational plans for project management, statistical analysis, data management, monitoring, eTMF, cohort management, and communication, plus data monitoring and imaging/pathology committee charters.
+    - Ongoing quality review of study conduct and documentation, with corrective and preventive action when issues are found.
+
+- slug: contracts-and-budgets
+  title: Contracts and Budgets
+  summary: >-
+    Budgeting and contracting tools built for multicenter research, including a master
+    clinical trial agreement for industry-sponsored studies, speed activation and set
+    consistent terms across institutions.
+  points:
+    - Unilateral and bilateral confidentiality agreements and a Master Clinical Trial Agreement for industry-sponsored clinical research.
+    - Rapid contracting with industry partners for work carried out by the PCCTC, and advice on site agreement terms and expected site costs to avoid negotiation delays.
+    - A coordinated budgeting strategy aligned with project management, protocol development, and contracting.
+
+- slug: advisory-boards
+  title: Advisory Boards and Clinical Development Consultation
+  summary: >-
+    Targeted advisory support without a full outsourcing commitment: advisory boards of
+    leading academic investigators, clinical development strategy, study design, and
+    operational and site feasibility.
+  points:
+    - Advisory boards convene PCCTC investigators, including members of the Prostate Cancer Working Group (PCWG2 through PCWG4), on protocol design, endpoint selection, and patient population.
+    - Clinical development strategy and study design consultation for programs at any stage.
+    - Operational feasibility, project start-up, and site feasibility assessments ahead of a full engagement.
