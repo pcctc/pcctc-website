@@ -39,6 +39,5 @@
   photo: "/images/team/pileggi.jpg"
 - name: "Travis Gerke"
   credentials: "ScD"
-  # The live Squarespace site's "Head of Applied Science" is incorrect; do not "sync" it back
   role: "Head of Applied Intelligence"
   photo: "/images/team/gerke.jpg"

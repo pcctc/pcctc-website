@@ -57,6 +57,17 @@ export interface WorkingGroup {
   publications: Publication[];
 }
 
+export interface ExpertiseSection {
+  id: string;
+  title: string;
+  body: string;
+}
+
+export interface Principle {
+  title: string;
+  body: string;
+}
+
 export const services = () => load<Service[]>('services.yaml');
 export const featuredStudies = () => load<Study[]>('studies-featured.yaml');
 export const activeStudies = () => load<Study[]>('studies-active.yaml');
@@ -66,3 +77,13 @@ export const workingGroups = () => load<WorkingGroup[]>('working-groups.yaml');
 export const sites = () =>
   load<{ domestic: string[]; international: string[] }>('sites.yaml');
 export const stats = () => load<{ value: string; label: string }[]>('stats.yaml');
+export const expertise = () => load<ExpertiseSection[]>('expertise.yaml');
+export const principles = () => load<Principle[]>('guiding-principles.yaml');
+
+// Long-form text fields are edited in a plain textarea (Pages CMS `text` field); each
+// line break there is a paragraph break on the page.
+export const paragraphs = (text: string) =>
+  text
+    .split(/\n+/)
+    .map((s) => s.trim())
+    .filter(Boolean);

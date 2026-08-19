@@ -5,7 +5,11 @@ import Icon from '../components/Icon.astro';
 import { featuredStudies, activeStudies } from '../lib/data';
 
 const featured = featuredStudies();
-const active = activeStudies();
+// `url` is an override; entries normally carry only the NCT number.
+const active = activeStudies().map((s) => ({
+  ...s,
+  url: s.url || (s.nct ? `https://clinicaltrials.gov/study/${s.nct}` : undefined),
+}));
 
 const jsonLd = active
   .filter((s) => s.nct)

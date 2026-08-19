@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
-import { workingGroups } from '../lib/data';
+import { workingGroups, paragraphs } from '../lib/data';
 
 const groups = workingGroups();
 ---
@@ -25,7 +25,7 @@ const groups = workingGroups();
             <span class="wg__abbr">{g.abbr}</span>
             <h2>{g.name}</h2>
           </header>
-          <p class="wg__body">{g.body}</p>
+          {paragraphs(g.body).map((para) => <p class="wg__body">{para}</p>)}
           <h3 class="wg__pubs-title">Publications</h3>
           <ul class="wg__pubs">
             {g.publications.map((p) => (
