@@ -99,8 +99,8 @@ const thanksUrl = new URL('/partner/thanks/', Astro.site).href;
 
         {!formConnected && (
           <p class="form-notice">
-            This form is not connected yet (no Web3Forms access key set). Until it is, please
-            <a href={inquiry}>email the team</a>.
+            This form is not connected yet (no Web3Forms access key set). Until it is,
+            please <a href={inquiry}>email the team</a>.
           </p>
         )}
 
@@ -165,8 +165,8 @@ const thanksUrl = new URL('/partner/thanks/', Astro.site).href;
           <div class="form-actions">
             <button type="submit" class="btn btn--primary">Send inquiry <Icon name="arrow" size={17} /></button>
             <p class="privacy-note">
-              We use what you share here only to respond to your inquiry. See our
-              <a href="/privacy">privacy policy</a>.
+              We use what you share here only to respond to your inquiry.
+              See our <a href="/privacy">privacy policy</a>.
             </p>
           </div>
           <p class="form-status" role="status" aria-live="polite"></p>
@@ -292,7 +292,11 @@ const thanksUrl = new URL('/partner/thanks/', Astro.site).href;
   .field-row { display: grid; gap: 1.25rem; }
   @media (min-width: 40rem) { .field-row { grid-template-columns: 1fr 1fr; } }
   .field { display: grid; gap: 0.4rem; min-width: 0; }
-  fieldset.field { border: 0; padding: 0; margin: 0; }
+  fieldset.field { display: block; border: 0; padding: 0; margin: 0; min-width: 0; }
+  /* A floated legend is no longer the fieldset's "rendered legend", so it flows inside the
+     padding box instead of straddling the top edge (which left it half outside the tinted box). */
+  fieldset.field legend { float: left; width: 100%; margin: 0 0 0.35rem; }
+  fieldset.field .choices { clear: both; margin-top: 0; }
   .field label,
   .field legend { font-weight: 600; font-size: 0.95rem; color: var(--ink-900); padding: 0; }
   .field label span[aria-hidden],
@@ -320,7 +324,7 @@ const thanksUrl = new URL('/partner/thanks/', Astro.site).href;
   .hint { font-size: 0.85rem; color: var(--text-muted); margin: 0; font-weight: 500; }
   legend .hint { margin-left: 0.4rem; }
 
-  .choices { display: grid; gap: 0.5rem; margin-top: 0.35rem; }
+  .choices { display: grid; gap: 0.5rem; }
   .choices--grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: 0.45rem 1.25rem; }
   .choice { display: flex; align-items: flex-start; gap: 0.6rem; font-weight: 500; font-size: 0.95rem; color: var(--text); cursor: pointer; }
   .choice input { margin-top: 0.2rem; accent-color: var(--brand-600); flex-shrink: 0; }
