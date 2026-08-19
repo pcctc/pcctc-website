@@ -2,7 +2,8 @@
 
 Static marketing/informational site for the Prostate Cancer Clinical Trials Consortium,
 built with Astro and deployed to GitHub Pages. It replaces a consultant-built Squarespace
-site; the priority is that PCCTC staff can maintain it by editing text files in git.
+site; the priority is that PCCTC staff can maintain it without a developer. Staff edit through
+Pages CMS (see Key decisions); everything it edits is a plain text file in this repo.
 
 ## Where content lives (edit these, not the page templates)
 
@@ -11,13 +12,24 @@ site; the priority is that PCCTC staff can maintain it by editing text files in 
   that point to a press release/article/video. Filenames become the URL slug — keep them stable
   to preserve SEO. To add a post, copy an existing file and edit.
 - **Studies** — `src/data/studies-featured.yaml` and `studies-active.yaml`. Each entry:
-  `title`, `phase`, `nct`, `url`, optional `note`.
+  `title`, `phase`, `nct`, `url`, optional `note`. For active studies `url` is optional and
+  defaults to the ClinicalTrials.gov page for `nct`; for featured studies it's required (it's
+  the card link, and may be a site path such as `/talent`).
 - **Services** — `src/data/services.yaml` (title, summary, bullet `points`).
 - **Leadership / committee / sites / stats / working-group publications** — the other
   `src/data/*.yaml` files. `working-groups.yaml` holds the publication lists.
+- **Expertise and guiding-principles text** — `src/data/expertise.yaml` (`id`, `title`, `body`;
+  `id` is the in-page anchor) and `src/data/guiding-principles.yaml` (`title`, `body`). Long
+  `body` fields render one paragraph per line break (`paragraphs()` in `src/lib/data.ts`).
+- **CMS forms** — `.pages.yml` at the repo root defines what Pages CMS shows for each of the
+  above. Adding a field to a data file or the news schema means adding it there too.
 
-Page templates in `src/pages/` and components in `src/components/` render this data; the
-narrative pages (expertise, guiding principles) keep their prose inline in the `.astro` file.
+Page templates in `src/pages/` and components in `src/components/` render this data. Prose that
+is still inline in `.astro` files (not CMS-editable): the homepage, the About page mission and
+history, /talent, /privacy, and every page's hero eyebrow/title/lede and SEO description.
+
+Content note: Travis Gerke's title is "Head of Applied Intelligence". The old Squarespace site
+said "Head of Applied Science", which was wrong; don't copy it back.
 
 ## Key decisions
 
@@ -41,7 +53,19 @@ narrative pages (expertise, guiding principles) keep their prose inline in the `
 - **Deploy**: pushing to `main` triggers `.github/workflows/deploy.yml` (build + GitHub Pages).
   The `www.pcctc.org` custom domain is set in the repo's Settings → Pages; Actions-based deploys
   ignore CNAME files. DNS lives at GoDaddy (www CNAME to pcctc.github.io, apex A records to the
-  GitHub Pages IPs). Live on the custom domain since 2026-08-11.
+  GitHub Pages IPs). Live on the custom domain since 2026-08-11. A failed deploy opens an issue
+  that @mentions the maintainer, because CMS commits come from the Pages CMS app and GitHub
+  emails nobody about them.
+- **Content editing UI: Pages CMS** (pagescms.org, hosted at app.pagescms.org; free, MIT, set up
+  2026-08-19). Chosen in July 2026 over Keystatic/Sveltia (need an OAuth proxy) and headless
+  CMSs (move content out of git). Config is `.pages.yml`; the Pages CMS GitHub App is installed
+  on the `pcctc` org scoped to this repo only. The technical writer is an email-invited
+  collaborator (no GitHub account); his saves commit to `main` via the app with his name as
+  committer (`settings.commit.identity: user`) and deploy immediately. There is no review gate
+  by design: the build is the safety net, and the CMS validates URLs/required fields before
+  save. News posts can't be renamed from the CMS (slugs are SEO-stable). CMS saves reformat
+  YAML cosmetically (quoting, line folding, `chair: false` written out) and strip YAML
+  comments, so don't put information in comments inside `src/data/*.yaml`.
 
 ## Development
 

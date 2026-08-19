@@ -1,8 +1,9 @@
 # pcctc.org
 
-The website for the **Prostate Cancer Clinical Trials Consortium (PCCTC)** — a static site built
-with [Astro](https://astro.build) and deployed to GitHub Pages. Designed so the team can maintain
-it by editing Markdown and YAML in this repo, with no CMS and no external vendor.
+The website for the **Prostate Cancer Clinical Trials Consortium (PCCTC)**, a static site built
+with [Astro](https://astro.build) and deployed to GitHub Pages. All content is plain Markdown and
+YAML in this repo. Staff edit it in the browser through [Pages CMS](https://pagescms.org), a free,
+open-source editor that commits straight to this repo; developers can edit the files directly.
 
 ## Quick start
 
@@ -17,7 +18,48 @@ Requires Node 22+.
 
 ## Editing content
 
-You rarely need to touch page templates. Content lives in plain text files:
+You rarely need to touch page templates. Content lives in plain text files, and there are two
+ways to change it.
+
+### In the browser, with Pages CMS
+
+Go to **https://app.pagescms.org** and sign in with the email address you were invited with.
+You'll get a one-time code by email; there is no password and no GitHub account to manage.
+Open **pcctc-website** and pick a section in the left sidebar:
+
+| Section | What it changes |
+|---|---|
+| News | posts on /news and the latest three on the homepage |
+| Studies → Featured / Active | the study cards and the open-studies list on /studies |
+| Services | /services and the service cards on the homepage |
+| About page → Management team, Scientific Oversight Committee, Participating sites, Key numbers | the matching blocks on /about (key numbers also appear on the homepage) |
+| Expertise page, Guiding principles page | the text on those two pages |
+| Working groups | the groups and publication lists on /workinggroups |
+| Media | images under `public/images/` |
+
+A few things to know before you start:
+
+- **Saving publishes.** Each save becomes a commit to this repo, and the site rebuilds and goes
+  live about two minutes later. There is no draft state and no preview, so read your change
+  over before you save, then check the live page.
+- **A bad save can't take the site down.** If a change fails to build, the live site keeps
+  showing the previous version and an issue is opened in this repo that notifies the
+  maintainer. If your change hasn't appeared after five minutes, that's probably what happened.
+- **Nothing is lost.** Each entry has a History panel in the CMS showing earlier versions, and
+  the full record lives in this repo's commit history, so the maintainer can restore any
+  previous state.
+- **A new post's web address comes from its title.** "Just Published: ..." becomes
+  `/news/just-published-...`. The address is fixed when you first save (renaming would break
+  links and search rankings), so settle the title first.
+- **Don't edit the "Anchor" fields on existing entries.** On services, expertise sections and
+  working groups they're part of web addresses that other pages link to.
+- **Only upload images PCCTC owns.** Headshots and our own graphics are fine; the old site's
+  stock-photo licenses didn't transfer to us.
+
+The forms themselves are defined in [`.pages.yml`](.pages.yml) at the root of this repo. That's
+the place to add a field, change a label, or reword the help text.
+
+### In git
 
 | To change… | Edit… |
 |---|---|
@@ -27,10 +69,13 @@ You rarely need to touch page templates. Content lives in plain text files:
 | Leadership / committee | `src/data/leadership.yaml`, `src/data/committee.yaml` |
 | Participating sites | `src/data/sites.yaml` |
 | Homepage / about stats | `src/data/stats.yaml` |
+| Expertise and guiding-principles text | `src/data/expertise.yaml`, `src/data/guiding-principles.yaml` |
 | Working-group publications | `src/data/working-groups.yaml` |
 | Colors, fonts, spacing | `src/styles/global.css` (design tokens under `:root`) |
 
-### Adding a news post
+Pushing to `main` deploys, the same as a CMS save.
+
+#### Adding a news post
 
 Create `src/content/news/my-post-slug.md`:
 
