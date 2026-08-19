@@ -1,0 +1,411 @@
+# Pages CMS configuration — https://pagescms.org/docs/configuration/
+# Defines the editing forms shown at https://app.pagescms.org for this repository.
+# Every save is a commit to `main`, which redeploys the site (about two minutes).
+# Field `description`s are the help text editors see; `pattern`s are validated before save.
+
+media:
+  input: public/images
+  output: /images
+  categories: [image]
+  rename: safe
+
+settings:
+  content:
+    merge: true # keep any frontmatter key this config doesn't model
+  commit:
+    identity: user # email-invited collaborators are named on their commits
+    templates:
+      create: "Add {filename} (via Pages CMS)"
+      update: "Update {filename} (via Pages CMS)"
+      delete: "Delete {filename} (via Pages CMS)"
+      rename: "Rename {oldFilename} to {newFilename} (via Pages CMS)"
+
+content:
+  - name: news
+    label: News
+    description: >-
+      Posts shown on /news and the homepage. The web address is built from the title when
+      a post is first saved, so settle the title before saving.
+    type: collection
+    path: src/content/news
+    format: yaml-frontmatter
+    filename:
+      template: "{title}.md"
+      field: create
+    operations:
+      rename: false # slugs match the old site for SEO; see AGENTS.md
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      search: [title, description]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: author
+        label: Author
+        type: string
+        required: true
+        default: "Kristofer Prepelica, PhD"
+      - name: description
+        label: Summary
+        type: text
+        required: true
+        description: >-
+          One or two sentences for the news card and search results. If it is identical to
+          the title, the card hides it.
+      - name: external
+        label: External link
+        type: string
+        pattern:
+          regex: "^(https?://\\S+)?$"
+          message: "Use a full web address starting with http:// or https://"
+        description: >-
+          Optional. For posts that point to an article, press release or video elsewhere;
+          the post page shows a "Read the full article" button.
+      - name: body
+        label: Body
+        type: rich-text
+        description: Optional for external-link posts. Headings, bold, links and lists are supported.
+        options:
+          format: markdown
+          path: public/images/news
+          rename: safe
+
+  - name: studies
+    label: Studies
+    type: group
+    items:
+      - name: studies-featured
+        label: Featured studies
+        description: >-
+          The highlighted studies on the homepage and at the top of /studies. Order here is
+          display order.
+        type: file
+        path: src/data/studies-featured.yaml
+        format: yaml
+        list: true
+        operations:
+          delete: false
+        fields:
+          - name: title
+            label: Title
+            type: string
+            required: true
+          - name: nct
+            label: NCT number
+            type: string
+            pattern:
+              regex: "^(NCT\\d{8})?$"
+              message: "NCT followed by 8 digits, e.g. NCT03151629"
+          - name: url
+            label: Link
+            type: string
+            required: true
+            pattern:
+              regex: "^(https?://\\S+|/[A-Za-z0-9/_-]*)$"
+              message: "Full web address (https://...) or a path on this site such as /talent"
+            description: >-
+              Where the card links. Usually the study website; a path like /talent links
+              within this site.
+          - name: note
+            label: Badge
+            type: string
+            description: Short tag on the card, e.g. "International registry" or "PCCTC-sponsored".
+      - name: studies-active
+        label: Active studies
+        description: The full list on /studies. Order here is display order.
+        type: file
+        path: src/data/studies-active.yaml
+        format: yaml
+        list: true
+        operations:
+          delete: false
+        fields:
+          - name: title
+            label: Title
+            type: string
+            required: true
+          - name: phase
+            label: Phase
+            type: string
+            description: e.g. "Phase 2" or "Phase 1b/2". Leave blank for registries and substudies.
+          - name: nct
+            label: NCT number
+            type: string
+            pattern:
+              regex: "^(NCT\\d{8})?$"
+              message: "NCT followed by 8 digits, e.g. NCT03151629"
+            description: ClinicalTrials.gov identifier. The row links to ClinicalTrials.gov automatically.
+          - name: url
+            label: Link (override)
+            type: string
+            pattern:
+              regex: "^(https?://\\S+)?$"
+              message: "Use a full web address starting with http:// or https://"
+            description: >-
+              Leave blank to link to ClinicalTrials.gov from the NCT number. Fill in only to
+              link somewhere else.
+          - name: note
+            label: Badge
+            type: string
+            description: e.g. "IRONMAN Registry Substudy".
+
+  - name: services
+    label: Services
+    description: >-
+      The services on /services (and the cards on the homepage). Order here is display
+      order.
+    type: file
+    path: src/data/services.yaml
+    format: yaml
+    list: true
+    operations:
+      delete: false
+    fields:
+      - name: slug
+        label: Anchor (part of the web address)
+        type: string
+        required: true
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: "Lowercase letters, numbers and dashes only"
+        description: Used in links like /services#data-science. Don't change it for an existing service.
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: summary
+        label: Summary
+        type: text
+        required: true
+      - name: points
+        label: Bullet points
+        type: string
+        list: true
+
+  - name: about
+    label: About page
+    type: group
+    items:
+      - name: leadership
+        label: Management team
+        description: Shown on /about. Order here is display order.
+        type: file
+        path: src/data/leadership.yaml
+        format: yaml
+        list: true
+        operations:
+          delete: false
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: credentials
+            label: Credentials
+            type: string
+            description: e.g. MD, PhD, ScD. Leave blank if none.
+          - name: role
+            label: Title
+            type: string
+            required: true
+          - name: photo
+            label: Headshot
+            type: image
+            description: Square headshot. Only PCCTC-owned photos, no stock imagery.
+            options:
+              path: public/images/team
+              extensions: [jpg, jpeg, png, webp]
+              rename: safe
+      - name: committee
+        label: Scientific Oversight Committee
+        description: Shown on /about. Order here is display order.
+        type: file
+        path: src/data/committee.yaml
+        format: yaml
+        list: true
+        operations:
+          delete: false
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+            description: Include credentials, e.g. "Michael J. Morris, MD".
+          - name: institution
+            label: Institution
+            type: string
+            required: true
+          - name: chair
+            label: Chair
+            type: boolean
+            description: Turn on for the committee chair (adds a Chair badge).
+      - name: sites
+        label: Participating sites
+        description: The site lists on /about. The counts on the page are computed from these lists.
+        type: file
+        path: src/data/sites.yaml
+        format: yaml
+        operations:
+          delete: false
+        fields:
+          - name: domestic
+            label: United States
+            type: string
+            list: true
+          - name: international
+            label: International
+            type: string
+            list: true
+            description: Add the country in parentheses, e.g. "Alfred Health (Australia)".
+      - name: stats
+        label: Key numbers
+        description: The headline statistics on the homepage and /about.
+        type: file
+        path: src/data/stats.yaml
+        format: yaml
+        list: true
+        operations:
+          delete: false
+        fields:
+          - name: value
+            label: Number
+            type: string
+            required: true
+            description: Shown large, e.g. "547" or ">22%".
+          - name: label
+            label: Caption
+            type: string
+            required: true
+
+  - name: expertise
+    label: Expertise page
+    description: >-
+      The sections on /expertise. (The intro banner at the top of the page is not editable
+      here.)
+    type: file
+    path: src/data/expertise.yaml
+    format: yaml
+    list: true
+    operations:
+      delete: false
+    fields:
+      - name: id
+        label: Anchor (part of the web address)
+        type: string
+        required: true
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: "Lowercase letters, numbers and dashes only"
+        description: >-
+          Used by the on-page table of contents (/expertise#investigators). Don't change it
+          for an existing section.
+      - name: title
+        label: Heading
+        type: string
+        required: true
+      - name: body
+        label: Text
+        type: text
+        required: true
+        description: Press Enter to start a new paragraph.
+
+  - name: guiding-principles
+    label: Guiding principles page
+    description: >-
+      The numbered principles on /guidingprinciples, in order. (The intro banner is not
+      editable here.)
+    type: file
+    path: src/data/guiding-principles.yaml
+    format: yaml
+    list: true
+    operations:
+      delete: false
+    fields:
+      - name: title
+        label: Heading
+        type: string
+        required: true
+      - name: body
+        label: Text
+        type: text
+        required: true
+        description: Press Enter to start a new paragraph.
+
+  - name: working-groups
+    label: Working groups
+    description: The groups and their publication lists on /workinggroups.
+    type: file
+    path: src/data/working-groups.yaml
+    format: yaml
+    list: true
+    operations:
+      delete: false
+    fields:
+      - name: id
+        label: Anchor (part of the web address)
+        type: string
+        required: true
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: "Lowercase letters, numbers and dashes only"
+        description: Used in links like /workinggroups#pcwg. Don't change it for an existing group.
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: abbr
+        label: Abbreviation
+        type: string
+        required: true
+      - name: body
+        label: Description
+        type: text
+        required: true
+        description: Press Enter to start a new paragraph.
+      - name: publications
+        label: Publications
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: authors
+            label: Authors
+            type: string
+            required: true
+          - name: title
+            label: Title
+            type: string
+            required: true
+          - name: journal
+            label: Journal
+            type: string
+            required: true
+          - name: year
+            label: Year
+            type: number
+            required: true
+            options:
+              min: 1990
+              max: 2100
+          - name: url
+            label: Link
+            type: string
+            required: true
+            pattern:
+              regex: "^https?://\\S+$"
+              message: "Use a full web address starting with http:// or https://"
