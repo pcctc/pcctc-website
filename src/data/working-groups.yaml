@@ -73,18 +73,26 @@
       url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6370313/
 
 - id: eopc
-  name: Early-Onset Prostate Cancer Working Group
+  name: Early Onset Prostate Cancer Working Group
   abbr: EOPC
   body: >-
-    [STAFF CONFIRM: description to come from business development.] A PCCTC working group
-    focused on prostate cancer diagnosed at a young age.
+    Rising incidence rates and unique clinical challenges among younger men with prostate
+    cancer underscore the need for specialized care approaches. Composed of leaders across
+    multiple disciplines, the PCCTC Early Onset Prostate Cancer Working Group (EOPC) was
+    formed in 2026 to advance clinical care, research, and quality of life for men
+    diagnosed with prostate cancer at an early age. EOPC Working Group members are
+    developing evidence-based guidelines and age-appropriate care pathways that address
+    the distinct biological, treatment, and survivorship needs of younger patients facing
+    decades of life with and beyond prostate cancer.
   publications: []
 
 - id: adt-sparing
-  name: ADT Sparing Working Group
+  name: "ADT Sparing and Limiting Working Group [STAFF CONFIRM: exact group name pending]"
   abbr: ADT
-  body: >-
-    [STAFF CONFIRM: exact name and description to come from business development.] A PCCTC
-    working group focused on treatment strategies that spare or limit androgen deprivation
-    therapy.
+  body: |-
+    The ADT Sparing and Limiting Working Group is a multidisciplinary collaboration of leading prostate cancer investigators focused on advancing innovative treatment strategies that reduce, optimize, or potentially replace androgen deprivation therapy (ADT) for selected patients.
+
+    The group is evaluating ADT-sparing and ADT-limiting approaches across the full spectrum of prostate cancer clinical states, with the goal of identifying key research gaps, defining clinically meaningful trial endpoints, exploring biomarker-driven patient selection, and developing novel study designs that balance treatment efficacy with patient-centered outcomes.
+
+    Through evidence synthesis, stakeholder engagement, and collaborative scientific discussion, the Working Group aims to produce a comprehensive white paper, establish a research roadmap for investigators and sponsors, and foster the development of multicenter clinical trials that challenge traditional treatment paradigms and advance the next generation of prostate cancer care.
   publications: []
