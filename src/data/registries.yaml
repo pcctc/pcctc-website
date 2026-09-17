@@ -17,10 +17,9 @@
     A PCCTC-managed registry linking germline genetics to outcomes and treatment
     effectiveness for patients with prostate cancer.
 
-- name: "RER [STAFF CONFIRM: full program name]"
+- name: "RER"
   condition: "Colorectal, breast, and lung cancer"
   status: "In development"
   description: >-
     A PCCTC registry program extending the IRONMAN and PROMISE model to colorectal,
-    breast, and lung cancer on the same coordinated infrastructure. [STAFF CONFIRM:
-    status, population, scope, partner institutions, and expected timeline.]
+    breast, and lung cancer on the same coordinated infrastructure.
