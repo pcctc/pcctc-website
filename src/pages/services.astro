@@ -102,7 +102,8 @@ const models = engagementModels();
   .model h3 { color: var(--ink-900); }
   .model__points { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; flex-grow: 1; }
   .model__points li { display: flex; gap: 0.6rem; align-items: flex-start; }
-  .model__points svg { color: var(--brand-500); flex-shrink: 0; margin-top: 3px; }
+  /* The svg is rendered by Icon, so a scoped `svg` selector never matches it. */
+  .model__points :global(svg) { color: var(--brand-500); flex-shrink: 0; margin-top: 3px; }
   .model__points span { color: var(--text); font-size: 0.97rem; }
   .model__note { margin: 0; padding-top: 0.9rem; border-top: 1px solid var(--line); color: var(--text-soft); font-size: 0.92rem; font-style: italic; }
 
@@ -149,7 +150,7 @@ const models = engagementModels();
   .service__summary { color: var(--text-soft); max-width: 60ch; }
   .service__points { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: 0.75rem; }
   .service__points li { display: flex; gap: 0.7rem; align-items: flex-start; }
-  .service__points svg { color: var(--brand-500); flex-shrink: 0; margin-top: 3px; }
+  .service__points :global(svg) { color: var(--brand-500); flex-shrink: 0; margin-top: 3px; }
   .service__points span { color: var(--text); font-size: 0.97rem; }
 
   @media (max-width: 34rem) {
