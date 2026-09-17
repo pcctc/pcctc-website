@@ -37,6 +37,9 @@ history, /talent, /privacy, and every page's hero eyebrow/title/lede and SEO des
 Content note: Travis Gerke's title is "Head of Applied Intelligence". The old Squarespace site
 said "Head of Applied Science", which was wrong; don't copy it back.
 
+Content note: the EDC the site names is Medrio (changed 2026-09-17 on staff review). The old
+site and earlier copy said "Medidata Rave"; don't copy that back either.
+
 ## Key decisions
 
 - **Slugs are kept identical to the old Squarespace site** (`/workinggroups`, `/guidingprinciples`,
