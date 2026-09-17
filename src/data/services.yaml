@@ -3,12 +3,13 @@
   summary: >-
     PCCTC investigators and operations staff work with sponsors from first concept to
     finished protocol, so the design answers the scientific question and can be run
-    efficiently at the sites that will enroll it. [STAFF CONFIRM: new entry, director
-    review]
+    efficiently at the sites that will enroll it.
   points:
     - Concept development and protocol writing with investigators who set the field's trial-design and endpoint standards, including PCWG4.
     - Designs from first-in-human dose escalation to randomized phase 2 and registrational phase 3, including adaptive, multi-arm platforms.
+    - Designs aligned with current FDA guidance, including Bayesian optimal interval (BOIN) dose finding and master protocols.
     - Operational and site feasibility assessed during design, so timelines and accrual projections are realistic before activation.
+    - Patient advocacy efforts supported by Your Prostate Cancer. Help.
 
 - slug: project-management
   title: Project Management
@@ -24,7 +25,7 @@
 - slug: clinical-data-management
   title: Clinical Data Management
   summary: >-
-    Standards-driven data management built on Medidata Rave EDC and reusable
+    Standards-driven data management built on Medrio EDC and reusable
     CDISC-conformant libraries, following Good Clinical Data Management Practices and
     current FDA, ICH GCP, and GDPR requirements.
   points:
@@ -37,8 +38,7 @@
   summary: >-
     PCCTC biostatisticians, statistical programmers, and data scientists are involved
     from protocol and statistical analysis plan through final reporting, combining
-    modern, reproducible computing practice with strict GxP compliance. [STAFF CONFIRM:
-    merged entry, director review]
+    modern, reproducible computing practice with strict GxP compliance.
   points:
     - Statistical analysis plans and study-specific analyses developed with Clinical Data Management, including designs built on the Prostate Cancer Working Group endpoint criteria.
     - Reproducible data delivery and reporting pipelines, with rigorous dataset validation that scales across the portfolio.
@@ -53,19 +53,18 @@
   points:
     - Multi-site start-up, coordinating what each site needs to open a study and receive investigational product.
     - Guidance and executable action plans that keep submissions aligned with evolving regulatory requirements.
-    - Customized regulatory document packages that speed site start-up.
+    - Customized regulatory document packages and reliance on the PCCTC's central regulatory document repository speed site start-up.
 
 - slug: monitoring
   title: Medical, Site, and Centralized Monitoring
   summary: >-
     Medical monitoring, on-site and remote site monitoring, and centralized data
     surveillance run together under PCCTC SOPs, so safety signals and data-quality issues
-    are caught early in every region of a study. [STAFF CONFIRM: new entry, director
-    review]
+    are caught early in every region of a study.
   points:
-    - Physician medical monitors review eligibility, safety, and dose decisions, with defined escalation pathways to sponsors and investigators.
+    - Medical monitors review eligibility, safety, and dose decisions, with defined escalation pathways to sponsors and investigators.
     - Risk-based site monitoring plans tailored to each study, with regional monitoring partners outside the US working under PCCTC SOPs.
-    - Centralized monitoring tracks accrual, data entry, and query resolution against projections, with data sweeps timed to interim analyses and data monitoring committee meetings.
+    - Centralized monitoring tracks trends in accrual, data entry, and query resolution across sites against expectations, including reviews for data quality timed to interim analyses and data monitoring committee meetings.
 
 - slug: correlative-science-and-laboratory-services
   title: Correlative Science and Laboratory Services
@@ -98,14 +97,13 @@
   points:
     - Registry design and operations across a network of more than 200 clinical research sites.
     - Nested substudies and retrospective data requests turn a registry into a research platform; five IRONMAN substudies are open today.
-    - Contracting, data management, and biostatistics carry a registry from protocol to publication.
+    - Centralized data use agreements, controlled access to registry datasets, and PCCTC-supported data analysis streamline the completion and publication of research questions.
 
 - slug: quality-management
   title: Quality Management
   summary: >-
     A dedicated quality function maintains the SOPs, study-specific plans, and oversight
-    that keep every PCCTC-managed study inspection-ready. [STAFF CONFIRM: new entry,
-    director review]
+    that keep every PCCTC-managed study inspection-ready.
   points:
     - Standard Operating Procedures covering budgeting and contracting, protocol development, quality management, correlative management, study and site management, safety monitoring, data management, and statistics and programming.
     - Study-specific operational plans for project management, statistical analysis, data management, monitoring, eTMF, cohort management, and communication, plus data monitoring and imaging/pathology committee charters.
@@ -114,11 +112,10 @@
 - slug: contracts-and-budgets
   title: Contracts and Budgets
   summary: >-
-    Budgeting and contracting tools built for multicenter research, including a master
-    clinical trial agreement for industry-sponsored studies, speed activation and set
-    consistent terms across institutions.
+    Budgeting and contracting tools built for multicenter research speed activation and
+    set consistent terms across institutions.
   points:
-    - Unilateral and bilateral confidentiality agreements and a Master Clinical Trial Agreement for industry-sponsored clinical research.
+    - Unilateral and bilateral confidentiality agreements and a Master Clinical Trial Agreement.
     - Rapid contracting with industry partners for work carried out by the PCCTC, and advice on site agreement terms and expected site costs to avoid negotiation delays.
     - A coordinated budgeting strategy aligned with project management, protocol development, and contracting.
 
