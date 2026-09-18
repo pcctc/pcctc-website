@@ -126,8 +126,9 @@ content:
       - name: studies-active
         label: Active studies
         description: >-
-          The full list on /studies, most recently opened first. Order here is display
-          order; add new studies at the top.
+          The interventional studies listed on /studies, most recently opened first. Order
+          here is display order; add new studies at the top. Registries and their substudies
+          go under Registries instead.
         type: file
         path: src/data/studies-active.yaml
         format: yaml
@@ -139,10 +140,13 @@ content:
             label: Title
             type: string
             required: true
+            description: >-
+              Put the short name first when the study has one, e.g. "DORA: A Phase III Trial
+              of ...".
           - name: phase
             label: Phase
             type: string
-            description: e.g. "Phase 2" or "Phase 1b/2". Leave blank for registries and substudies.
+            description: e.g. "Phase 2" or "Phase 1b/2". Use Arabic numerals so the badges match.
           - name: nct
             label: NCT number
             type: string
@@ -162,7 +166,7 @@ content:
           - name: note
             label: Badge
             type: string
-            description: e.g. "IRONMAN Registry Substudy".
+            description: Optional short tag shown next to the phase, e.g. "PCCTC-sponsored".
       - name: registries
         label: Registries
         description: >-
@@ -204,6 +208,13 @@ content:
             label: Description
             type: text
             required: true
+          - name: substudies
+            label: Open substudies
+            type: string
+            list: true
+            description: >-
+              Full titles of open substudies built on this registry, short name first. They
+              appear in the "Open substudies" list on /registries. Remove one when it closes.
 
   - name: services
     label: Services

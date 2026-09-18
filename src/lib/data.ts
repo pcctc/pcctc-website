@@ -44,6 +44,8 @@ export interface Registry {
   description: string;
   nct?: string;
   url?: string;
+  /** Titles of open substudies, listed on /registries under the platform text. */
+  substudies?: string[];
 }
 
 export interface Leader {

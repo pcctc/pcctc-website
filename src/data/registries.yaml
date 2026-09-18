@@ -5,8 +5,13 @@
   url: "https://ironmanregistry.org/"
   description: >-
     An international registry for men with advanced prostate cancer. Five PCCTC-run
-    substudies (PRODIGY, EMPRO, CUETIP, BIOGUARD, and IRONSeq) are built on its
-    platform, reusing its sites, contracts, and data pipelines.
+    substudies have been built on its platform, reusing its sites, contracts, and data
+    pipelines.
+  substudies:
+    - "PRODIGY: Observational study to describe effectiveness of olaparib in subjects with metastatic castration-resistant prostate cancer who have failed prior treatment with a new hormonal agent and carry selected homologous recombination repair gene mutations"
+    - "EMPRO: Engaging Men in Patient Reported Outcomes"
+    - "BIOGUARD: BIOmarker landscape in GU cancers: Assessment in the Real-worlD"
+    - "IRONSeq: Characterizing the whole genome landscape of the IRONMAN Registry"
 
 - name: "PROMISE Registry: A Prostate Cancer Registry of Outcomes and Germline Mutations for Improved Survival and Treatment Effectiveness"
   condition: "Prostate cancer"
@@ -17,9 +22,9 @@
     A PCCTC-managed registry linking germline genetics to outcomes and treatment
     effectiveness for patients with prostate cancer.
 
-- name: "RER"
+- name: "The Reversing Early Recurrence (RER) Registry: A Patient Registry to Characterize Molecular Residual Disease (MRD) and to Facilitate Clinical Trial Patient Identification"
   condition: "Colorectal, breast, and lung cancer"
   status: "In development"
   description: >-
-    A PCCTC registry program extending the IRONMAN and PROMISE model to colorectal,
-    breast, and lung cancer on the same coordinated infrastructure.
+    A PCCTC-managed registry program extending the IRONMAN and PROMISE model to
+    colorectal, breast, and lung cancer on the same coordinated infrastructure.

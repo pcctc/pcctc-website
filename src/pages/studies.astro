@@ -43,7 +43,6 @@ const jsonLd = active
     title="Our study portfolio"
     lede="Our trials span the entire disease continuum, strategically aligned with the most promising targets and biomarkers in development today."
   />
-  <PortfolioTabs />
 
   <section class="section">
     <div class="container">
@@ -66,16 +65,15 @@ const jsonLd = active
           );
         })}
       </div>
-      <p class="section-foot">
-        <a href="/registries" class="link-arrow">Explore the registry portfolio <Icon name="arrow" size={16} /></a>
-      </p>
     </div>
   </section>
+
+  <PortfolioTabs />
 
   <section class="section section--surface">
     <div class="container">
       <p class="eyebrow">Active study portfolio</p>
-      <h2 class="block-title">Currently open studies</h2>
+      <h2 class="block-title">Currently open interventional studies</h2>
       <p class="portfolio-note">Most recently opened studies first.</p>
       <ul class="portfolio">
         {active.map((s) => (
@@ -105,9 +103,6 @@ const jsonLd = active
 <style>
   .block-title { font-size: var(--step-2); margin-bottom: 1.5rem; }
 
-  .section-foot { margin: 2rem 0 0; }
-  .section-foot .link-arrow { color: var(--brand-600); }
-
   /* Four featured cards: 4-up on wide screens, 2x2 on tablets. */
   .feat-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
   .portfolio-note { color: var(--text-muted); font-size: 0.9rem; margin: -0.75rem 0 1.25rem; }
@@ -125,9 +120,9 @@ const jsonLd = active
     border-radius: 999px;
   }
   .feat h3 { font-size: 1.1rem; color: var(--ink-900); line-height: 1.32; flex-grow: 1; }
-  .feat__foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .feat__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.25rem 1rem; }
   .feat .nct { font-size: 0.85rem; color: var(--text-muted); }
-  .feat .link-arrow { color: var(--brand-600); font-size: 0.88rem; }
+  .feat .link-arrow { color: var(--brand-600); font-size: 0.88rem; white-space: nowrap; }
 
   .portfolio { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
   .study-row {

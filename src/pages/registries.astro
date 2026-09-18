@@ -6,6 +6,9 @@ import Icon from '../components/Icon.astro';
 import { registries } from '../lib/data';
 
 const regs = registries();
+const substudies = regs.flatMap((r) =>
+  (r.substudies ?? []).map((title) => ({ title, registry: r.name.split(':')[0] }))
+);
 
 const jsonLd = regs
   .filter((r) => r.nct)
@@ -80,6 +83,20 @@ const jsonLd = regs
         </p>
       </div>
 
+      {substudies.length > 0 && (
+        <div class="substudies">
+          <h3>Open substudies</h3>
+          <ul>
+            {substudies.map((s) => (
+              <li>
+                <p>{s.title}</p>
+                <span class="chip">{s.registry} substudy</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div class="cta-row">
         <div>
           <h2>Planning a registry program?</h2>
@@ -120,6 +137,25 @@ const jsonLd = regs
 
   .platform-prose { max-width: 68ch; margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem); }
   .platform-prose p { color: var(--text-soft); }
+
+  .substudies { margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem); }
+  .substudies h3 { font-size: 1.15rem; color: var(--ink-900); margin-bottom: 1rem; }
+  .substudies ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+  .substudies li {
+    padding: 1.25rem 1.4rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+  }
+  .substudies p { margin: 0 0 0.6rem; color: var(--ink-900); font-weight: 550; line-height: 1.45; }
+  .chip {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-soft);
+    background: var(--surface-2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+  }
 
   .cta-row {
     display: flex;
