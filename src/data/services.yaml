@@ -6,9 +6,9 @@
     efficiently at the sites that will enroll it.
   points:
     - Concept development and protocol writing with investigators who set the field's trial-design and endpoint standards, including PCWG4.
-    - Designs from first-in-human dose escalation to randomized phase 2 and registrational phase 3, including adaptive, multi-arm platforms.
+    - Designs from first-in-human dose escalation to randomized phase 2 and registrational phase 3, extending more recently to adaptive, multi-arm platforms.
     - Designs aligned with current FDA guidance, including Bayesian optimal interval (BOIN) dose finding and master protocols.
-    - Operational and site feasibility assessed during design, so timelines and accrual projections are realistic before activation.
+    - Operational and site feasibility assessed during design to support rapid activation timelines and reliable accrual projections.
     - Patient advocacy efforts supported by Your Prostate Cancer. Help.
 
 - slug: project-management
@@ -53,7 +53,7 @@
   points:
     - Multi-site start-up, coordinating what each site needs to open a study and receive investigational product.
     - Guidance and executable action plans that keep submissions aligned with evolving regulatory requirements.
-    - Customized regulatory document packages and reliance on the PCCTC's central regulatory document repository speed site start-up.
+    - Customized regulatory document packages and reliance on the PCCTC's central regulatory document repository to speed up site start-up.
 
 - slug: monitoring
   title: Medical, Site, and Centralized Monitoring
@@ -80,12 +80,12 @@
 - slug: medical-communications
   title: Medical Communications and Writing
   summary: >-
-    Dedicated medical writers and editors with oncology expertise work with
+    Our dedicated medical writer and editor, both with oncology expertise, work with
     investigators, sponsors, regulators, and publishers across a project's lifecycle,
     from protocol to peer-reviewed manuscript.
   points:
     - Protocols, informed consent forms, and study start-up presentations through abstracts, peer-reviewed manuscripts, and regulatory documentation.
-    - Editors embedded with project management teams on each assignment.
+    - An editor embedded with the project management team on each assignment.
     - Strict adherence to ICH, ICMJE, and project-specific guidelines for ethical publication and authorship.
 
 - slug: registries-and-real-world-evidence
@@ -96,7 +96,7 @@
     registry, and is extending the model to colorectal, breast, and lung cancer.
   points:
     - Registry design and operations across a network of more than 200 clinical research sites.
-    - Nested substudies and retrospective data requests turn a registry into a research platform; five IRONMAN substudies are open today.
+    - Nested substudies and retrospective data requests turn a registry into a research platform; five substudies have been built on IRONMAN to date.
     - Centralized data use agreements, controlled access to registry datasets, and PCCTC-supported data analysis streamline the completion and publication of research questions.
 
 - slug: quality-management
@@ -112,7 +112,7 @@
 - slug: contracts-and-budgets
   title: Contracts and Budgets
   summary: >-
-    Budgeting and contracting tools built for multicenter research speed activation and
+    Budgeting and contracting tools, built for multicenter research, speed activation and
     set consistent terms across institutions.
   points:
     - Unilateral and bilateral confidentiality agreements and a Master Clinical Trial Agreement.
