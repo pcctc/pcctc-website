@@ -14,12 +14,17 @@ Pages CMS (see Key decisions); everything it edits is a plain text file in this 
 - **Studies** — `src/data/studies-featured.yaml` and `studies-active.yaml`. Each entry:
   `title`, `phase`, `nct`, `url`, optional `note`. For active studies `url` is optional and
   defaults to the ClinicalTrials.gov page for `nct`; for featured studies it's required (it's
-  the card link, and may be a site path such as `/talent`).
+  the card link, and may be a site path such as `/talent`). The active list holds
+  interventional studies only; registries and their substudies live in `registries.yaml`.
+  Titles lead with the short name when a study has one ("DORA: A Phase III Trial of ..."), and
+  `phase` uses Arabic numerals ("Phase 2", "Phase 1b/2a") even when the official title doesn't.
 - **Services** — `src/data/services.yaml` (title, summary, bullet `points`). Order is display
   order on /services and the homepage cards. `src/data/engagement-models.yaml` holds the
   "How we engage" cards at the top of /services.
 - **Registries** — `src/data/registries.yaml` (`name`, `condition`, `status` Active/In
-  development, optional `nct`/`url`, `description`), rendered on /registries.
+  development, optional `nct`/`url`, `description`, optional `substudies` list of titles),
+  rendered on /registries. Substudies from every registry appear in one "Open substudies" list
+  under the platform text; remove a title when the substudy closes.
 - **Leadership / committee / sites / stats / working-group publications** — the other
   `src/data/*.yaml` files. `working-groups.yaml` holds the publication lists (a group with no
   `publications` renders without that block). Leadership entries take an optional `bio`; when
@@ -64,10 +69,18 @@ site and earlier copy said "Medidata Rave"; don't copy that back either.
   extending across oncology. Replaced the earlier "integrated research organization (IRO)"
   wording and the interim "oncology CRO backed by a global academic consortium". Keep the
   homepage hero, `Seo.astro` org description, and About/Services descriptions in step.
-- **Studies and registries are sibling tabs.** `PortfolioTabs.astro` sits under the hero on
-  /studies (interventional) and /registries; Registries is a footer link only, not primary nav.
-  The featured-study set is chosen to show range (phase 1 industry, PCCTC-sponsored randomized,
-  international phase 3, registry); the active list is newest-first.
+- **Studies and registries are sibling tabs.** Registries is a footer link only, not primary
+  nav. On /studies the featured cards sit above `PortfolioTabs.astro` because they span the
+  whole portfolio (phase 1 industry, PCCTC-sponsored randomized, international phase 3,
+  registry); the list under the tabs is "Currently open interventional studies", newest first.
+  On /registries the tabs sit directly under the hero so the page stays about registries.
+  Changed 2026-09-18 on staff review: a registry card on the interventional tab read as out of
+  place, and registries and IRONMAN substudies had been mixed into the open-studies list.
+- **What "currently open" means is not settled.** The 2026-09-18 sweep removed studies that
+  staff named as old (both CellCentric CCS1477 studies, SAABR), the closed CUETIP substudy, and
+  everything ClinicalTrials.gov listed as completed or terminated. Studies that are active but
+  not recruiting stayed. The list is hand-maintained; nothing syncs it to ClinicalTrials.gov or
+  to an internal tracker.
 - **News index shows a rolling three-year window** (computed at build time). Older posts stay
   published at their URLs and are listed under a collapsed "Earlier news" block.
 - **Partner inquiry form uses Web3Forms (free tier)**. The access key lives in
