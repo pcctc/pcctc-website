@@ -8,10 +8,12 @@
     substudies have been built on its platform, reusing its sites, contracts, and data
     pipelines.
   substudies:
-    - "PRODIGY: Observational study to describe effectiveness of olaparib in subjects with metastatic castration-resistant prostate cancer who have failed prior treatment with a new hormonal agent and carry selected homologous recombination repair gene mutations"
-    - "EMPRO: Engaging Men in Patient Reported Outcomes"
-    - "BIOGUARD: BIOmarker landscape in GU cancers: Assessment in the Real-worlD"
-    - "IRONSeq: Characterizing the whole genome landscape of the IRONMAN Registry"
+    - title: "PRODIGY: Observational study to describe effectiveness of olaparib in subjects with metastatic castration-resistant prostate cancer who have failed prior treatment with a new hormonal agent and carry selected homologous recombination repair gene mutations"
+      status: Open to accrual
+    - title: "EMPRO: Engaging Men in Patient Reported Outcomes"
+      status: Closed to accrual
+    - title: "BIOGUARD: BIOmarker landscape in GU cancers: Assessment in the Real-worlD"
+    - title: "IRONSeq: Characterizing the whole genome landscape of the IRONMAN Registry"
 
 - name: "PROMISE Registry: A Prostate Cancer Registry of Outcomes and Germline Mutations for Improved Survival and Treatment Effectiveness"
   condition: "Prostate cancer"

@@ -7,7 +7,7 @@ import { registries } from '../lib/data';
 
 const regs = registries();
 const substudies = regs.flatMap((r) =>
-  (r.substudies ?? []).map((title) => ({ title, registry: r.name.split(':')[0] }))
+  (r.substudies ?? []).map((s) => ({ ...s, registry: r.name.split(':')[0] }))
 );
 
 const jsonLd = regs
@@ -85,12 +85,19 @@ const jsonLd = regs
 
       {substudies.length > 0 && (
         <div class="substudies">
-          <h3>Open substudies</h3>
+          <h3>Active substudies</h3>
           <ul>
             {substudies.map((s) => (
               <li>
                 <p>{s.title}</p>
-                <span class="chip">{s.registry} substudy</span>
+                <div class="substudies__tags">
+                  <span class="chip">{s.registry} substudy</span>
+                  {s.status && (
+                    <span class:list={['chip', 'chip--status', s.status === 'Open to accrual' && 'chip--open']}>
+                      {s.status}
+                    </span>
+                  )}
+                </div>
               </li>
             ))}
           </ul>
@@ -148,6 +155,7 @@ const jsonLd = regs
     border-radius: var(--radius-sm);
   }
   .substudies p { margin: 0 0 0.6rem; color: var(--ink-900); font-weight: 550; line-height: 1.45; }
+  .substudies__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .chip {
     font-size: 0.75rem;
     font-weight: 600;
@@ -156,6 +164,8 @@ const jsonLd = regs
     padding: 0.2rem 0.6rem;
     border-radius: 999px;
   }
+  .chip--status { background: transparent; border: 1px solid var(--line); }
+  .chip--open { color: var(--brand-700); border-color: var(--brand-300); }
 
   .cta-row {
     display: flex;

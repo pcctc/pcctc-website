@@ -1,85 +1,102 @@
 - title: >-
-    STRIKE-001: Phase 1, Dose-Escalation Study of KTX2001 (an NSD2 Inhibitor)
-    Alone and in Combination With Darolutamide for Metastatic
-    Castration-Resistant Prostate Cancer
+    VIR-5500: A Phase 1, First-in-Human Study of the Safety, Pharmacokinetics, and
+    Preliminary Efficacy of VIR-5500 (AMX-500) in Participants With Prostate Cancer
+  phase: Phase 1
+  nct: NCT05997615
+  status: Open to accrual
+- title: >-
+    MOMENT: A Phase 2, Open-label, Single-Arm Study of Mevrometostat Plus Enzalutamide
+    in Metastatic Castration-Resistant Prostate Cancer Following Prior Androgen
+    Receptor Pathway Inhibitor Therapy
+  phase: Phase 2
+  nct: NCT07592910
+  status: In development
+- title: >-
+    STRIKE-001: Phase 1, Dose-Escalation Study of KTX2001 (an NSD2 Inhibitor) Alone
+    and in Combination With Darolutamide for Metastatic Castration-Resistant Prostate
+    Cancer
   phase: Phase 1
   nct: NCT07103018
-  url: https://clinicaltrials.gov/study/NCT07103018
+  status: Open to accrual
 - title: >-
-    PATHWAY: A Phase 1b/2a, Multicenter, Open-Label Study of Pocenbrodib as
-    Monotherapy and in combination With Abiraterone Acetate, Olaparib, or
-    177Lu-PSMA-617 in Participants with Metastatic Castration-Resistant Prostate
-    Cancer (mCRPC)
-  phase: Phase 1b/2a
-  nct: NCT06785636
-  url: https://clinicaltrials.gov/study/NCT06785636
+    PSMA-007-001: A Phase 1, Open-Label, Multicenter Study of JANX007 in Subjects With
+    Metastatic Castration-Resistant Prostate Cancer
+  phase: Phase 1
+  nct: NCT05519449
+  status: Open to accrual
 - title: >-
-    A Phase 1/2a, Multicenter, Open-Label, First in Human Study to Assess the
-    Safety, Tolerability, Pharmacokinetics, and Preliminary Antitumor Activity
-    of DB-1311 in Subjects with Advanced/Metastatic Solid Tumors
-  phase: Phase 1/2a
-  nct: NCT05914116
-  url: https://clinicaltrials.gov/study/NCT05914116
+    LuX: A Feasibility Study of Xaluritamig in Participants With Metastatic Castrate
+    Resistant Prostate Cancer and Suboptimal Response to Lutetium 177 Vipivotide
+    Tetraxetan
+  phase: Phase 2
+  nct: NCT07737925
+  status: In development
 - title: >-
     TALENT: TALazoparib with or without ENzaluTamide in patients with metastatic
     castration-resistant prostate cancer and HRR mutations after progression on
     abiraterone acetate
   phase: Phase 2
   nct: NCT06844383
-  url: https://clinicaltrials.gov/study/NCT06844383
+  status: Open to accrual
 - title: >-
-    A Phase 1b/2 Study Evaluating the Activity of Tinengotinib (TT–00420) in
-    Combination with Androgen Receptor Signaling Inhibitors (ARSIs) in Patients
-    with Metastatic Castration Resistant Prostate Cancer
+    TIDAL: Phase 2 Study of Tarlatamab in Patients With Delta-like Protein 3 (DLL3)
+    Positive Metastatic Prostate Cancer
+  phase: Phase 2
+  nct: NCT07111507
+  status: Open to accrual
+- title: >-
+    TIP: A Phase 1b/2 Study Evaluating the Activity of Tinengotinib (TT-00420) in
+    Combination With Androgen Receptor Signaling Inhibitors (ARSIs) in Patients With
+    Metastatic Castration Resistant Prostate Cancer
   phase: Phase 1b/2
   nct: NCT06457919
-  url: https://clinicaltrials.gov/study/NCT06457919
+  status: Open to accrual
 - title: >-
-    DASL-HiCaP: Darolutamide Augments Standard Therapy for Localised Very
-    High-Risk Cancer of the Prostate (ANZUP1801). A randomised phase 3
-    double-blind, placebo-controlled trial of adding darolutamide to androgen
-    deprivation therapy and definitive or salvage radiation in very high risk,
-    clinically localised prostate cancer
+    PRESERVE-006: Randomized Study of ONC-392 Plus Lutetium Lu 177 Vipivotide
+    Tetraxetan in Patients With Metastatic Castration-Resistant Prostate Cancer (mCRPC)
+    Who Progressed on Androgen Receptor (AR) Pathway Inhibition
+  phase: Phase 1/2
+  nct: NCT05682443
+  status: Closed to accrual
+- title: >-
+    DASL-HiCaP: Darolutamide Augments Standard Therapy for Localised Very High-Risk
+    Cancer of the Prostate (ANZUP1801). A randomised phase 3 double-blind,
+    placebo-controlled trial of adding darolutamide to androgen deprivation therapy
+    and definitive or salvage radiation in very high risk, clinically localised
+    prostate cancer
   phase: Phase 3
   nct: NCT04136353
-  url: https://clinicaltrials.gov/study/NCT04136353
+  status: Closed to accrual
 - title: >-
-    A Phase 2 Multicohort Study of Nivolumab in Combination with Docetaxel and
-    Androgen Deprivation Therapy in Metastatic Hormone Sensitive Prostate Cancer
-    Patients with DNA Damage Repair Defects or Inflamed Tumors
+    NivoDoce: A Phase 2 Multicohort Study of Nivolumab in Combination With Docetaxel
+    and Androgen Deprivation Therapy in Metastatic Hormone Sensitive Prostate Cancer
+    Patients With DNA Damage Repair Defects or Inflamed Tumors
   phase: Phase 2
   nct: NCT04126070
-  url: https://clinicaltrials.gov/study/NCT04126070
+  status: Pending closure
 - title: >-
-    A Single-arm, Phase 2 Study to Evaluate the Safety and Efficacy of IMMU-132
-    in Patients with Castration-Resistant Prostate Cancer Progressing on
-    Enzalutamide or Abiraterone
+    SAABR: Single Arm Phase II Study of AR Targeted Therapy + Atezolizumab + GnRH
+    Analog and Stereotactic Body Radiotherapy (SBRT) to the Prostate in Men With Newly
+    Diagnosed Hormone-sensitive Metastatic Prostate Cancer
   phase: Phase 2
-  nct: NCT03725761
-  url: https://clinicaltrials.gov/study/NCT03725761
+  nct: NCT04262154
+  status: Pending closure
 - title: >-
-    Metacure: Multi-arm Multi-modality Therapy for Very High Risk Localized and
-    Low Volume Metastatic Prostatic Adenocarcinoma
+    MetaCure: Multi-arm Multi-modality Therapy for Very High Risk Localized and Low
+    Volume Metastatic Prostatic Adenocarcinoma
   phase: Phase 2
   nct: NCT03436654
-  url: https://clinicaltrials.gov/study/NCT03436654
+  status: Pending closure
 - title: >-
-    DORA: A Phase III Trial of Docetaxel vs. Docetaxel and Radium-223 for
-    Metastatic Castration-Resistant Prostate Cancer
+    DORA: A Phase III Trial of Docetaxel vs. Docetaxel and Radium-223 for Metastatic
+    Castration-Resistant Prostate Cancer
   phase: Phase 3
   nct: NCT03574571
-  url: https://clinicaltrials.gov/study/NCT03574571
+  status: Closed to accrual
 - title: >-
-    BRCAAway: A Randomized Phase II Trial of Abiraterone, Olaparib, or
-    Abiraterone + Olaparib in Patients with Metastatic Castration-Resistant
-    Prostate Cancer with DNA Repair Defects
-  phase: Phase 2
-  nct: NCT03012321
-  url: https://clinicaltrials.gov/study/NCT03012321
-- title: >-
-    A Phase I/II Trial of Concurrent Chemohormonal Therapy Using Enzalutamide
-    (MDV-3100) and Cabazitaxel in Patients with Metastatic Castration Resistant
-    Prostate Cancer
-  phase: Phase 1/2
-  nct: NCT02522715
-  url: https://clinicaltrials.gov/study/NCT02522715
+    Ribo-X: Phase IB/II Study of Enzalutamide With Ribociclib in Patients With
+    Metastatic Castrate Resistant, Chemotherapy Naïve Prostate Cancer That Retains RB
+    Expression
+  phase: Phase 1b/2
+  nct: NCT02555189
+  status: Pending closure

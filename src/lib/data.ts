@@ -28,6 +28,8 @@ export interface Study {
   note?: string;
   /** Disease area; renderers default to "Prostate cancer" when absent. */
   condition?: string;
+  /** Accrual status as the PCCTC Project Matrix records it, e.g. "Open to accrual". */
+  status?: string;
 }
 
 export interface EngagementModel {
@@ -44,8 +46,8 @@ export interface Registry {
   description: string;
   nct?: string;
   url?: string;
-  /** Titles of open substudies, listed on /registries under the platform text. */
-  substudies?: string[];
+  /** Active substudies, listed on /registries under the platform text. */
+  substudies?: { title: string; status?: string }[];
 }
 
 export interface Leader {

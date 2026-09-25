@@ -73,8 +73,8 @@ const jsonLd = active
   <section class="section section--surface">
     <div class="container">
       <p class="eyebrow">Active study portfolio</p>
-      <h2 class="block-title">Currently open interventional studies</h2>
-      <p class="portfolio-note">Most recently opened studies first.</p>
+      <h2 class="block-title">Active interventional studies</h2>
+      <p class="portfolio-note">Newest first.</p>
       <ul class="portfolio">
         {active.map((s) => (
           <li class="study-row">
@@ -82,16 +82,19 @@ const jsonLd = active
               <p class="study-row__title">{s.title}</p>
               <div class="study-row__tags">
                 {s.phase && <span class="chip chip--phase">{s.phase}</span>}
+                {s.status && (
+                  <span class:list={['chip', 'chip--status', s.status === 'Open to accrual' && 'chip--open']}>
+                    {s.status}
+                  </span>
+                )}
                 {multiCondition && <span class="chip">{s.condition ?? 'Prostate cancer'}</span>}
                 {s.note && <span class="chip">{s.note}</span>}
               </div>
             </div>
-            {s.nct && s.url ? (
+            {s.nct && s.url && (
               <a href={s.url} rel="noopener" target="_blank" class="study-row__nct">
                 {s.nct} <Icon name="external" size={14} />
               </a>
-            ) : (
-              s.note && !s.nct && <span class="study-row__nct study-row__nct--muted">Substudy</span>
             )}
           </li>
         ))}
@@ -148,6 +151,8 @@ const jsonLd = active
     border-radius: 999px;
   }
   .chip--phase { color: var(--brand-700); background: var(--brand-050); }
+  .chip--status { background: transparent; border: 1px solid var(--line); }
+  .chip--open { color: var(--brand-700); border-color: var(--brand-300); }
   .study-row__nct {
     flex-shrink: 0;
     white-space: nowrap;
@@ -160,7 +165,6 @@ const jsonLd = active
     gap: 0.3rem;
     margin-top: 0.15rem;
   }
-  .study-row__nct--muted { color: var(--text-muted); font-weight: 500; }
 
   @media (max-width: 40rem) {
     .study-row { flex-direction: column; gap: 0.75rem; }
