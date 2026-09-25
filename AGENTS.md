@@ -12,19 +12,21 @@ Pages CMS (see Key decisions); everything it edits is a plain text file in this 
   that point to a press release/article/video. Filenames become the URL slug — keep them stable
   to preserve SEO. To add a post, copy an existing file and edit.
 - **Studies** — `src/data/studies-featured.yaml` and `studies-active.yaml`. Each entry:
-  `title`, `phase`, `nct`, `url`, optional `note`. For active studies `url` is optional and
-  defaults to the ClinicalTrials.gov page for `nct`; for featured studies it's required (it's
-  the card link, and may be a site path such as `/talent`). The active list holds
-  interventional studies only; registries and their substudies live in `registries.yaml`.
-  Titles lead with the short name when a study has one ("DORA: A Phase III Trial of ..."), and
-  `phase` uses Arabic numerals ("Phase 2", "Phase 1b/2a") even when the official title doesn't.
+  `title`, `phase`, `nct`, `url`, optional `note`; active entries also carry `status` (the
+  accrual status, shown as a chip). For active studies `url` is optional and defaults to the
+  ClinicalTrials.gov page for `nct`; for featured studies it's required (it's the card link,
+  and may be a site path such as `/talent`). The active list holds interventional studies
+  only; registries and their substudies live in `registries.yaml`. Titles lead with the short
+  name from the Project Matrix ("DORA: A Phase III Trial of ..."), the rest is the
+  ClinicalTrials.gov official title, and `phase` uses Arabic numerals ("Phase 2",
+  "Phase 1b/2a") even when the official title doesn't.
 - **Services** — `src/data/services.yaml` (title, summary, bullet `points`). Order is display
   order on /services and the homepage cards. `src/data/engagement-models.yaml` holds the
   "How we engage" cards at the top of /services.
 - **Registries** — `src/data/registries.yaml` (`name`, `condition`, `status` Active/In
-  development, optional `nct`/`url`, `description`, optional `substudies` list of titles),
-  rendered on /registries. Substudies from every registry appear in one "Open substudies" list
-  under the platform text; remove a title when the substudy closes.
+  development, optional `nct`/`url`, `description`, optional `substudies` list of `title` +
+  accrual `status`), rendered on /registries. Substudies from every registry appear in one
+  "Active substudies" list under the platform text; remove one when its project closes.
 - **Leadership / committee / sites / stats / working-group publications** — the other
   `src/data/*.yaml` files. `working-groups.yaml` holds the publication lists (a group with no
   `publications` renders without that block). Leadership entries take an optional `bio`; when
@@ -72,15 +74,19 @@ site and earlier copy said "Medidata Rave"; don't copy that back either.
 - **Studies and registries are sibling tabs.** Registries is a footer link only, not primary
   nav. On /studies the featured cards sit above `PortfolioTabs.astro` because they span the
   whole portfolio (phase 1 industry, PCCTC-sponsored randomized, international phase 3,
-  registry); the list under the tabs is "Currently open interventional studies", newest first.
+  registry); the list under the tabs is "Active interventional studies", newest first.
   On /registries the tabs sit directly under the hero so the page stays about registries.
   Changed 2026-09-18 on staff review: a registry card on the interventional tab read as out of
   place, and registries and IRONMAN substudies had been mixed into the open-studies list.
-- **What "currently open" means is not settled.** The 2026-09-18 sweep removed studies that
-  staff named as old (both CellCentric CCS1477 studies, SAABR), the closed CUETIP substudy, and
-  everything ClinicalTrials.gov listed as completed or terminated. Studies that are active but
-  not recruiting stayed. The list is hand-maintained; nothing syncs it to ClinicalTrials.gov or
-  to an internal tracker.
+- **The active study list follows the Airtable Project Matrix** (Operations > Project Matrix;
+  settled 2026-09-25 on staff review). Definition: LLC or FSP projects whose PCCTC Project
+  Status is "Active" and that have a ClinicalTrials.gov record, newest first, each showing the
+  Matrix's Accrual Status. Unregistered in-development studies stay off the site because a
+  sponsor's unregistered study may still be confidential, and non-study projects (e.g. ACS
+  IMPACT) are left out. Registries and their substudies follow the same rule in
+  `registries.yaml`. Nothing syncs the list: staff copy changes from the Matrix into the CMS
+  (a nightly Airtable sync was offered and declined on 2026-09-25). ClinicalTrials.gov can't
+  derive the list on its own; most sponsor-run studies don't name the PCCTC as a collaborator.
 - **News index shows a rolling three-year window** (computed at build time). Older posts stay
   published at their URLs and are listed under a collapsed "Earlier news" block.
 - **Partner inquiry form uses Web3Forms (free tier)**. The access key lives in
