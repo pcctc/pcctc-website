@@ -73,15 +73,23 @@ site and earlier copy said "Medidata Rave"; don't copy that back either.
   homepage hero, `Seo.astro` org description, and About/Services descriptions in step.
 - **Studies and registries are sibling tabs.** Registries is a footer link only, not primary
   nav. On /studies the featured cards sit above `PortfolioTabs.astro` because they span the
-  whole portfolio (phase 1 industry, PCCTC-sponsored randomized, international phase 3,
-  registry); the list under the tabs is "Active interventional studies", newest first.
+  whole portfolio (phase 1 industry, PCCTC-sponsored randomized, investigator-initiated
+  phase 2, registry); the list under the tabs is "Active interventional studies".
   On /registries the tabs sit directly under the hero so the page stays about registries.
   Changed 2026-09-18 on staff review: a registry card on the interventional tab read as out of
   place, and registries and IRONMAN substudies had been mixed into the open-studies list.
+- **Featured studies are open to accrual.** The same four cards appear on /studies and the
+  homepage. On 2026-09-30 TIDAL replaced DASL-HiCaP, which had closed to accrual, after the
+  CEO flagged it. No open phase 3 existed to take its place, so the set shows no phase 3 or
+  international trial for now; bring one back when one opens.
 - **The active study list follows the Airtable Project Matrix** (Operations > Project Matrix;
   settled 2026-09-25 on staff review). Definition: LLC or FSP projects whose PCCTC Project
-  Status is "Active" and that have a ClinicalTrials.gov record, newest first, each showing the
-  Matrix's Accrual Status. Unregistered in-development studies stay off the site because a
+  Status is "Active" and that have a ClinicalTrials.gov record, each showing the Matrix's
+  Accrual Status. The page lists studies open to accrual first, then in development, closed to
+  accrual, and pending closure (`accrualOrder` in `studies.astro`); within each status the file
+  order holds, which is newest first by Matrix project number. Staff also asked (2026-09-30)
+  for LLC studies ahead of FSP ones; that needs each entry's Matrix project type, which the
+  site doesn't store yet. Unregistered in-development studies stay off the site because a
   sponsor's unregistered study may still be confidential, and non-study projects (e.g. ACS
   IMPACT) are left out. Registries and their substudies follow the same rule in
   `registries.yaml`. Nothing syncs the list: staff copy changes from the Matrix into the CMS
