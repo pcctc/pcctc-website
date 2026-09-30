@@ -6,11 +6,19 @@ import Icon from '../components/Icon.astro';
 import { featuredStudies, activeStudies } from '../lib/data';
 
 const featured = featuredStudies();
+const accrualOrder = ['Open to accrual', 'In development', 'Closed to accrual', 'Pending closure'];
+const accrualRank = (status?: string) => {
+  const i = accrualOrder.indexOf(status ?? '');
+  return i === -1 ? accrualOrder.length : i;
+};
 // `url` is an override; entries normally carry only the NCT number.
-const active = activeStudies().map((s) => ({
-  ...s,
-  url: s.url || (s.nct ? `https://clinicaltrials.gov/study/${s.nct}` : undefined),
-}));
+// sort() is stable, so the file's newest-first order holds within each accrual status.
+const active = activeStudies()
+  .map((s) => ({
+    ...s,
+    url: s.url || (s.nct ? `https://clinicaltrials.gov/study/${s.nct}` : undefined),
+  }))
+  .sort((a, b) => accrualRank(a.status) - accrualRank(b.status));
 
 // Condition chips only appear once the portfolio spans more than one disease.
 const conditions = new Set(active.map((s) => s.condition ?? 'Prostate cancer'));
@@ -74,7 +82,7 @@ const jsonLd = active
     <div class="container">
       <p class="eyebrow">Active study portfolio</p>
       <h2 class="block-title">Active interventional studies</h2>
-      <p class="portfolio-note">Newest first.</p>
+      <p class="portfolio-note">Studies open to accrual are listed first.</p>
       <ul class="portfolio">
         {active.map((s) => (
           <li class="study-row">

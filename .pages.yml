@@ -126,11 +126,12 @@ content:
       - name: studies-active
         label: Active studies
         description: >-
-          The interventional studies listed on /studies, newest first. The list follows the
-          Project Matrix in Airtable: LLC or FSP projects with PCCTC Project Status "Active"
-          that have a ClinicalTrials.gov record. Copy the Accrual Status from the Matrix.
-          Order here is display order; add new studies at the top. Registries and their
-          substudies go under Registries instead.
+          The interventional studies listed on /studies. The list follows the Project
+          Matrix in Airtable: LLC or FSP projects with PCCTC Project Status "Active" that
+          have a ClinicalTrials.gov record. Copy the Accrual Status from the Matrix. Add new
+          studies at the top. The page shows studies open to accrual first, then in
+          development, closed to accrual, and pending closure, keeping this order within
+          each status. Registries and their substudies go under Registries instead.
         type: file
         path: src/data/studies-active.yaml
         format: yaml
