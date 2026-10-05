@@ -1,5 +1,5 @@
 ---
-title: PCCTC Investigator Dr Mary-Ellen Taplin Recieves 2026 PCF Women in
+title: PCCTC Investigator Dr Mary-Ellen Taplin Receives 2026 PCF Women in
   Science Lifetime Achievement Award
 date: 2026-10-05
 author: Kristofer Prepelica, PhD
