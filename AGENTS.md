@@ -15,8 +15,11 @@ Pages CMS (see Key decisions); everything it edits is a plain text file in this 
   `title`, `phase`, `nct`, `url`, optional `note`; active entries also carry `status` (the
   accrual status, shown as a chip). For active studies `url` is optional and defaults to the
   ClinicalTrials.gov page for `nct`; for featured studies it's required (it's the card link,
-  and may be a site path such as `/talent`). The active list holds interventional studies
-  only; registries and their substudies live in `registries.yaml`. Titles lead with the short
+  and may be a site path such as `/talent`). `studies-consortium.yaml` (same fields, no
+  `status`) holds other trials open at consortium sites; its titles are written by Kris
+  Prepelica (medical communications) and kept as he writes them. Both lists hold
+  interventional studies only; registries and their substudies live in `registries.yaml`.
+  In `studies-active.yaml`, titles lead with the short
   name from the Project Matrix ("DORA: A Phase III Trial of ..."), the rest is the
   ClinicalTrials.gov official title, and `phase` uses Arabic numerals ("Phase 2",
   "Phase 1b/2a") even when the official title doesn't.
@@ -82,6 +85,14 @@ site and earlier copy said "Medidata Rave"; don't copy that back either.
   homepage. On 2026-09-30 TIDAL replaced DASL-HiCaP, which had closed to accrual, after the
   CEO flagged it. No open phase 3 existed to take its place, so the set shows no phase 3 or
   international trial for now; bring one back when one opens.
+- **/studies lists two groups (2026-10-09).** "Managed by the PCCTC" is the Project Matrix
+  list described next (`studies-active.yaml`). "Open at consortium sites"
+  (`studies-consortium.yaml`) comes from Kris Prepelica's October 2026 list of trials at
+  consortium sites, minus registries, observational studies, and anything already in the
+  managed group, most recently registered first. The lists answer different questions (what
+  the PCCTC runs, and what is enrolling across the network), and only 4 of the 62 records in
+  Kris's list named the PCCTC as sponsor or collaborator, so one merged list would blur that
+  line.
 - **The active study list follows the Airtable Project Matrix** (Operations > Project Matrix;
   settled 2026-09-25 on staff review). Definition: LLC or FSP projects whose PCCTC Project
   Status is "Active" and that have a ClinicalTrials.gov record, each showing the Matrix's
