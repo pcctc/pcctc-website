@@ -74,6 +74,10 @@ site and earlier copy said "Medidata Rave"; don't copy that back either.
   extending across oncology. Replaced the earlier "integrated research organization (IRO)"
   wording and the interim "oncology CRO backed by a global academic consortium". Keep the
   homepage hero, `Seo.astro` org description, and About/Services descriptions in step.
+- **The repositioned site went live 2026-10-09.** Staff reviewed it on a private preview build
+  over several rounds and approved it as a whole rather than line by line; that approval is the
+  sign-off for copy Claude drafted during those rounds. The last commit on `main` before the
+  launch is b129cc8.
 - **Studies and registries are sibling tabs.** Registries is a footer link only, not primary
   nav. On /studies the featured cards sit above `PortfolioTabs.astro` because they span the
   whole portfolio (phase 1 industry, PCCTC-sponsored randomized, investigator-initiated
@@ -116,7 +120,7 @@ site and earlier copy said "Medidata Rave"; don't copy that back either.
   information; nothing on this site should collect PHI.
 - **`[STAFF CONFIRM: ...]` markers** mark text that still needs a real value (names, registry
   details, drafted copy awaiting review). They render visibly on purpose; `grep -rn "STAFF
-  CONFIRM" src/` must return nothing before the preview branch merges to `main`.
+  CONFIRM" src/` must return nothing on `main`.
 - **Deploy**: pushing to `main` triggers `.github/workflows/deploy.yml` (build + GitHub Pages).
   The `www.pcctc.org` custom domain is set in the repo's Settings → Pages; Actions-based deploys
   ignore CNAME files. DNS lives at GoDaddy (www CNAME to pcctc.github.io, apex A records to the
