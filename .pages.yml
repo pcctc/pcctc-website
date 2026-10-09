@@ -124,9 +124,9 @@ content:
             type: string
             description: Short tag on the card, e.g. "International registry" or "PCCTC-sponsored".
       - name: studies-active
-        label: Active studies
+        label: Studies managed by the PCCTC
         description: >-
-          The interventional studies listed on /studies. The list follows the Project
+          The studies listed on /studies under "Managed by the PCCTC". The list follows the Project
           Matrix in Airtable: LLC or FSP projects with PCCTC Project Status "Active" that
           have a ClinicalTrials.gov record. Copy the Accrual Status from the Matrix. Add new
           studies at the top. The page shows studies open to accrual first, then in
@@ -176,6 +176,37 @@ content:
             label: Badge
             type: string
             description: Optional short tag shown next to the phase, e.g. "PCCTC-sponsored".
+      - name: studies-consortium
+        label: Studies at consortium sites
+        description: >-
+          The trials listed on /studies under "Open at consortium sites": interventional
+          trials open at PCCTC consortium sites that the PCCTC doesn't manage. Most recently
+          registered first, so add new ones at the top. A study the PCCTC manages goes under
+          Studies managed by the PCCTC instead; registries and observational studies stay off
+          the page.
+        type: file
+        path: src/data/studies-consortium.yaml
+        format: yaml
+        list: true
+        operations:
+          delete: false
+        fields:
+          - name: title
+            label: Title
+            type: string
+            required: true
+          - name: phase
+            label: Phase
+            type: string
+            description: e.g. "Phase 2" or "Phase 1b/2". Use Arabic numerals so the badges match.
+          - name: nct
+            label: NCT number
+            type: string
+            required: true
+            pattern:
+              regex: "^NCT\\d{8}$"
+              message: "NCT followed by 8 digits, e.g. NCT03151629"
+            description: ClinicalTrials.gov identifier. The row links to ClinicalTrials.gov automatically.
       - name: registries
         label: Registries
         description: >-

@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import PortfolioTabs from '../components/PortfolioTabs.astro';
 import Icon from '../components/Icon.astro';
-import { featuredStudies, activeStudies } from '../lib/data';
+import { featuredStudies, activeStudies, consortiumStudies, type Study } from '../lib/data';
 
 const featured = featuredStudies();
 const accrualOrder = ['Open to accrual', 'In development', 'Closed to accrual', 'Pending closure'];
@@ -12,19 +12,26 @@ const accrualRank = (status?: string) => {
   return i === -1 ? accrualOrder.length : i;
 };
 // `url` is an override; entries normally carry only the NCT number.
+const withUrl = (s: Study) => ({
+  ...s,
+  url: s.url || (s.nct ? `https://clinicaltrials.gov/study/${s.nct}` : undefined),
+});
 // sort() is stable, so the file's newest-first order holds within each accrual status.
-const active = activeStudies()
-  .map((s) => ({
-    ...s,
-    url: s.url || (s.nct ? `https://clinicaltrials.gov/study/${s.nct}` : undefined),
-  }))
+const managed = activeStudies()
+  .map(withUrl)
   .sort((a, b) => accrualRank(a.status) - accrualRank(b.status));
+const consortium = consortiumStudies().map(withUrl);
+const groups = [
+  { title: 'Managed by the PCCTC', note: 'Studies open to accrual are listed first.', studies: managed },
+  { title: 'Open at consortium sites', note: 'Most recently registered first.', studies: consortium },
+];
+const allStudies = [...managed, ...consortium];
 
 // Condition chips only appear once the portfolio spans more than one disease.
-const conditions = new Set(active.map((s) => s.condition ?? 'Prostate cancer'));
+const conditions = new Set(allStudies.map((s) => s.condition ?? 'Prostate cancer'));
 const multiCondition = conditions.size > 1;
 
-const jsonLd = active
+const jsonLd = allStudies
   .filter((s) => s.nct)
   .map((s) => ({
     '@context': 'https://schema.org',
@@ -82,31 +89,36 @@ const jsonLd = active
     <div class="container">
       <p class="eyebrow">Active study portfolio</p>
       <h2 class="block-title">Active interventional studies</h2>
-      <p class="portfolio-note">Studies open to accrual are listed first.</p>
-      <ul class="portfolio">
-        {active.map((s) => (
-          <li class="study-row">
-            <div class="study-row__main">
-              <p class="study-row__title">{s.title}</p>
-              <div class="study-row__tags">
-                {s.phase && <span class="chip chip--phase">{s.phase}</span>}
-                {s.status && (
-                  <span class:list={['chip', 'chip--status', s.status === 'Open to accrual' && 'chip--open']}>
-                    {s.status}
-                  </span>
+      {groups.map((g) => (
+        <div class="portfolio-group">
+          <h3>{g.title}</h3>
+          <p class="portfolio-note">{g.note}</p>
+          <ul class="portfolio">
+            {g.studies.map((s) => (
+              <li class="study-row">
+                <div class="study-row__main">
+                  <p class="study-row__title">{s.title}</p>
+                  <div class="study-row__tags">
+                    {s.phase && <span class="chip chip--phase">{s.phase}</span>}
+                    {s.status && (
+                      <span class:list={['chip', 'chip--status', s.status === 'Open to accrual' && 'chip--open']}>
+                        {s.status}
+                      </span>
+                    )}
+                    {multiCondition && <span class="chip">{s.condition ?? 'Prostate cancer'}</span>}
+                    {s.note && <span class="chip">{s.note}</span>}
+                  </div>
+                </div>
+                {s.nct && s.url && (
+                  <a href={s.url} rel="noopener" target="_blank" class="study-row__nct">
+                    {s.nct} <Icon name="external" size={14} />
+                  </a>
                 )}
-                {multiCondition && <span class="chip">{s.condition ?? 'Prostate cancer'}</span>}
-                {s.note && <span class="chip">{s.note}</span>}
-              </div>
-            </div>
-            {s.nct && s.url && (
-              <a href={s.url} rel="noopener" target="_blank" class="study-row__nct">
-                {s.nct} <Icon name="external" size={14} />
-              </a>
-            )}
-          </li>
-        ))}
-      </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   </section>
 </Base>
@@ -117,6 +129,8 @@ const jsonLd = active
   /* Four featured cards: 4-up on wide screens, 2x2 on tablets. */
   .feat-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
   .portfolio-note { color: var(--text-muted); font-size: 0.9rem; margin: -0.75rem 0 1.25rem; }
+  .portfolio-group + .portfolio-group { margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem); }
+  .portfolio-group h3 { font-size: 1.2rem; color: var(--ink-900); margin: 0 0 1.25rem; }
   .feat { display: flex; flex-direction: column; gap: 0.8rem; text-decoration: none; color: inherit; }
   .feat:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--brand-200); }
   .feat__tag {

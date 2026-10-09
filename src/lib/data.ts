@@ -98,6 +98,7 @@ export const engagementModels = () => load<EngagementModel[]>('engagement-models
 export const registries = () => load<Registry[]>('registries.yaml');
 export const featuredStudies = () => load<Study[]>('studies-featured.yaml');
 export const activeStudies = () => load<Study[]>('studies-active.yaml');
+export const consortiumStudies = () => load<Study[]>('studies-consortium.yaml');
 export const leadership = () => load<Leader[]>('leadership.yaml');
 export const committee = () => load<CommitteeMember[]>('committee.yaml');
 export const workingGroups = () => load<WorkingGroup[]>('working-groups.yaml');
