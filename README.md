@@ -33,9 +33,11 @@ Open **pcctc-website** and pick a section in the left sidebar:
 | Section | What it changes |
 |---|---|
 | News | posts on /news and the latest three on the homepage |
-| Studies → Featured / Active | the study cards and the open-studies list on /studies |
+| Studies → Featured studies, Studies managed by the PCCTC, Studies at consortium sites | the featured cards and the two study lists on /studies |
+| Studies → Registries | the registry cards and the active substudies list on /registries |
 | Services | /services and the service cards on the homepage |
-| About page → Management team, Scientific Oversight Committee, Participating sites, Key numbers | the matching blocks on /about (key numbers also appear on the homepage) |
+| Engagement models | the "How we engage" cards at the top of /services |
+| About page → Management team, Scientific Oversight Committee, Participating sites, Key numbers | the matching blocks on /about, including optional team bios (key numbers also appear on the homepage) |
 | Expertise page, Guiding principles page | the text on those two pages |
 | Working groups | the groups and publication lists on /workinggroups |
 | Media | images under `public/images/` |

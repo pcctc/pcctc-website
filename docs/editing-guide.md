@@ -40,22 +40,26 @@ the site:
 | In the sidebar | What it changes on the site |
 |---|---|
 | **News** | the posts on pcctc.org/news, and the three newest on the homepage |
-| **Studies → Featured studies** | the three highlighted study cards on the homepage and at the top of /studies |
-| **Studies → Active studies** | the "Currently open studies" list on /studies |
+| **Studies → Featured studies** | the highlighted study cards on the homepage and at the top of /studies |
+| **Studies → Studies managed by the PCCTC** | the "Managed by the PCCTC" list on /studies |
+| **Studies → Studies at consortium sites** | the "Open at consortium sites" list on /studies |
+| **Studies → Registries** | the registry cards and the "Active substudies" list on /registries |
 | **Services** | the service descriptions on /services, and the service cards on the homepage |
-| **About page → Management team** | names, titles and headshots on /about |
+| **Engagement models** | the "How we engage" cards at the top of /services |
+| **About page → Management team** | names, titles, headshots and short bios on /about |
 | **About page → Scientific Oversight Committee** | the committee list on /about |
 | **About page → Participating sites** | the US and international site lists on /about |
 | **About page → Key numbers** | the four big statistics on the homepage and /about |
 | **Expertise page** | the four sections of text on /expertise |
 | **Guiding principles page** | the numbered principles on /guidingprinciples |
-| **Working groups** | the two working groups and their publication lists on /workinggroups |
+| **Working groups** | the working groups and their publication lists on /workinggroups |
 | **Media** | the image library (headshots, graphics) |
 
 ![The sidebar: News, Studies, Services, About page, Expertise page, Guiding principles page, Working groups, and Media](images/02-sidebar.png)
 
 A few parts of the site are not in this list: the homepage text, the mission and history on
-/about, the /talent page, the privacy page, and the banner text at the top of each page.
+/about, the /talent page, most of the Partner page, the privacy page, and the banner text at
+the top of each page.
 Those live in the site's templates rather than its content and change rarely. If one of them
 needs editing, or the site needs a new section, that's a change to the structure; bring it to
 Travis (see "When to bring in Travis").
@@ -122,7 +126,7 @@ Two kinds of posts exist on the site, and both are fine:
 - **A full post**: title, date, summary and a body written in the editor, with or without an
   external link.
 
-## Editing lists: studies, services, team, sites, numbers, publications
+## Editing lists: studies, registries, services, team, sites, numbers, publications
 
 These sections open as one long form with one card per item. The cards are numbered
 (Item #1, Item #2, ...) rather than titled, so to find a particular study or person use
@@ -134,12 +138,42 @@ your browser's Find (Cmd+F on a Mac, Ctrl+F on Windows) and type part of the nam
   the site.
 - The trash icon on the right removes a card (it asks you to confirm). Removing a card from the list is
   how you take a study or a person off the site; there's no separate "delete" step.
-- Study links: for an active study, fill in the **NCT number** and leave **Link (override)**
-  blank; the site links to ClinicalTrials.gov by itself.
+- Study links: for a managed study, fill in the **NCT number** and leave **Link (override)**
+  blank; the site links to ClinicalTrials.gov by itself. Consortium studies have no link
+  field at all; the NCT number is enough.
 - The **Anchor** field on services, expertise sections and working groups is part of a web
   address that other pages link to. Leave it alone on existing items.
 
-![The Active studies form: numbered item cards with a drag handle on the left and a trash icon on the right, and a Collapse all link](images/06-list-form.png)
+![A study list form: numbered item cards with a drag handle on the left and a trash icon on the right, and a Collapse all link](images/06-list-form.png)
+
+### Which list a study goes in
+
+/studies has two lists, and a study belongs in only one of them.
+
+- **Studies managed by the PCCTC** follows the Project Matrix in Airtable: LLC or FSP
+  projects whose PCCTC Project Status is "Active" and that have a ClinicalTrials.gov record.
+  Copy each study's **Accrual status** from the Matrix and add new studies at the top. The
+  page groups studies by status on its own (open to accrual first, then in development,
+  closed to accrual, pending closure), so nothing needs reordering when a status changes.
+- **Studies at consortium sites** lists interventional trials open at consortium sites that
+  the PCCTC doesn't manage. Each needs only a title, phase and NCT number, and the most
+  recently registered go at the top. If the PCCTC manages a study, it goes in the list above
+  instead.
+- Registries and observational studies stay off both lists. Registries have their own page:
+  **Studies → Registries** holds one card per registry, and each card has an **Active
+  substudies** list. Add a substudy there with its full title (short name first) and its
+  accrual status from the Matrix, and remove it when the project closes. Substudies from
+  every registry appear together in one list on /registries.
+- Write phases with Arabic numerals ("Phase 2", "Phase 1b/2") so the badges match.
+
+### Team bios and engagement models
+
+- Each card under **About page → Management team** has an optional **Short bio** of two to
+  four sentences. Filling it in turns that person's card on /about into one that opens to
+  show the bio. Add bios for the whole team at the same time, so every card works the same
+  way.
+- **Engagement models** holds the "How we engage" cards at the top of /services. Each card
+  has a title, bullet points, and a one-sentence closing note under the bullets.
 
 ## Images
 
@@ -207,7 +241,7 @@ structure, so he's the person for:
 
 - a new section, page or field (say, a new list on a page, or a new kind of post);
 - changes to text that isn't in the editor (homepage, About mission and history, /talent,
-  privacy, page banners);
+  the Partner page, privacy, page banners);
 - anything that looks broken after you've tried the troubleshooting table;
 - access problems, such as a fresh invitation;
 - an image question you're not sure about (ownership, or where it should go).
@@ -219,7 +253,7 @@ message.
 
 1. Sign in and bookmark https://app.pagescms.org.
 2. Open **News**, open the newest post, and look around. Close it without saving.
-3. Open **Studies → Active studies** to see what a list form looks like.
+3. Open **Studies → Studies managed by the PCCTC** to see what a list form looks like.
 4. Make one small, real edit (a typo anywhere will do) and watch it go live.
 5. Post your first news item the same way. Read it over once before saving, then check the
    live page a few minutes later.
@@ -230,5 +264,7 @@ message.
 - **Filename**: the last part of a post's web address, ending in `.md`.
 - **Save**: record the change and publish it.
 - **History**: the list of past saves for an item.
+- **Project Matrix**: the Airtable table (Operations > Project Matrix) that decides which
+  studies appear under Studies managed by the PCCTC and which accrual status each shows.
 - **pcctc-website** and **main**: the name of the site's file collection and its one
   working copy. You'll always be in these; there's nothing to choose.
