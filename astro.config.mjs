@@ -8,8 +8,8 @@ export default defineConfig({
   trailingSlash: 'ignore',
   integrations: [
     sitemap({
-      // /privacy is noindex; don't send crawlers contradictory signals
-      filter: (page) => !page.endsWith('/privacy/'),
+      // /privacy and /partner/thanks are noindex; don't send crawlers contradictory signals
+      filter: (page) => !page.endsWith('/privacy/') && !page.endsWith('/partner/thanks/'),
     }),
   ],
   build: {
