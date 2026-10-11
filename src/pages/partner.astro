@@ -15,6 +15,10 @@ const inquiry = 'mailto:pcctc@mskcc.org?subject=Partnership%20inquiry%20(pcctc.o
 const WEB3FORMS_ACCESS_KEY = '63736e08-0ef4-4e8e-b88d-cfc7e6f04ddc';
 const formConnected = !WEB3FORMS_ACCESS_KEY.startsWith('REPLACE_');
 const thanksUrl = new URL('/partner/thanks/', Astro.site).href;
+// Off since 2026-10-10: MSK's mail filter silently drops Web3Forms email, so submissions
+// reached no one. Visitors get the email button below until the replacement described in
+// docs/partner-form.md is tested.
+const formEnabled = false;
 ---
 
 <Base
@@ -97,13 +101,14 @@ const thanksUrl = new URL('/partner/thanks/', Astro.site).href;
           Your message goes to the PCCTC business development team, who will follow up directly.
         </p>
 
-        {!formConnected && (
+        {formEnabled && !formConnected && (
           <p class="form-notice">
             This form is not connected yet (no Web3Forms access key set). Until it is,
             please <a href={inquiry}>email the team</a>.
           </p>
         )}
 
+        {formEnabled ? (
         <form
           class="inquiry"
           id="inquiry-form"
@@ -171,6 +176,12 @@ const thanksUrl = new URL('/partner/thanks/', Astro.site).href;
           </div>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
+        ) : (
+          <div class="email-start">
+            <a href={inquiry} class="btn btn--primary">Email pcctc@mskcc.org <Icon name="mail" size={17} /></a>
+            <p class="hint">Please include your organization, and do not include patient information.</p>
+          </div>
+        )}
       </div>
 
       <aside class="start-aside">
@@ -181,11 +192,13 @@ const thanksUrl = new URL('/partner/thanks/', Astro.site).href;
             <span class="bd-card__role">{bd.role}</span>
           </div>
         )}
+        {formEnabled && (
         <div class="aside-note">
           <h3>Prefer email?</h3>
           <p>Write to the consortium's shared inbox and your note will reach the same team.</p>
           <a href={inquiry} class="link-arrow">pcctc@mskcc.org <Icon name="mail" size={15} /></a>
         </div>
+        )}
         <div class="aside-note">
           <h3>Already have a program in mind?</h3>
           <p>Our <a href="/services#engagement">engagement models</a> outline full, partial, and consulting arrangements.</p>
@@ -289,6 +302,7 @@ const thanksUrl = new URL('/partner/thanks/', Astro.site).href;
   }
 
   .inquiry { margin-top: 1.75rem; display: grid; gap: 1.25rem; }
+  .email-start { margin-top: 1.75rem; display: grid; gap: 0.75rem; justify-items: start; }
   .botcheck { display: none; }
   .field-row { display: grid; gap: 1.25rem; }
   @media (min-width: 40rem) { .field-row { grid-template-columns: 1fr 1fr; } }

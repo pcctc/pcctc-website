@@ -112,12 +112,16 @@ site and earlier copy said "Medidata Rave"; don't copy that back either.
   derive the list on its own; most sponsor-run studies don't name the PCCTC as a collaborator.
 - **News index shows a rolling three-year window** (computed at build time). Older posts stay
   published at their URLs and are listed under a collapsed "Earlier news" block.
-- **Partner inquiry form uses Web3Forms (free tier)**. The access key lives in
-  `src/pages/partner.astro` (`WEB3FORMS_ACCESS_KEY`); it is public by design and maps to the
-  inbox the key was created under. Until it is set the page shows a "not connected" notice and
-  a mailto fallback. CC is a paid Web3Forms feature, so a second inbox is reached with an
-  Outlook forwarding rule, not a form setting. The form asks people not to include patient
-  information; nothing on this site should collect PHI.
+- **Partner inquiry form: switched off 2026-10-10, replacement in progress.** The form launched
+  on Web3Forms (free tier), which emails each submission to the address its access key was
+  registered with; the key in `src/pages/partner.astro` belongs to Rebecca Green's Web3Forms
+  account, so a test with it emails her. MSK's mail filter silently drops Web3Forms email:
+  tests on 2026-10-10 reached Gmail but never arrived at MSK addresses or showed up in
+  quarantine, and asking IT to allow a public form service looked unlikely to work. So
+  `formEnabled = false` shows an email button for pcctc@mskcc.org instead, and a Cloudflare
+  Worker sending through Resend from `forms.pcctc.org` is being set up to replace Web3Forms.
+  `docs/partner-form.md` records how it works and how to run it. The form asks people not to
+  include patient information; nothing on this site should collect PHI.
 - **`[STAFF CONFIRM: ...]` markers** mark text that still needs a real value (names, registry
   details, drafted copy awaiting review). They render visibly on purpose; `grep -rn "STAFF
   CONFIRM" src/` must return nothing on `main`.
