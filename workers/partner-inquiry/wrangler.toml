@@ -1,0 +1,19 @@
+# Cloudflare Worker that receives the /partner inquiry form and emails it through Resend.
+# Setup, secrets and handoff notes: docs/partner-form.md
+name = "pcctc-partner-inquiry"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[vars]
+FROM = "PCCTC website <inquiries@forms.pcctc.org>"
+ALLOWED_ORIGINS = "https://www.pcctc.org,https://pcctc.org"
+
+# Secrets, set with `npx wrangler secret put NAME` and never committed:
+#   RESEND_API_KEY        Resend API key with sending access to forms.pcctc.org
+#   TURNSTILE_SECRET_KEY  secret key of the "pcctc.org partner form" Turnstile widget
+#   INQUIRY_TO            recipient addresses, comma-separated
+
+# Request logs in the Cloudflare dashboard. The Worker never logs visitors' details.
+[observability]
+enabled = true

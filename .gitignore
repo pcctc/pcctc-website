@@ -28,3 +28,7 @@ pnpm-debug.log*
 
 # local decks / internal documents, not site content
 *.pptx
+
+# Cloudflare Worker local secrets and state
+.dev.vars*
+.wrangler/

@@ -10,6 +10,8 @@ recipient changes.
 |---|---|
 | 2026-10-09 | Form launched on Web3Forms. |
 | 2026-10-10 | Form switched off (`formEnabled = false` in `src/pages/partner.astro`); /partner shows an email button for pcctc@mskcc.org instead. Replacement setup started. |
+| 2026-10-11 | Cloudflare sign-up with an mskcc.org address is blocked: MSK has an enterprise Cloudflare account that claims the domain, so those sign-ups go to MSK IT. Looking for a pcctc.org address to own the accounts instead (pcctc.org email is Microsoft 365, managed through GoDaddy). |
+| 2026-10-11 | Worker written and tested locally (`workers/partner-inquiry/`). Not deployed yet. |
 
 ## Why Web3Forms was dropped
 
@@ -40,6 +42,49 @@ succeed, so the form needs a sender PCCTC controls.
 
 `forms.pcctc.org` is used only for this, so the records behind pcctc.org's own email stay
 untouched.
+
+## The Worker
+
+Files in `workers/partner-inquiry/`:
+
+| File | What it is |
+|---|---|
+| `src/index.js` | the Worker |
+| `wrangler.toml` | its name, settings and non-secret configuration |
+| `package.json`, `package-lock.json` | pin `wrangler`, Cloudflare's command-line tool, at 4.141.0 |
+| `test/index.test.js` | tests that run on any computer with Node; no accounts needed |
+
+What it does with each submission, in order:
+
+1. Accepts only POST requests sent from https://www.pcctc.org or https://pcctc.org.
+2. Treats a ticked `botcheck` box (hidden from people) as a bot: it answers "success" and sends
+   nothing.
+3. Asks Cloudflare whether the visitor passed the Turnstile check.
+4. Checks the required fields, their lengths and the email format.
+5. Sends one email through Resend to every address in `INQUIRY_TO`, with Reply-To set to the
+   visitor's address.
+6. Answers the page with JSON (`success` and `message`), and the page shows the message to the
+   visitor.
+
+Configuration:
+
+| Name | Kind | Where it's set | What it holds |
+|---|---|---|---|
+| `FROM` | variable | `wrangler.toml` | sender name and address |
+| `ALLOWED_ORIGINS` | variable | `wrangler.toml` | the sites allowed to submit |
+| `RESEND_API_KEY` | secret | Cloudflare | Resend key with sending access to `forms.pcctc.org` |
+| `TURNSTILE_SECRET_KEY` | secret | Cloudflare | secret key of the Turnstile widget |
+| `INQUIRY_TO` | secret | Cloudflare | recipients, comma-separated; kept out of this public repo |
+
+Secrets are set with `npx wrangler secret put NAME`, run from `workers/partner-inquiry/`. Once
+set they can be replaced but not read back, so a successor sets new ones rather than looking
+up the old ones.
+
+Logging: Cloudflare keeps request logs (`[observability]` in `wrangler.toml`). When Resend
+refuses an email the Worker logs only Resend's status code and error type, never a visitor's
+name, address or message.
+
+To run the tests: `cd workers/partner-inquiry && npm test`.
 
 ## DNS
 
