@@ -25,15 +25,7 @@ The PCCTC played a central role in the successful execution of this trial across
 
 **Added Sean McBride, MD, MPH, DASL-HiCaP Study Lead at Memorial Sloan Kettering Cancer Center,** *“I think our study results represent a significant step forward in men with DASL high-risk prostate cancer treated with radiotherapy.  The addition of Darolutamide to Androgen Deprivation Therapy and Radiation should be considered a new standard of care in this setting”*
 
- 
-
- 
-
- 
-
-To learn more about the PCCTC's mission to accelerate the development of new therapies for prostate cancer patients, visit [[www.pcctc.org]](http://www.pcctc.org]).
-
- 
+To learn more about the PCCTC's mission to accelerate the development of new therapies for prostate cancer patients, visit [www.pcctc.org](https://www.pcctc.org/).
 
 *Issued on behalf of the Prostate Cancer Clinical Trials Consortium.*
 
@@ -43,25 +35,17 @@ For further information, please contact Kristofer Prepelica, PhD, Medical Commun
 
 The Prostate Cancer Clinical Trials Consortium (PCCTC) is a premier clinical trials network dedicated to advancing the treatment of prostate cancer through innovative, high-quality research. The PCCTC coordinates and conducts clinical trials across a network of leading U.S. academic and research institutions, working collaboratively with national and international partners to accelerate the development of new therapies and improve outcomes for patients with prostate cancer. For further details, please visit its website at [https://www.pcctc.org/](https://www.pcctc.org/).
 
- 
-
 **About DASL-HiCaP trial (ANZUP 1801)**
 
 The DASL-HiCaP trial is investigator-initiated and one of the largest of its kind, enrolling 1,106 participants across Australia, New Zealand, Canada, the United States, Ireland and the United Kingdom. It is an international, randomised, placebo-controlled, double-blind study. All participants received state-of-the-art standard treatment (radiation therapy plus ADT) and were then randomly assigned to also receive either the study medicine or an identical placebo tablet. The trial has closed to recruitment, and participants will continue to be followed over the longer term. The North American component of the trial was coordinated in the United States by the PCCTC and in Canada by the Canadian Cancer Trials Group.
-
- 
 
 **About ANZUP**
 
 ANZUP ([https://www.anzup.org.au](https://www.anzup.org.au)) is the leading cancer-cooperative trials group bringing together all of the professional disciplines and groups involved in researching and treating urogenital cancers to conduct high-quality cancer research. ANZUP's mission is to improve the lives of people affected by bladder, kidney, testicular, penile, and prostate cancers, towards a vision of living life without fear of cancer. ANZUP identifies gaps in evidence and areas of clinical need, collaborates with the best clinicians and researchers in genitourinary cancer and communicates frequently and effectively with the broader community along the way. ANZUP receives valuable infrastructure support from the Australian Government through Cancer Australia and research funding from Prostate Cancer Foundation of Australia.
 
- 
-
 **About the Sydney Clinical Trials Centre**
 
 The Sydney Clinical Trials Centre is a flagship research centre of the Faculty of Medicine and Health at the University of Sydney that designs and manages clinical trials. This includes responsibility for study coordination, monitoring, data acquisition and management and statistical analysis. The Sydney Clinical Trials Centre has health economics, biostatistics, systematic reviews and biomarker teams that work with trial data and inform healthcare providers about best practice. For further details, please visit its website at [https://www.ctc.usyd.edu.au](https://www.ctc.usyd.edu.au)
-
- 
 
 **References**
 
