@@ -31,7 +31,9 @@ content:
     format: yaml-frontmatter
     filename:
       template: "{title}.md"
-      field: create
+      # Pages CMS fills a visible Filename box once, from the still-empty form, so it only ever
+      # showed ".md". With the box hidden, the CMS builds the name from the title at first save.
+      field: false
     operations:
       rename: false # slugs match the old site for SEO; see AGENTS.md
     view:

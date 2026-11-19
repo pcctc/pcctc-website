@@ -106,18 +106,18 @@ Notes:
 ## Adding a news post
 
 1. Click **News**, then the green **Add an entry** button at the top right.
-2. At the top of the form is a **Filename** box. It fills itself in as you type the title,
-   and it is the post's web address: a title of *Just Published: Recruitment Strategies in the
-   PROMISE Registry* gives `pcctc.org/news/just-published-recruitment-strategies-in-the-promise-registry`.
-   You can shorten it before the first save (keep the `.md` at the end); after that it can't
-   be changed, because renaming would break links and search rankings. So settle the title
-   first.
+2. Type the title. The first time you save, the post's web address is made from it: a title
+   of *Just Published: Recruitment Strategies in the PROMISE Registry* gives
+   `pcctc.org/news/just-published-recruitment-strategies-in-the-promise-registry`. The address
+   can't be changed after that, because renaming would break links and search rankings, so
+   settle the title before your first save. You can still edit the title later; the address
+   keeps the original wording.
 3. The date is set to today and the author is pre-filled; change either if needed. Fill in
    the rest, write the body (or paste the external link), and **Save**. On a new post Save
    is active from the start, so if you press it too early you'll be shown which required
    fields are still empty.
 
-![The New entry form, with the Filename box at the top and today's date already filled in](images/05-new-post.png)
+![The New entry form, with today's date and the author already filled in](images/05-new-post.png)
 
 Two kinds of posts exist on the site, and both are fine:
 

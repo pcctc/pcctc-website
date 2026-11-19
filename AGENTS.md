@@ -141,6 +141,13 @@ site and earlier copy said "Medidata Rave"; don't copy that back either.
   save. News posts can't be renamed from the CMS (slugs are SEO-stable). CMS saves reformat
   YAML cosmetically (quoting, line folding, `chair: false` written out) and strip YAML
   comments, so don't put information in comments inside `src/data/*.yaml`.
+- **News filenames come from the title (2026-11-19).** Pages CMS fills a visible Filename box
+  once, from the still-empty form, so the box only ever showed `.md`, and Kris typed every
+  filename by hand until this change. Claude wrote the editing guide's claim that the box fills
+  itself in as you type, inferring it from the config without trying it in the live app. The
+  box is now hidden (`filename.field: false` in `.pages.yml`), and the CMS builds the name from
+  the slugified title at first save. Before you document CMS behavior for staff, try it in the
+  app.
 
 ## Development
 
