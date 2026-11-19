@@ -34,6 +34,11 @@ Pages CMS (see Key decisions); everything it edits is a plain text file in this 
   `src/data/*.yaml` files. `working-groups.yaml` holds the publication lists (a group with no
   `publications` renders without that block). Leadership entries take an optional `bio`; when
   present the /about card becomes click-to-expand.
+- **Research-site count** — `src/data/homepage.yaml` (`sites`, a number) fills every "200+ /
+  over 200 / more than 200 research sites" phrase in the templates: the homepage banner,
+  bullet list and SEO description, the sitewide JSON-LD in `Seo.astro`, /about and /partner.
+  `services.yaml` and `expertise.yaml` repeat the figure in CMS-edited text, which staff
+  update by hand.
 - **Expertise and guiding-principles text** — `src/data/expertise.yaml` (`id`, `title`, `body`;
   `id` is the in-page anchor) and `src/data/guiding-principles.yaml` (`title`, `body`). Long
   `body` fields render one paragraph per line break (`paragraphs()` in `src/lib/data.ts`).
@@ -41,8 +46,9 @@ Pages CMS (see Key decisions); everything it edits is a plain text file in this 
   above. Adding a field to a data file or the news schema means adding it there too.
 
 Page templates in `src/pages/` and components in `src/components/` render this data. Prose that
-is still inline in `.astro` files (not CMS-editable): the homepage, the About page mission and
-history, /talent, /privacy, and every page's hero eyebrow/title/lede and SEO description.
+is still inline in `.astro` files (not CMS-editable): the homepage (apart from its site count),
+the About page mission and history, /talent, /privacy, and every page's hero
+eyebrow/title/lede and SEO description.
 
 Content note: Travis Gerke's title is "Head of Applied Intelligence". The old Squarespace site
 said "Head of Applied Science", which was wrong; don't copy it back.
@@ -148,6 +154,12 @@ site and earlier copy said "Medidata Rave"; don't copy that back either.
   box is now hidden (`filename.field: false` in `.pages.yml`), and the CMS builds the name from
   the slugified title at first save. Before you document CMS behavior for staff, try it in the
   app.
+- **Only the research-site count moved out of the homepage template (2026-11-19).** The "200+
+  sites" stat tile was swapped for abstracts and papers on 2026-08-10, which left the figure
+  hardcoded in six places Kris couldn't reach from the CMS. The number is now the CMS Homepage
+  item; the banner and section text stay in code so the positioning language above stays in
+  step across pages. Keep the figure below the combined `sites.yaml` lists, since
+  /about shows both.
 
 ## Development
 

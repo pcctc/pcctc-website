@@ -1,4 +1,6 @@
 ---
+import { homepage } from '../lib/data';
+
 interface Props {
   title: string;
   description: string;
@@ -50,7 +52,7 @@ const orgLd = {
     'Real-world evidence',
   ],
   description:
-    'The PCCTC is a full-service integrated contract research organization (CRO) and clinical consortium built on two decades of leadership in genitourinary oncology. Its renowned investigators, network of 200+ research sites, and industry-grade CRO services now extend across oncology, completing efficient, process-driven clinical studies that translate scientific discoveries into improved standards of care.',
+    `The PCCTC is a full-service integrated contract research organization (CRO) and clinical consortium built on two decades of leadership in genitourinary oncology. Its renowned investigators, network of ${homepage().sites}+ research sites, and industry-grade CRO services now extend across oncology, completing efficient, process-driven clinical studies that translate scientific discoveries into improved standards of care.`,
   sameAs: [
     'https://www.linkedin.com/company/9322337/',
     'https://bsky.app/profile/thepcctc.bsky.social',

@@ -105,6 +105,7 @@ export const workingGroups = () => load<WorkingGroup[]>('working-groups.yaml');
 export const sites = () =>
   load<{ domestic: string[]; international: string[] }>('sites.yaml');
 export const stats = () => load<{ value: string; label: string }[]>('stats.yaml');
+export const homepage = () => load<{ sites: number }>('homepage.yaml');
 export const expertise = () => load<ExpertiseSection[]>('expertise.yaml');
 export const principles = () => load<Principle[]>('guiding-principles.yaml');
 

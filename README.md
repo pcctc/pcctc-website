@@ -32,6 +32,7 @@ Open **pcctc-website** and pick a section in the left sidebar:
 
 | Section | What it changes |
 |---|---|
+| Homepage | the number of research sites quoted on the homepage, /about, /partner and in search results |
 | News | posts on /news and the latest three on the homepage |
 | Studies → Featured studies, Studies managed by the PCCTC, Studies at consortium sites | the featured cards and the two study lists on /studies |
 | Studies → Registries | the registry cards and the active substudies list on /registries |
@@ -74,6 +75,7 @@ the place to add a field, change a label, or reword the help text.
 | Leadership / committee | `src/data/leadership.yaml`, `src/data/committee.yaml` |
 | Participating sites | `src/data/sites.yaml` |
 | Homepage / about stats | `src/data/stats.yaml` |
+| Research-site count (homepage, /about, /partner, search descriptions) | `src/data/homepage.yaml` |
 | Expertise and guiding-principles text | `src/data/expertise.yaml`, `src/data/guiding-principles.yaml` |
 | Working-group publications | `src/data/working-groups.yaml` |
 | Colors, fonts, spacing | `src/styles/global.css` (design tokens under `:root`) |

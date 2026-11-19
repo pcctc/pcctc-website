@@ -1,12 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
-import { leadership, committee, stats, sites, paragraphs } from '../lib/data';
+import { leadership, committee, stats, sites, paragraphs, homepage } from '../lib/data';
 
 const team = leadership();
 const soc = committee();
 const st = stats();
 const siteList = sites();
+const siteCount = homepage().sites;
 ---
 
 <Base
@@ -114,7 +115,7 @@ const siteList = sites();
       <p class="eyebrow">Participating clinical research sites</p>
       <h2 class="block-title">A network spanning six continents</h2>
       <p class="measure sites-lede">
-        More than 200 clinical research sites collaborate on PCCTC studies, including academic
+        More than {siteCount} clinical research sites collaborate on PCCTC studies, including academic
         medical centers, community hospitals, and research institutions. A current list is
         available upon request.
       </p>

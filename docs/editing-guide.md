@@ -39,6 +39,7 @@ the site:
 
 | In the sidebar | What it changes on the site |
 |---|---|
+| **Homepage** | the number of research sites quoted on the homepage, /about and /partner, and in search results |
 | **News** | the posts on pcctc.org/news, and the three newest on the homepage |
 | **Studies → Featured studies** | the highlighted study cards on the homepage and at the top of /studies |
 | **Studies → Studies managed by the PCCTC** | the "Managed by the PCCTC" list on /studies |
@@ -57,8 +58,8 @@ the site:
 
 ![The sidebar: News, Studies, Services, About page, Expertise page, Guiding principles page, Working groups, and Media](images/02-sidebar.png)
 
-A few parts of the site are not in this list: the homepage text, the mission and history on
-/about, the /talent page, most of the Partner page, the privacy page, and the banner text at
+A few parts of the site are not in this list: the homepage text (apart from the number of
+research sites), the mission and history on /about, the /talent page, most of the Partner page, the privacy page, and the banner text at
 the top of each page.
 Those live in the site's templates rather than its content and change rarely. If one of them
 needs editing, or the site needs a new section, that's a change to the structure; bring it to

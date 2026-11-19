@@ -21,6 +21,34 @@ settings:
       rename: "Rename {oldFilename} to {newFilename} (via Pages CMS)"
 
 content:
+  - name: homepage
+    label: Homepage
+    description: >-
+      The number of research sites in the PCCTC network. The rest of the homepage comes from
+      other sections: the four big numbers from About page → Key numbers, the service cards
+      from Services, the study cards from Studies → Featured studies, and the latest posts from
+      News. The banner and section introductions are part of the site's code; ask Travis to
+      change them.
+    type: file
+    path: src/data/homepage.yaml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+      - name: sites
+        label: Number of research sites
+        type: number
+        required: true
+        options:
+          min: 1
+        description: >-
+          Round it down (200 for 214 sites), since the pages say "200+", "over 200" or "more
+          than 200". It shows in the homepage banner and bullet list, on /about and /partner,
+          and in search results. Keep it below the combined count of the two lists under About page →
+          Participating sites, since /about shows both. The Services page (registry bullet) and
+          the Expertise page (Our Consortium section) mention the number in their own text;
+          change those by hand.
+
   - name: news
     label: News
     description: >-

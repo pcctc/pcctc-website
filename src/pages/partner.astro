@@ -2,9 +2,10 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
-import { stats, leadership, services } from '../lib/data';
+import { stats, leadership, services, homepage } from '../lib/data';
 
 const st = stats();
+const siteCount = homepage().sites;
 const bd = leadership().find((l) => l.role.includes('Business Development'));
 const serviceLines = services().map((s) => s.title);
 const inquiry = 'mailto:pcctc@mskcc.org?subject=Partnership%20inquiry%20(pcctc.org)';
@@ -28,7 +29,7 @@ const formEnabled = false;
   <PageHero
     eyebrow="Partner with us"
     title="Put the consortium behind your program"
-    lede="The PCCTC pairs industry-grade operations with the scientific depth of a global academic consortium and a network of more than 200 clinical research sites. There are three ways to engage."
+    lede={`The PCCTC pairs industry-grade operations with the scientific depth of a global academic consortium and a network of more than ${siteCount} clinical research sites. There are three ways to engage.`}
   />
 
   <section class="section">
