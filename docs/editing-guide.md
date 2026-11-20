@@ -56,7 +56,7 @@ the site:
 | **Working groups** | the working groups and their publication lists on /workinggroups |
 | **Media** | the image library (headshots, graphics) |
 
-![The sidebar: News, Studies, Services, About page, Expertise page, Guiding principles page, Working groups, and Media](images/02-sidebar.png)
+![The sidebar: Homepage, News, Studies, Services, Engagement models, About page, Expertise page, Guiding principles page, Working groups, and Media](images/02-sidebar.png)
 
 A few parts of the site are not in this list: the homepage text (apart from the number of
 research sites), the mission and history on /about, the /talent page, most of the Partner page, the privacy page, and the banner text at
@@ -64,6 +64,18 @@ the top of each page.
 Those live in the site's templates rather than its content and change rarely. If one of them
 needs editing, or the site needs a new section, that's a change to the structure; bring it to
 Travis (see "When to bring in Travis").
+
+### The homepage
+
+Most of the homepage is filled in from other sections: the four big numbers come from
+**About page → Key numbers**, the service cards from **Services**, the study cards from
+**Studies → Featured studies**, and the three latest posts from **News**. **Homepage** in the
+sidebar holds one setting, the number of research sites, which the homepage, /about, /partner
+and search results all quote. The Services and Expertise pages mention the same number in
+their own text, so update those by hand when it changes. The rest of the homepage's wording is
+part of the templates mentioned above.
+
+![The Homepage form: a single Number of research sites field set to 200, with help text below it](images/08-homepage.png)
 
 ## Editing something that already exists
 
@@ -223,6 +235,7 @@ edit it again and save; the fix publishes the same way.
 | You deleted or changed something by mistake | Nothing is lost; every save is kept | Edit and save again if it's quick. If it's a big one (a whole list gone), ask Travis to restore the earlier version; that takes him a minute |
 | No sign-in code arrives | Mail delay or spam filter | Wait a minute, check spam, then click resend. Codes expire after five minutes |
 | "Invite unavailable" or "This invitation link is invalid" | The invitation link was already used or has expired | Go to app.pagescms.org and sign in with your email as usual; if that fails, ask Travis for a fresh invitation |
+| A section you were told about isn't in the sidebar | The editor was already open when the section was added | Reload the page |
 | The editor looks broken or won't load | A hiccup on the editor's side | Reload the page; if that doesn't help, sign out and back in, or try another browser. If app.pagescms.org itself is down, your edits can wait; nothing is lost |
 
 ## Ground rules

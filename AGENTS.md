@@ -43,7 +43,11 @@ Pages CMS (see Key decisions); everything it edits is a plain text file in this 
   `id` is the in-page anchor) and `src/data/guiding-principles.yaml` (`title`, `body`). Long
   `body` fields render one paragraph per line break (`paragraphs()` in `src/lib/data.ts`).
 - **CMS forms** — `.pages.yml` at the repo root defines what Pages CMS shows for each of the
-  above. Adding a field to a data file or the news schema means adding it there too.
+  above. Adding a field to a data file or the news schema means adding it there too. The CMS
+  shows a field's `description` under the field but never a content item's `description`, so
+  anything editors need to read goes in a field description or in `docs/editing-guide.md`.
+  After a `.pages.yml` change, editors who already have the CMS open must reload it to see the
+  new sidebar.
 
 Page templates in `src/pages/` and components in `src/components/` render this data. Prose that
 is still inline in `.astro` files (not CMS-editable): the homepage (apart from its site count),
